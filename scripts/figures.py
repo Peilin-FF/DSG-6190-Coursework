@@ -27,16 +27,17 @@ plt.rcParams.update({
     "savefig.bbox": "tight", "savefig.pad_inches": 0.02, "pdf.fonttype": 42,
 })
 
-# Colours of the framework figure of Hsu et al. (2025), used with one meaning each in all figures.
-BLUE, LBLUE = "#4E95D9", "#B4C7E7"      # DSG, steps of the DSG ablation
-GREEN, ORANGE = "#4EA72E", "#E97132"    # our two changes: exclusive grounding, question components
+# Colours of the framework figure of Hsu et al. (2025) and of our LaTeX figures (dsgblue, dsggold, dsgpeach),
+# used with one meaning each.
+BLUE, LBLUE = "#4E95D9", "#B4C7E7"      # DSG; steps of the DSG ablation, and the base VLM in fig_counts
+SGOLD, PEACH = "#E3C77A", "#F2B694"     # exclusive grounding (and the ground truth in fig_counts); question components
 LORANGE = "#F8CBAD"                     # other prompting methods (CoT)
 LYELLOW, GOLD = "#FFF2CC", "#DEA817"    # schema controls (fill, edge)
-GRAY, DGRAY = "#D0CECE", "#7F7F7F"      # base VLM, ground truth and zero lines
+ZGRAY = "#7F7F7F"                       # zero lines and the base VLM line in fig_hparam
 
 MODELS = [("qwen3-vl-4b", "Qwen3-VL-4B"), ("qwen3-vl-8b", "Qwen3-VL-8B"),
-          ("internvl3.5-8b", "InternVL3.5-8B"), ("llava-ov-7b", "LLaVA-OV-7B")]
-SETS = [("vad", "VAB"), ("maze", "Maze-Nav"), ("maze_nolegend", "Maze-Nav\nno legend"), ("ai2d", "AI2D")]
+          ("internvl3.5-8b", "InternVL3.5-8B"), ("qwen3.8-27b", "Qwen3.8-27B")]
+SETS = [("vad", "VAB"), ("maze", "Maze-Nav"), ("maze_nolegend", "Maze-Nav\nwithout legend"), ("ai2d", "AI2D")]
 COL_W, FULL_W = 3.25, 6.875
 RUNS = [0, 1, 2]
 FULL_N = {"vad": 540, "maze": 600, "maze_nolegend": 600, "ai2d": 556}
@@ -84,22 +85,22 @@ def save(fig, out, name):
 def fig_qtype(df, out):
     """VAB: change over the base VLM per question type, single-round prompts against multi-round DSG."""
     qts = [("counting", "Counting"), ("binary", "Binary-choice"), ("open", "Open-ended")]
-    vs = [("cot", "CoT (single round)", LORANGE), ("dsg_schema", "+ schema (single round)", LBLUE),
-          ("dsg_full", "DSG (multi-round)", BLUE)]
+    vs = [("cot", "CoT", LORANGE), ("dsg_schema", "+ schema", LBLUE),
+          ("dsg_full", "DSG", BLUE)]
     fig, ax = plt.subplots(figsize=(COL_W, 1.55))
-    w = 0.26
+    w = 0.27
     for k, (v, name, c) in enumerate(vs):
         ds = [mean_acc(df, "vad", v, qt) - mean_acc(df, "vad", "direct", qt) for qt, _ in qts]
         xs = np.arange(len(qts)) + (k - 1) * w
-        ax.bar(xs, ds, w * 0.92, color=c, label=name)
-        label_bars(ax, xs, ds)
-    ax.axhline(0, color=DGRAY, lw=0.6)
+        ax.bar(xs, ds, w * 0.86, color=c, label=name)
+        label_bars(ax, xs, ds, size=5.5)
+    ax.axhline(0, color=ZGRAY, lw=0.6)
     ax.set_xticks(range(len(qts)), [q for _, q in qts])
     ax.tick_params(axis="x", length=0)
     ax.spines["bottom"].set_visible(False)
     ax.set_ylabel("Change (points)")
-    ax.margins(y=0.18)
-    ax.legend(ncol=3, loc="lower center", bbox_to_anchor=(0.5, 1.0), handlelength=1.0, columnspacing=0.9)
+    ax.margins(y=0.20)
+    ax.legend(ncol=3, loc="lower center", bbox_to_anchor=(0.5, 1.0), handlelength=1.0, columnspacing=1.2)
     save(fig, out, "fig_qtype")
 
 
@@ -122,11 +123,11 @@ def fig_ablation(df, out):
         ys.append(-y)
         names.append(name)
         y += 1
-    ax.axvline(0, color=DGRAY, lw=0.6)
+    ax.axvline(0, color=ZGRAY, lw=0.6)
     ax.set_yticks(ys, names)
     ax.tick_params(axis="y", length=0)
     ax.spines["left"].set_visible(False)
-    ax.set_xlabel(f"Change over base VLM on VAB (points; base VLM {base:.1f}%)")
+    ax.set_xlabel("Change over base VLM on VAB (points)")
     ax.margins(x=0.18)
     save(fig, out, "fig_ablation")
 
@@ -152,7 +153,7 @@ def fig_counts(df, out, data_root, model="qwen3-vl-8b"):
         preds[v] = hist([int(items[r.id]["choices"][int(r.pred_idx)]) for r in x.itertuples()])
     fig, ax = plt.subplots(figsize=(COL_W, 1.45))
     w = 0.27
-    for k, (h, name, c) in enumerate([(truth, "Ground truth", DGRAY), (preds["direct"], "Base VLM", GRAY),
+    for k, (h, name, c) in enumerate([(truth, "Ground truth", SGOLD), (preds["direct"], "Base VLM", LBLUE),
                                       (preds["dsg_full"], "DSG", BLUE)]):
         ax.bar(bins + (k - 1) * w, h, w * 0.92, color=c, label=name)
     ax.set_xticks(bins, ["0", "1", "2", "3", "4", "5+"])
@@ -174,7 +175,7 @@ def fig_hparam(df, out, model="qwen3-vl-8b"):
                "Longer image side (pixels)", "(b) Image resolution")]
     for ax, pts, xlabel, title in panels:
         xs = [x for x, _, _ in pts]
-        ax.plot(xs, [acc(df, model, "vad", b) for _, _, b in pts], color=DGRAY, ls="--", marker="o", mfc="white",
+        ax.plot(xs, [acc(df, model, "vad", b) for _, _, b in pts], color=ZGRAY, ls="--", marker="o", mfc="white",
                 label="Base VLM")
         ax.plot(xs, [acc(df, model, "vad", v) for _, v, _ in pts], color=BLUE, marker="o", label="DSG")
         ax.set_xticks(xs)
@@ -184,8 +185,9 @@ def fig_hparam(df, out, model="qwen3-vl-8b"):
     axes[0].set_ylabel("Accuracy (%)")
     a0 = axes[0]  # direct line labels instead of a legend box
     a0.text(9.4, acc(df, model, "vad", "dsg_full@c9"), "DSG", color=BLUE, va="center", fontsize=6.5)
-    a0.text(9.4, acc(df, model, "vad", "direct"), "Base VLM", color=DGRAY, va="center", fontsize=6.5)
+    a0.text(9.4, acc(df, model, "vad", "direct"), "Base VLM", color=ZGRAY, va="center", fontsize=6.5)
     a0.set_xlim(2.4, 11.6)
+    axes[1].legend(loc="lower right", handlelength=1.6, fontsize=6.2, borderaxespad=0.2)  # panel (b): name both lines
     ax = axes[2]
     ref = round(acc(df, model, "vad", "dsg_full"), 1)
     cfgs = [("dsg_full@sentence", "Sentence groundings"), ("dsg_full@self8b", "Schema written by the VLM"),
@@ -194,11 +196,11 @@ def fig_hparam(df, out, model="qwen3-vl-8b"):
     ys = -np.arange(len(cfgs))
     ax.barh(ys, ds, 0.62, color=[BLUE if d >= 0 else LBLUE for d in ds])
     label_bars(ax, ys, ds, horizontal=True, pad=0.06)
-    ax.axvline(0, color=DGRAY, lw=0.6)
+    ax.axvline(0, color=ZGRAY, lw=0.6)
     ax.set_yticks(ys, [n for _, n in cfgs])
     ax.tick_params(axis="y", length=0)
     ax.spines["left"].set_visible(False)
-    ax.set_xlabel(f"Change over DSG (points; DSG {ref:.1f}%)")
+    ax.set_xlabel("Change over DSG (points)")
     ax.set_title("(c) Other settings", loc="left")
     ax.margins(x=0.22)
     fig.tight_layout(w_pad=1.0)
@@ -207,15 +209,15 @@ def fig_hparam(df, out, model="qwen3-vl-8b"):
 
 def fig_ext(df, out):
     """Change over the base VLM on each test set for DSG and for our two changes to DSG."""
-    vs = [("dsg_full", "DSG", BLUE), ("dsg_x", "+ exclusive grounding", GREEN), ("dsg_q", "+ question components", ORANGE)]
+    vs = [("dsg_full", "DSG", BLUE), ("dsg_x", "+ exclusive grounding", SGOLD), ("dsg_q", "+ question components", PEACH)]
     fig, ax = plt.subplots(figsize=(COL_W, 1.7))
-    w = 0.28
+    w = 0.27
     for k, (v, name, c) in enumerate(vs):
         ds = [mean_acc(df, s, v) - mean_acc(df, s, "direct") for s, _ in SETS]
         xs = np.arange(len(SETS)) + (k - 1) * w
-        ax.bar(xs, ds, w * 0.92, color=c, label=name)
-        label_bars(ax, xs, ds, plus=False, pad=0.3, size=5.5)
-    ax.axhline(0, color=DGRAY, lw=0.6)
+        ax.bar(xs, ds, w * 0.86, color=c, label=name)
+        label_bars(ax, xs, ds, plus=False, pad=0.3, size=5.2)
+    ax.axhline(0, color=ZGRAY, lw=0.6)
     ax.set_xticks(range(len(SETS)), [s for _, s in SETS])
     ax.tick_params(axis="x", length=0)
     ax.spines["bottom"].set_visible(False)

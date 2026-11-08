@@ -15,7 +15,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import spearmanr
 
-MODELS = ["qwen3-vl-4b", "qwen3-vl-8b", "internvl3.5-8b", "llava-ov-7b"]
+MODELS = ["qwen3-vl-4b", "qwen3-vl-8b", "internvl3.5-8b", "qwen3.8-27b"]
 RUNS = {"direct": [0], "dsg_full": [0, 1, 2], "dsg_generic": [0]}
 
 

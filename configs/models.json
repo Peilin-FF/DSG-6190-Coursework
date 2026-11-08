@@ -1,8 +1,193 @@
 {
-  "qwen3-vl-4b": {"path": "Qwen3-VL-4B-Instruct", "gpus": "0", "port": 8100, "family": "Qwen3-VL", "params": "4B"},
-  "qwen3-vl-8b": {"path": "Qwen3-VL-8B-Instruct", "gpus": "1", "port": 8101, "family": "Qwen3-VL", "params": "8B", "replicas": [{"gpus": "4", "port": 8111}, {"gpus": "6", "port": 8121}]},
-  "internvl3.5-8b": {"path": "InternVL3_5-8B", "gpus": "2", "port": 8102, "family": "InternVL3.5", "params": "8B", "args": ["--trust-remote-code"], "replicas": [{"gpus": "5", "port": 8112}, {"gpus": "7", "port": 8122}, {"gpus": "1", "port": 8132}, {"gpus": "0", "port": 8142}]},
-  "llava-ov-7b": {"path": "llava-onevision-qwen2-7b-ov-hf", "gpus": "3", "port": 8103, "family": "LLaVA-OneVision", "params": "7B", "max_side": 768, "replicas": [{"gpus": "4", "port": 8113}, {"gpus": "6", "port": 8123}]},
-  "qwen3.6-35b-a3b": {"path": "Qwen3.6-35B-A3B", "gpus": "4,5", "port": 8104, "family": "Qwen3.6", "params": "35B-A3B", "args": ["--reasoning-parser", "qwen3"], "chat_template_kwargs": {"enable_thinking": false}},
-  "qwen3.8-27b": {"path": "Qwen3.8-27B", "gpus": "6,7", "port": 8106, "family": "Qwen3.8", "params": "27B", "args": ["--reasoning-parser", "qwen3"], "chat_template_kwargs": {"enable_thinking": false}, "replicas": [{"gpus": "6", "port": 8126, "max_model_len": 8192, "gpu_mem": 0.92, "args": ["--reasoning-parser", "qwen3", "--language-model-only"]}]}
+  "qwen3-vl-4b": {
+    "path": "Qwen3-VL-4B-Instruct",
+    "gpus": "0",
+    "port": 8100,
+    "family": "Qwen3-VL",
+    "params": "4B"
+  },
+  "qwen3-vl-8b": {
+    "path": "Qwen3-VL-8B-Instruct",
+    "gpus": "1",
+    "port": 8101,
+    "family": "Qwen3-VL",
+    "params": "8B",
+    "replicas": [
+      {
+        "gpus": "4",
+        "port": 8111
+      },
+      {
+        "gpus": "6",
+        "port": 8121
+      }
+    ]
+  },
+  "internvl3.5-8b": {
+    "path": "InternVL3_5-8B",
+    "gpus": "2",
+    "port": 8102,
+    "family": "InternVL3.5",
+    "params": "8B",
+    "args": [
+      "--trust-remote-code"
+    ],
+    "replicas": [
+      {
+        "gpus": "5",
+        "port": 8112
+      },
+      {
+        "gpus": "7",
+        "port": 8122
+      },
+      {
+        "gpus": "1",
+        "port": 8132
+      },
+      {
+        "gpus": "0",
+        "port": 8142
+      }
+    ]
+  },
+  "llava-ov-7b": {
+    "path": "llava-onevision-qwen2-7b-ov-hf",
+    "gpus": "3",
+    "port": 8103,
+    "family": "LLaVA-OneVision",
+    "params": "7B",
+    "max_side": 768,
+    "replicas": [
+      {
+        "gpus": "4",
+        "port": 8113
+      },
+      {
+        "gpus": "6",
+        "port": 8123
+      }
+    ]
+  },
+  "qwen3.6-35b-a3b": {
+    "path": "Qwen3.6-35B-A3B",
+    "gpus": "4,5",
+    "port": 8104,
+    "family": "Qwen3.6",
+    "params": "35B-A3B",
+    "args": [
+      "--reasoning-parser",
+      "qwen3"
+    ],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    }
+  },
+  "qwen3.8-27b": {
+    "path": "Qwen3.8-27B",
+    "gpus": "6,7",
+    "port": 8106,
+    "family": "Qwen3.8",
+    "params": "27B",
+    "args": [
+      "--reasoning-parser",
+      "qwen3"
+    ],
+    "chat_template_kwargs": {
+      "enable_thinking": false
+    },
+    "replicas": [
+      {
+        "gpus": "6",
+        "port": 8126,
+        "max_model_len": 8192,
+        "gpu_mem": 0.92,
+        "args": [
+          "--reasoning-parser",
+          "qwen3",
+          "--language-model-only"
+        ]
+      },
+      {
+        "gpus": "0",
+        "port": 8130,
+        "max_model_len": 32768,
+        "gpu_mem": 0.92,
+        "args": [
+          "--reasoning-parser",
+          "qwen3"
+        ]
+      },
+      {
+        "gpus": "1",
+        "port": 8131,
+        "max_model_len": 32768,
+        "gpu_mem": 0.92,
+        "args": [
+          "--reasoning-parser",
+          "qwen3"
+        ]
+      },
+      {
+        "gpus": "2",
+        "port": 8132,
+        "max_model_len": 32768,
+        "gpu_mem": 0.92,
+        "args": [
+          "--reasoning-parser",
+          "qwen3"
+        ]
+      },
+      {
+        "gpus": "3",
+        "port": 8133,
+        "max_model_len": 32768,
+        "gpu_mem": 0.92,
+        "args": [
+          "--reasoning-parser",
+          "qwen3"
+        ]
+      },
+      {
+        "gpus": "4",
+        "port": 8134,
+        "max_model_len": 32768,
+        "gpu_mem": 0.92,
+        "args": [
+          "--reasoning-parser",
+          "qwen3"
+        ]
+      },
+      {
+        "gpus": "5",
+        "port": 8135,
+        "max_model_len": 32768,
+        "gpu_mem": 0.92,
+        "args": [
+          "--reasoning-parser",
+          "qwen3"
+        ]
+      },
+      {
+        "gpus": "6",
+        "port": 8136,
+        "max_model_len": 32768,
+        "gpu_mem": 0.92,
+        "args": [
+          "--reasoning-parser",
+          "qwen3"
+        ]
+      },
+      {
+        "gpus": "7",
+        "port": 8137,
+        "max_model_len": 32768,
+        "gpu_mem": 0.92,
+        "args": [
+          "--reasoning-parser",
+          "qwen3"
+        ]
+      }
+    ]
+  }
 }

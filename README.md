@@ -6,6 +6,12 @@ methods, the ablation of the original paper, three controls on the schema, and t
 (exclusive grounding and question components). All models are open-source VLMs served by vLLM through its
 OpenAI-compatible API.
 
+## Models
+
+VLMs: Qwen3-VL-4B-Instruct, Qwen3-VL-8B-Instruct, InternVL3.5-8B and Qwen3.8-27B (non-thinking). The schema LLM is
+Qwen3.8-27B. `configs/models.json` lists the weights, GPUs and vLLM settings of every server and replica; LLaVA-OneVision-7B
+was run in an early phase and is not part of the report.
+
 ## Names in the code and in the report
 
 | Code | Report |
@@ -36,6 +42,7 @@ OpenAI-compatible API.
 | `scripts/analyze.py` | re-scores every saved output, adds the votes over schema samples, writes result tables |
 | `scripts/grounding_stats.py` | shared groundings per resolved schema and accuracy per concept, from the run files |
 | `scripts/answer_stats.py` | turn counts on Maze-Nav and yes/no answers on VAB |
+| `scripts/report_numbers.py` | every number quoted in the report text, with the rounding of the tables |
 | `scripts/make_tables.py`, `scripts/figures.py`, `scripts/cases.py` | LaTeX tables, figures and case selection |
 | `scripts/package_submission.sh` | builds the code zip (no data, models, runs or external links) |
 | `configs/` | model registry and the experiment suites (`suite_main`, `suite_hparam*`, `suite_improve*`) |
@@ -68,6 +75,7 @@ python scripts/run_suite.py --model qwen3-vl-8b --suite configs/suite_improve_x.
 python scripts/analyze.py --runs $DSG_RUNS --out results
 python scripts/grounding_stats.py --runs $DSG_RUNS --out results
 python scripts/answer_stats.py --results results --data $DSG_DATA
+python scripts/report_numbers.py --results results --runs $DSG_RUNS --data $DSG_DATA > results/report_numbers.txt
 python scripts/make_tables.py --results results --out report/tables
 python scripts/figures.py --results results --out report/figures --data $DSG_DATA
 ```

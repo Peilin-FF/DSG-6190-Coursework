@@ -10,7 +10,7 @@ import numpy as np
 import pandas as pd
 
 MODELS = [("qwen3-vl-4b", "Qwen3-VL-4B", "Q-4B"), ("qwen3-vl-8b", "Qwen3-VL-8B", "Q-8B"),
-          ("internvl3.5-8b", "InternVL3.5-8B", "IVL-8B"), ("llava-ov-7b", "LLaVA-OV-7B", "LO-7B")]
+          ("internvl3.5-8b", "InternVL3.5-8B", "IVL-8B"), ("qwen3.8-27b", "Qwen3.8-27B", "Q3.8-27B")]
 NAMES = {  # row names follow Hsu et al. (2025): base VLM, language-only baseline, + schema / + grounding / + hierarchical
     "blind": "Language-only", "direct": "Base VLM", "cot": "CoT~\\cite{kojima2022zeroshot}",
     "ccot": "CCoT~\\cite{mitra2024ccot}", "dsg_schema": "+ schema", "dsg_seq": "+ grounding",
