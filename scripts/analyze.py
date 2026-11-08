@@ -22,13 +22,23 @@ import pandas as pd
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, HERE)
 
+from dsg.data import read_manifest  # noqa: E402
+from dsg.scoring import match_choice  # noqa: E402
 from dsg.stats import cluster_bootstrap_ci, mcnemar  # noqa: E402
 
 KEEP = ["id", "dataset", "method", "tag", "run", "concept", "category", "qtype", "image_key", "order",
         "answer_idx", "pred_idx", "match_rule", "correct", "n_choices", "lp_mean", "lp_sum", "error", "finish"]
 
 
-def load_runs(root: str) -> pd.DataFrame:
+def load_runs(root: str, data_root: str | None = None) -> pd.DataFrame:
+    """Read every run file; when the manifests are available, re-score each raw output with the final matcher."""
+    items = {}
+    if data_root:
+        for path in glob.glob(os.path.join(data_root, "manifests", "*.jsonl")):
+            if path.endswith(".bak"):
+                continue
+            for it in read_manifest(path):
+                items[it.id] = it
     rows = []
     for path in glob.glob(os.path.join(root, "*", "*", "*", "*", "run*.jsonl")):
         suite, model, dataset, variant = path.split(os.sep)[-5:-1]
@@ -41,6 +51,10 @@ def load_runs(root: str) -> pd.DataFrame:
                 except json.JSONDecodeError:
                     continue
                 d = {k: r.get(k) for k in KEEP}
+                it = items.get(r["id"])
+                if it is not None:
+                    idx, rule = match_choice(r.get("output", ""), it.choices, it.letters)
+                    d.update(pred_idx=idx, match_rule=rule, correct=idx == it.answer_idx)
                 u = r.get("usage") or {}
                 ground = r.get("grounding") or []
                 aux = [x for x in (r.get("aux_usage") or []) if x]
@@ -146,9 +160,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--runs", default=os.environ.get("DSG_RUNS", "runs"))
     ap.add_argument("--out", default=os.path.join(HERE, "results"))
+    ap.add_argument("--data", default=os.environ.get("DSG_DATA", "data"))
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
-    df = add_offline(load_runs(a.runs))
+    df = add_offline(load_runs(a.runs, a.data))
     df.to_parquet(os.path.join(a.out, "predictions.parquet"))
     overall = summarize(df, ["model", "dataset", "variant"])
     overall.to_csv(os.path.join(a.out, "overall.csv"), index=False)

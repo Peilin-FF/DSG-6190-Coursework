@@ -44,6 +44,10 @@ def match_choice(output: str, choices: list, letters: bool) -> tuple:
         m = LETTER_RE.match(t)
         if m and 0 <= ord(m.group(1)) - 65 < len(choices):
             return ord(m.group(1)) - 65, "letter"
+    stripped = t.strip().rstrip(".").strip()
+    exact = [i for i, c in enumerate(choices) if c.strip() == stripped]
+    if len(exact) >= 1:
+        return exact[0], "exact_case"
     nt = normalize(t)
     nc = [normalize(c) for c in choices]
     for i, c in enumerate(nc):

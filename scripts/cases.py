@@ -32,6 +32,9 @@ def load(runs_root, suite, model, dataset, variant, run):
 
 
 def find(a):
+    exclude = set()
+    if a.exclude and os.path.exists(a.exclude):
+        exclude = set(json.load(open(a.exclude)))  # VAD photos that already appear in the original paper
     res = []
     for ds in ("vad", "maze", "maze_nolegend", "ai2d"):
         items = {it.id: it for it in read_manifest(os.path.join(a.data, "manifests", f"{ds}.jsonl"))}
@@ -52,6 +55,8 @@ def find(a):
             if kind is None:
                 continue
             it = items[i]
+            if any(it.image.endswith(e) for e in exclude):
+                continue
             qc = [g[i]["correct"] for g in q if i in g]
             res.append({"id": i, "dataset": ds, "kind": kind, "concept": it.concept, "qtype": it.qtype,
                         "image": it.image, "question": it.extra.get("question_open_ended") or it.question,
@@ -116,6 +121,7 @@ def main():
     ap.add_argument("--data", default=os.environ.get("DSG_DATA", "data"))
     ap.add_argument("--out", required=True)
     ap.add_argument("--cases")
+    ap.add_argument("--exclude", default=os.path.join(os.environ.get("DSG_DATA", "data"), "paper_figure_images.json"))
     ap.add_argument("--cols", type=int, default=4)
     ap.add_argument("--row-h", type=float, default=2.55)
     ap.add_argument("--wrap", type=int, default=44)

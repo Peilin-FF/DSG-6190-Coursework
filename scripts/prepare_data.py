@@ -157,11 +157,15 @@ def build_ai2d(raw: str, out: str, per_cat: int, seed: int) -> list:
         order = seen[key]
         seen[key] += 1
         label_q = all(len(c) <= 2 for c in choices)
+        # Choices are listed as text, as in VAD. Option letters would be ambiguous because many AI2D
+        # answer choices are diagram labels (single letters) themselves.
+        q = r.question.strip()
         items.append(Item(
             id=f"{key}/r{r.row}", dataset="ai2d", image=rel, image_key=key, concept=AI2D_CONCEPTS[r.cat],
             category=r.cat, qtype="label" if label_q else "content",
-            question=format_lettered(r.question.strip(), choices), choices=choices, answer=choices[idx],
-            answer_idx=idx, letters=True, order=order, extra={"source_row": int(r.row), "file": r.fn}))
+            question=f"{q} Answer with one of the following answer choices: {'; '.join(choices)}.", choices=choices,
+            answer=choices[idx], answer_idx=idx, letters=False, order=order,
+            extra={"source_row": int(r.row), "file": r.fn, "question_open_ended": q}))
     return items
 
 

@@ -1,0 +1,58 @@
+{
+  "name": "hparam",
+  "schemas": "schemas/qwen3.8-27b_c3.json",
+  "jobs": [
+    {
+      "dataset": "vad",
+      "methods": [
+        "dsg_full"
+      ],
+      "runs": [
+        0
+      ],
+      "tag": "res448",
+      "settings": {
+        "max_side": 448
+      }
+    },
+    {
+      "dataset": "vad",
+      "methods": [
+        "dsg_full"
+      ],
+      "runs": [
+        0
+      ],
+      "tag": "res672",
+      "settings": {
+        "max_side": 672
+      }
+    },
+    {
+      "dataset": "vad",
+      "methods": [
+        "dsg_full"
+      ],
+      "runs": [
+        0
+      ],
+      "tag": "res1344",
+      "settings": {
+        "max_side": 1344
+      }
+    },
+    {
+      "dataset": "vad",
+      "methods": [
+        "dsg_full"
+      ],
+      "runs": [
+        0
+      ],
+      "tag": "sentence",
+      "settings": {
+        "ground_style": "sentence"
+      }
+    }
+  ]
+}
