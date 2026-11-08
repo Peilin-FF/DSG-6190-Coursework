@@ -1,9 +1,14 @@
 """Data figures of the report (vector PDF + PNG preview), from results/predictions.parquet.
 
-  python scripts/figures.py --results results --out report/figures
+The style follows the figures of Hsu et al. (2025): their Office colour palette, sans-serif text, no grid,
+one message per figure and the values printed next to the bars. Accuracies are averaged over the four VLMs
+and over the three schema samples of every schema-based method.
+
+  python scripts/figures.py --results results --out report/figures --data data
 """
 
 import argparse
+import json
 import os
 
 import matplotlib
@@ -14,38 +19,60 @@ import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
 plt.rcParams.update({
-    "font.family": "serif", "font.serif": ["STIXGeneral", "Times New Roman", "DejaVu Serif"],
-    "mathtext.fontset": "stix", "font.size": 8, "axes.titlesize": 8.5, "axes.labelsize": 8,
-    "xtick.labelsize": 7, "ytick.labelsize": 7, "legend.fontsize": 6.8, "legend.frameon": False,
-    "axes.spines.top": False, "axes.spines.right": False, "axes.grid": True, "grid.alpha": 0.18,
-    "grid.linestyle": "-", "lines.linewidth": 1.4, "lines.markersize": 4, "savefig.bbox": "tight",
-    "savefig.pad_inches": 0.02, "pdf.fonttype": 42,
+    "font.family": "sans-serif", "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
+    "font.size": 7, "axes.titlesize": 7.5, "axes.labelsize": 7, "xtick.labelsize": 6.5, "ytick.labelsize": 6.5,
+    "legend.fontsize": 6.5, "legend.frameon": False, "axes.spines.top": False, "axes.spines.right": False,
+    "axes.grid": False, "axes.linewidth": 0.6, "xtick.major.width": 0.6, "ytick.major.width": 0.6,
+    "xtick.major.size": 2.5, "ytick.major.size": 2.5, "lines.linewidth": 1.4, "lines.markersize": 4,
+    "savefig.bbox": "tight", "savefig.pad_inches": 0.02, "pdf.fonttype": 42,
 })
+
+# Colours of the framework figure of Hsu et al. (2025), used with one meaning each in all figures.
+BLUE, LBLUE = "#4E95D9", "#B4C7E7"      # DSG, steps of the DSG ablation
+GREEN, ORANGE = "#4EA72E", "#E97132"    # our two changes: exclusive grounding, question components
+LORANGE = "#F8CBAD"                     # other prompting methods (CoT)
+LYELLOW, GOLD = "#FFF2CC", "#DEA817"    # schema controls (fill, edge)
+GRAY, DGRAY = "#D0CECE", "#7F7F7F"      # base VLM, ground truth and zero lines
 
 MODELS = [("qwen3-vl-4b", "Qwen3-VL-4B"), ("qwen3-vl-8b", "Qwen3-VL-8B"),
           ("internvl3.5-8b", "InternVL3.5-8B"), ("llava-ov-7b", "LLaVA-OV-7B")]
-OKABE = {"qwen3-vl-4b": "#56B4E9", "qwen3-vl-8b": "#0072B2", "internvl3.5-8b": "#009E73", "llava-ov-7b": "#E69F00"}
-MARK = {"qwen3-vl-4b": "o", "qwen3-vl-8b": "s", "internvl3.5-8b": "^", "llava-ov-7b": "D"}
-SETS = [("vad", "VAD"), ("maze", "Maze"), ("maze_nolegend", "Maze\nno legend"), ("ai2d", "AI2D")]
+SETS = [("vad", "VAB"), ("maze", "Maze-Nav"), ("maze_nolegend", "Maze-Nav\nno legend"), ("ai2d", "AI2D")]
 COL_W, FULL_W = 3.25, 6.875
 RUNS = [0, 1, 2]
-
-
 FULL_N = {"vad": 540, "maze": 600, "maze_nolegend": 600, "ai2d": 556}
+ONE_RUN = ("blind", "direct", "cot", "ccot", "dsg_sc3", "dsg_sc5", "dsg_gate")  # deterministic or one vote per item
 
 
-def acc(df, model, dataset, variant, runs=RUNS, qtype=None):
-    """Mean and std over complete runs only (a run must cover every question of the test set)."""
+def acc(df, model, dataset, variant, runs=None, qtype=None):
+    """Mean accuracy (%) over the complete runs of one model (a run must cover every question of the test set)."""
+    if runs is None:
+        runs = [0] if variant.split("@")[0] in ONE_RUN else RUNS
     d = df[(df.model == model) & (df.dataset == dataset) & (df.variant == variant) & df.run.isin(runs)]
     sizes = d.groupby("run")["id"].nunique()
-    complete = sizes[sizes >= FULL_N[dataset]].index
-    d = d[d.run.isin(complete)]
+    d = d[d.run.isin(sizes[sizes >= FULL_N[dataset]].index)]
     if qtype is not None:
         d = d[d.qtype == qtype]
     if d.empty:
-        return np.nan, np.nan
-    per = d.groupby("run")["correct"].mean() * 100
-    return per.mean(), (per.std(ddof=1) if len(per) > 1 else 0.0)
+        return np.nan
+    return d.groupby("run")["correct"].mean().mean() * 100
+
+
+def mean_acc(df, dataset, variant, qtype=None, models=MODELS):
+    """Mean over the models; nan unless every model has a complete run."""
+    vals = [acc(df, mk, dataset, variant, qtype=qtype) for mk, _ in models]
+    # rounded like the table entries, so that a plotted difference equals the difference of two table values
+    return round(float(np.mean(vals)), 1) if all(np.isfinite(vals)) else np.nan
+
+
+def label_bars(ax, xs, vals, horizontal=False, plus=True, pad=0.25, size=6):
+    for x, v in zip(xs, vals):
+        if not np.isfinite(v):
+            continue
+        s = (f"{v:+.1f}" if plus and abs(v) >= 0.05 else f"{v:.1f}").replace("-", "\u2212")
+        if horizontal:
+            ax.text(v + (pad if v >= 0 else -pad), x, s, va="center", ha="left" if v >= 0 else "right", fontsize=size)
+        else:
+            ax.text(x, v + (pad if v >= 0 else -pad), s, ha="center", va="bottom" if v >= 0 else "top", fontsize=size)
 
 
 def save(fig, out, name):
@@ -54,169 +81,148 @@ def save(fig, out, name):
     plt.close(fig)
 
 
-def fig_gains(df, out):
-    """Accuracy changes (percentage points): DSG over Direct, and each extension over DSG."""
-    panels = [("dsg_full", "direct", "DSG $-$ Direct"), ("dsg_x", "dsg_full", "DSG-X $-$ DSG"),
-              ("dsg_q", "dsg_full", "DSG-Q $-$ DSG")]
-    mats = []
-    for v, ref, _ in panels:
-        m = np.full((len(MODELS), len(SETS)), np.nan)
-        for i, (mk, _) in enumerate(MODELS):
-            for j, (ds, _) in enumerate(SETS):
-                a, _ = acc(df, mk, ds, v)
-                b, _ = acc(df, mk, ds, ref, runs=[0] if ref == "direct" else RUNS)
-                m[i, j] = a - b
-        mats.append(m)
-    vmax = max(np.nanmax(np.abs(m)) for m in mats if np.isfinite(m).any())
-    fig, axes = plt.subplots(1, 3, figsize=(FULL_W, 1.6), sharey=True)
-    for ax, m, (_, _, title) in zip(axes, mats, panels):
-        im = ax.imshow(m, cmap="RdBu", vmin=-vmax, vmax=vmax, aspect="auto")
-        for i in range(m.shape[0]):
-            for j in range(m.shape[1]):
-                if np.isfinite(m[i, j]):
-                    ax.text(j, i, f"{m[i, j]:+.1f}", ha="center", va="center", fontsize=6.5,
-                            color="white" if abs(m[i, j]) > 0.55 * vmax else "black")
-        ax.set_xticks(range(len(SETS)), [s for _, s in SETS], fontsize=6.5)
-        ax.set_yticks(range(len(MODELS)), [n for _, n in MODELS])
-        ax.set_title(title)
-        ax.grid(False)
-        for sp in ax.spines.values():
-            sp.set_visible(False)
-    cb = fig.colorbar(im, ax=axes, fraction=0.02, pad=0.01)
-    cb.set_label("pp", fontsize=7)
-    cb.ax.tick_params(labelsize=6)
-    save(fig, out, "fig_gains")
-
-
-def fig_ablation(df, out):
-    steps = [("direct", "Direct"), ("dsg_schema", "+Schema"), ("dsg_seq", "+Ground."), ("dsg_hier", "+Hier."),
-             ("dsg_full", "Full DSG")]
-    fig, ax = plt.subplots(figsize=(COL_W, 1.9))
-    x = np.arange(len(steps))
-    for mk, name in MODELS:
-        ys, es = zip(*[acc(df, mk, "vad", v, runs=[0] if v == "direct" else RUNS) for v, _ in steps])
-        ax.errorbar(x, ys, yerr=es, color=OKABE[mk], marker=MARK[mk], capsize=2, label=name, lw=1.2)
-    ax.set_xticks(x, [s for _, s in steps])
-    ax.set_ylabel("VAD accuracy (%)")
-    ax.legend(ncol=4, loc="lower center", bbox_to_anchor=(0.5, 1.0), fontsize=5.8, handlelength=1.2, columnspacing=0.8)
-    save(fig, out, "fig_ablation")
-
-
-def fig_hparam(df, out, models=("qwen3-vl-8b", "internvl3.5-8b")):
-    """One setting at a time on VAD. A model enters a panel only when every point of that panel is complete."""
-    fig, axes = plt.subplots(1, 3, figsize=(FULL_W, 1.75), gridspec_kw={"width_ratios": [1, 1, 1.15]})
-    names = dict(MODELS)
-    # (a) schema size
-    ax = axes[0]
-    sizes = [(3, "dsg_full"), (5, "dsg_full@c5"), (7, "dsg_full@c7"), (9, "dsg_full@c9")]
-    for mk in models:
-        pts = [acc(df, mk, "vad", v) for _, v in sizes]
-        if not all(np.isfinite(y) for y, _ in pts):
-            continue
-        ys, es = zip(*pts)
-        ax.errorbar([k for k, _ in sizes], ys, yerr=es, color=OKABE[mk], marker=MARK[mk], capsize=2, label=f"{names[mk]}: DSG")
-        ax.axhline(acc(df, mk, "vad", "direct", runs=[0])[0], color=OKABE[mk], ls="--", lw=0.9, label=f"{names[mk]}: Direct")
-    ax.set_xticks([3, 5, 7, 9])
-    ax.set_xlabel("components in the example schema")
-    ax.set_ylabel("VAD accuracy (%)")
-    ax.set_title("(a) schema size")
-    ax.legend(fontsize=5.8, loc="upper right")
-    # (b) resolution
-    ax = axes[1]
-    res = [(448, "@res448"), (672, "@res672"), (1024, ""), (1344, "@res1344")]
-    for mk in models:
-        yd = [acc(df, mk, "vad", "direct" + t, runs=[0])[0] for _, t in res]
-        pg = [acc(df, mk, "vad", "dsg_full" + t, runs=RUNS if mk == "qwen3-vl-8b" else [0]) for _, t in res]
-        if not all(np.isfinite(y) for y in yd) or not all(np.isfinite(y) for y, _ in pg):
-            continue
-        ax.plot([r for r, _ in res], yd, color=OKABE[mk], ls="--", marker=MARK[mk], mfc="white", label=f"{names[mk]}: Direct")
-        yg, eg = zip(*pg)
-        ax.errorbar([r for r, _ in res], yg, yerr=eg, color=OKABE[mk], marker=MARK[mk], capsize=2, label=f"{names[mk]}: DSG")
-    ax.set_xticks([448, 672, 1024, 1344])
-    ax.set_xlabel("longer image side (px)")
-    ax.set_title("(b) image resolution")
-    ax.legend(fontsize=5.8, loc="lower right")
-    # (c) other settings, Qwen3-VL-8B
-    ax = axes[2]
-    mk = models[0]
-    cfgs = [("dsg_full", "default (phrase)"), ("dsg_full@sentence", "sentence grounding"),
-            ("dsg_full@self8b", "schema by the 8B VLM"), ("dsg_sc3", "vote over 3 schemas"), ("dsg_sc5", "vote over 5 schemas")]
-    pts = [acc(df, mk, "vad", v, runs=[0] if v.startswith("dsg_sc") else RUNS) for v, _ in cfgs]
-    y = np.arange(len(cfgs))[::-1]
-    ax.barh(y, [p[0] for p in pts], xerr=[p[1] for p in pts], color=OKABE[mk], height=0.6, capsize=1.5,
-            error_kw={"lw": 0.7})
-    for yy, (v, e) in zip(y, pts):
-        if np.isfinite(v):
-            ax.text(v + (e if np.isfinite(e) else 0) + 0.2, yy, f"{v:.1f}", va="center", fontsize=6)
-    d0 = acc(df, mk, "vad", "direct", runs=[0])[0]
-    ax.axvline(d0, color="black", ls="--", lw=0.9)
-    ax.text(d0 - 0.15, -0.75, "Direct", fontsize=6, va="center", ha="right")
-    ax.set_yticks(y, [c for _, c in cfgs], fontsize=6.3)
-    ax.set_xlim(d0 - 3, max(p[0] for p in pts if np.isfinite(p[0])) + 2.5)
-    ax.set_xlabel("VAD accuracy (%)")
-    ax.set_title(f"(c) other settings, {names[mk]}")
-    ax.grid(axis="y", visible=False)
-    fig.tight_layout(w_pad=0.6)
-    save(fig, out, "fig_hparam")
-
-
 def fig_qtype(df, out):
-    qts = [("counting", "Counting"), ("binary", "Binary"), ("open", "Open")]
-    vs = [("direct", "Direct", "#B0B0B0"), ("cot", "CoT", "#CC79A7"), ("dsg_full", "DSG", "#0072B2"),
-          ("dsg_q", "DSG-Q (ours)", "#D55E00")]
-    fig, ax = plt.subplots(figsize=(COL_W, 1.85))
-    w = 0.8 / len(vs)
+    """VAB: change over the base VLM per question type, single-round prompts against multi-round DSG."""
+    qts = [("counting", "Counting"), ("binary", "Binary-choice"), ("open", "Open-ended")]
+    vs = [("cot", "CoT (single round)", LORANGE), ("dsg_schema", "+ schema (single round)", LBLUE),
+          ("dsg_full", "DSG (multi-round)", BLUE)]
+    fig, ax = plt.subplots(figsize=(COL_W, 1.55))
+    w = 0.26
     for k, (v, name, c) in enumerate(vs):
-        means, per_model = [], []
-        for qt, _ in qts:
-            vals = [acc(df, mk, "vad", v, runs=[0] if v in ("direct", "cot") else RUNS, qtype=qt)[0] for mk, _ in MODELS]
-            means.append(np.nanmean(vals))
-            per_model.append(vals)
-        xs = np.arange(len(qts)) + (k - (len(vs) - 1) / 2) * w
-        ax.bar(xs, means, w * 0.9, color=c, label=name)
-        for x0, vals in zip(xs, per_model):
-            ax.scatter([x0] * len(vals), vals, s=5, color="black", zorder=3, lw=0)
+        ds = [mean_acc(df, "vad", v, qt) - mean_acc(df, "vad", "direct", qt) for qt, _ in qts]
+        xs = np.arange(len(qts)) + (k - 1) * w
+        ax.bar(xs, ds, w * 0.92, color=c, label=name)
+        label_bars(ax, xs, ds)
+    ax.axhline(0, color=DGRAY, lw=0.6)
     ax.set_xticks(range(len(qts)), [q for _, q in qts])
-    ax.set_ylabel("VAD accuracy (%)")
-    ax.set_ylim(30, None)
-    ax.legend(ncol=4, loc="upper center", bbox_to_anchor=(0.5, 1.18))
+    ax.tick_params(axis="x", length=0)
+    ax.spines["bottom"].set_visible(False)
+    ax.set_ylabel("Change (points)")
+    ax.margins(y=0.18)
+    ax.legend(ncol=3, loc="lower center", bbox_to_anchor=(0.5, 1.0), handlelength=1.0, columnspacing=0.9)
     save(fig, out, "fig_qtype")
 
 
+def fig_ablation(df, out):
+    """VAB: change over the base VLM for the ablation of Hsu et al. (2025) and for our schema controls."""
+    rows = [("dsg_schema", "+ schema", LBLUE), ("dsg_seq", "+ grounding", LBLUE), ("dsg_hier", "+ hierarchical", LBLUE),
+            ("dsg_full", "DSG", BLUE), None, ("dsg_generic", "Generic schema", LYELLOW),
+            ("dsg_wrong", "Schema of another concept", LYELLOW), ("dsg_shuffle", "Groundings of another image", LYELLOW)]
+    base = mean_acc(df, "vad", "direct")
+    fig, ax = plt.subplots(figsize=(COL_W, 1.7))
+    ys, names, y = [], [], 0.0
+    for r in rows:
+        if r is None:
+            y += 0.6
+            continue
+        v, name, c = r
+        d = mean_acc(df, "vad", v) - base
+        ax.barh(-y, d, 0.66, color=c, edgecolor=GOLD if c == LYELLOW else "none", linewidth=0.6)
+        label_bars(ax, [-y], [d], horizontal=True, pad=0.08)
+        ys.append(-y)
+        names.append(name)
+        y += 1
+    ax.axvline(0, color=DGRAY, lw=0.6)
+    ax.set_yticks(ys, names)
+    ax.tick_params(axis="y", length=0)
+    ax.spines["left"].set_visible(False)
+    ax.set_xlabel(f"Change over base VLM on VAB (points; base VLM {base:.1f}%)")
+    ax.margins(x=0.18)
+    save(fig, out, "fig_ablation")
+
+
 def fig_counts(df, out, data_root, model="qwen3-vl-8b"):
-    """P(predicted count | true count) on Maze-Nav turn questions, Direct vs DSG (run 0)."""
-    import json
+    """Maze-Nav turn-counting questions: distribution of true counts and of the counts that the VLM answers."""
     items = {}
     with open(os.path.join(data_root, "manifests", "maze.jsonl")) as f:
         for line in f:
             r = json.loads(line)
             items[r["id"]] = r
-    fig, axes = plt.subplots(1, 2, figsize=(COL_W, 1.55), sharey=True)
-    for ax, (v, title) in zip(axes, [("direct", "Direct"), ("dsg_full", "DSG")]):
-        d = df[(df.model == model) & (df.dataset == "maze") & (df.variant == v) & (df.run == 0)
-               & df.qtype.isin(["right_turns", "total_turns"])]
-        m = np.zeros((5, 6))
-        for _, r in d.iterrows():
-            it = items[r["id"]]
-            if pd.isna(r["pred_idx"]):
-                continue
-            t = min(int(it["answer"]), 4)
-            p_ = min(int(it["choices"][int(r["pred_idx"])]), 5)
-            m[t, p_] += 1
-        m = m / np.maximum(m.sum(1, keepdims=True), 1)
-        ax.imshow(m, cmap="Blues", vmin=0, vmax=1, aspect="auto")
-        for i in range(5):
-            for j in range(6):
-                if m[i, j] >= 0.1:
-                    ax.text(j, i, f"{m[i, j]:.2f}", ha="center", va="center", fontsize=5.5,
-                            color="white" if m[i, j] > 0.5 else "black")
-        ax.set_xticks(range(6), ["0", "1", "2", "3", "4", "5+"])
-        ax.set_yticks(range(5), ["0", "1", "2", "3", "4+"])
-        ax.set_xlabel("predicted turns")
-        ax.set_title(title)
-        ax.grid(False)
-    axes[0].set_ylabel("true turns")
+    bins = np.arange(6)
+    d = df[(df.model == model) & (df.dataset == "maze") & df.qtype.isin(["right_turns", "total_turns"])]
+
+    def hist(counts):
+        h = np.bincount(np.minimum(np.asarray(counts, dtype=int), 5), minlength=6)[:6]
+        return 100 * h / max(h.sum(), 1)
+
+    truth = hist([int(items[i]["answer"]) for i in d[(d.variant == "direct") & (d.run == 0)]["id"]])
+    preds = {}
+    for v, runs in (("direct", [0]), ("dsg_full", RUNS)):
+        x = d[(d.variant == v) & d.run.isin(runs)].dropna(subset=["pred_idx"])
+        preds[v] = hist([int(items[r.id]["choices"][int(r.pred_idx)]) for r in x.itertuples()])
+    fig, ax = plt.subplots(figsize=(COL_W, 1.45))
+    w = 0.27
+    for k, (h, name, c) in enumerate([(truth, "Ground truth", DGRAY), (preds["direct"], "Base VLM", GRAY),
+                                      (preds["dsg_full"], "DSG", BLUE)]):
+        ax.bar(bins + (k - 1) * w, h, w * 0.92, color=c, label=name)
+    ax.set_xticks(bins, ["0", "1", "2", "3", "4", "5+"])
+    ax.tick_params(axis="x", length=0)
+    ax.set_xlabel("Number of turns")
+    ax.set_ylabel("Share of answers (%)")
+    ax.legend(ncol=3, loc="lower center", bbox_to_anchor=(0.5, 1.0), handlelength=1.0, columnspacing=0.9)
     save(fig, out, "fig_counts")
+
+
+def fig_hparam(df, out, model="qwen3-vl-8b"):
+    """VAB, one setting changed at a time for the model with three schema samples per setting:
+    (a) schema size, (b) image resolution, (c) other settings."""
+    fig, axes = plt.subplots(1, 3, figsize=(FULL_W, 1.45), gridspec_kw={"width_ratios": [1, 1, 1.35]})
+    panels = [(axes[0], [(3, "dsg_full", "direct"), (5, "dsg_full@c5", "direct"), (7, "dsg_full@c7", "direct"),
+                         (9, "dsg_full@c9", "direct")], "Components in the example schema", "(a) Schema size"),
+              (axes[1], [(448, "dsg_full@res448", "direct@res448"), (672, "dsg_full@res672", "direct@res672"),
+                         (1024, "dsg_full", "direct"), (1344, "dsg_full@res1344", "direct@res1344")],
+               "Longer image side (pixels)", "(b) Image resolution")]
+    for ax, pts, xlabel, title in panels:
+        xs = [x for x, _, _ in pts]
+        ax.plot(xs, [acc(df, model, "vad", b) for _, _, b in pts], color=DGRAY, ls="--", marker="o", mfc="white",
+                label="Base VLM")
+        ax.plot(xs, [acc(df, model, "vad", v) for _, v, _ in pts], color=BLUE, marker="o", label="DSG")
+        ax.set_xticks(xs)
+        ax.set_xlabel(xlabel)
+        ax.set_title(title, loc="left")
+        ax.margins(y=0.2)
+    axes[0].set_ylabel("Accuracy (%)")
+    a0 = axes[0]  # direct line labels instead of a legend box
+    a0.text(9.4, acc(df, model, "vad", "dsg_full@c9"), "DSG", color=BLUE, va="center", fontsize=6.5)
+    a0.text(9.4, acc(df, model, "vad", "direct"), "Base VLM", color=DGRAY, va="center", fontsize=6.5)
+    a0.set_xlim(2.4, 11.6)
+    ax = axes[2]
+    ref = round(acc(df, model, "vad", "dsg_full"), 1)
+    cfgs = [("dsg_full@sentence", "Sentence groundings"), ("dsg_full@self8b", "Schema written by the VLM"),
+            ("dsg_sc3", "Vote over 3 schemas"), ("dsg_sc5", "Vote over 5 schemas")]
+    ds = [round(acc(df, model, "vad", v), 1) - ref for v, _ in cfgs]
+    ys = -np.arange(len(cfgs))
+    ax.barh(ys, ds, 0.62, color=[BLUE if d >= 0 else LBLUE for d in ds])
+    label_bars(ax, ys, ds, horizontal=True, pad=0.06)
+    ax.axvline(0, color=DGRAY, lw=0.6)
+    ax.set_yticks(ys, [n for _, n in cfgs])
+    ax.tick_params(axis="y", length=0)
+    ax.spines["left"].set_visible(False)
+    ax.set_xlabel(f"Change over DSG (points; DSG {ref:.1f}%)")
+    ax.set_title("(c) Other settings", loc="left")
+    ax.margins(x=0.22)
+    fig.tight_layout(w_pad=1.0)
+    save(fig, out, "fig_hparam")
+
+
+def fig_ext(df, out):
+    """Change over the base VLM on each test set for DSG and for our two changes to DSG."""
+    vs = [("dsg_full", "DSG", BLUE), ("dsg_x", "+ exclusive grounding", GREEN), ("dsg_q", "+ question components", ORANGE)]
+    fig, ax = plt.subplots(figsize=(COL_W, 1.7))
+    w = 0.28
+    for k, (v, name, c) in enumerate(vs):
+        ds = [mean_acc(df, s, v) - mean_acc(df, s, "direct") for s, _ in SETS]
+        xs = np.arange(len(SETS)) + (k - 1) * w
+        ax.bar(xs, ds, w * 0.92, color=c, label=name)
+        label_bars(ax, xs, ds, plus=False, pad=0.3, size=5.5)
+    ax.axhline(0, color=DGRAY, lw=0.6)
+    ax.set_xticks(range(len(SETS)), [s for _, s in SETS])
+    ax.tick_params(axis="x", length=0)
+    ax.spines["bottom"].set_visible(False)
+    ax.set_ylabel("Change (points)")
+    ax.margins(y=0.15)
+    ax.legend(ncol=3, loc="lower center", bbox_to_anchor=(0.5, 1.0), handlelength=1.0, columnspacing=0.9)
+    save(fig, out, "fig_ext")
 
 
 def main():
@@ -227,9 +233,9 @@ def main():
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
     df = pd.read_parquet(os.path.join(a.results, "predictions.parquet"))
-    for f in (fig_gains, fig_ablation, fig_hparam, fig_qtype, fig_counts):
+    for f in (fig_qtype, fig_ablation, fig_counts, fig_hparam, fig_ext):
         try:
-            f(df, a.out) if f is not fig_counts else f(df, a.out, a.data)
+            f(df, a.out, a.data) if f is fig_counts else f(df, a.out)
             print("ok", f.__name__)
         except Exception as e:  # keep the other figures when one input is still missing
             print("FAILED", f.__name__, repr(e))

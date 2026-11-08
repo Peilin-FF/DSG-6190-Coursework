@@ -11,14 +11,20 @@ import pandas as pd
 
 MODELS = [("qwen3-vl-4b", "Qwen3-VL-4B", "Q-4B"), ("qwen3-vl-8b", "Qwen3-VL-8B", "Q-8B"),
           ("internvl3.5-8b", "InternVL3.5-8B", "IVL-8B"), ("llava-ov-7b", "LLaVA-OV-7B", "LO-7B")]
-NAMES = {
-    "blind": "Blind (no image)", "direct": "Direct", "cot": "CoT~\\cite{kojima2022zeroshot}",
-    "ccot": "CCoT~\\cite{mitra2024ccot}", "dsg_schema": "+ Schema (one query)", "dsg_seq": "+ Grounding",
-    "dsg_hier": "+ Hierarchy", "dsg_full": "DSG~\\cite{hsu2025maze}", "dsg_release": "DSG-release",
-    "dsg_shuffle": "Shuffled grounding", "dsg_wrong": "Wrong schema", "dsg_generic": "Generic schema",
-    "dsg_q": "DSG-Q (ours)", "dsg_x": "DSG-X (ours)", "dsg_sc3": "DSG-SC, $K{=}3$ (ours)", "dsg_gate": "DSG-Gate (ours)",
+NAMES = {  # row names follow Hsu et al. (2025): base VLM, language-only baseline, + schema / + grounding / + hierarchical
+    "blind": "Language-only", "direct": "Base VLM", "cot": "CoT~\\cite{kojima2022zeroshot}",
+    "ccot": "CCoT~\\cite{mitra2024ccot}", "dsg_schema": "+ schema", "dsg_seq": "+ grounding",
+    "dsg_hier": "+ hierarchical", "dsg_full": "DSG~\\cite{hsu2025maze}", "dsg_release": "DSG, released code",
+    "dsg_shuffle": "Groundings of another image", "dsg_wrong": "Schema of another concept", "dsg_generic": "Generic schema",
+    "dsg_sc3": "DSG, vote over 3 schemas", "dsg_x": "+ exclusive grounding (ours)", "dsg_q": "+ question components (ours)",
 }
-SHORT = dict(NAMES, dsg_full="Full DSG", cot="CoT", ccot="CCoT")
+SHORT = dict(NAMES, dsg_full="DSG", cot="CoT", ccot="CCoT")
+# Concept names as written in Hsu et al. (2025), in the order of their four categories.
+CONCEPTS = [("tic-tac-toe", "tic-tac-toe"), ("maze", "maze"), ("treasure map", "treasure map"),
+            ("solar system", "solar system"), ("atom", "atom"), ("cell", "cell"), ("helping", "helping"),
+            ("deceiving", "deceiving"), ("negotiating", "negotiating"),
+            ("setting up a table for two", "table setting for two"), ("tidying up a guest room", "guest bedrooms"),
+            ("putting up decorations on a door", "door decoration")]
 RUNS = [0, 1, 2]
 
 
@@ -75,7 +81,7 @@ def model_table(df, dataset, rows, names, path, std=True, bold_skip=("blind",)):
 
 
 def canonical_table(df, rows, path):
-    sets = [("maze", "Maze-Nav"), ("maze_nolegend", "Maze-Nav, no legend"), ("ai2d", "AI2D-Concepts")]
+    sets = [("maze", "Maze-Nav"), ("maze_nolegend", "Maze-Nav without legend"), ("ai2d", "AI2D")]
     head = ["\\begin{tabular}{l" + "cccc" * len(sets) + "}", "\\toprule",
             " & " + " & ".join(f"\\multicolumn{{4}}{{c}}{{{s}}}" for _, s in sets) + " \\\\",
             "".join(f"\\cmidrule(lr){{{2 + 4 * k}-{5 + 4 * k}}}" for k in range(len(sets))),
@@ -101,19 +107,51 @@ def canonical_table(df, rows, path):
     write(path, "\n".join(head + body + ["\\bottomrule", "\\end{tabular}"]) + "\n")
 
 
+def concept_table(df, path):
+    """Base VLM / DSG accuracy (%) per VAB concept and model; DSG is averaged over the three schema samples."""
+    lines = []
+    for key, name in CONCEPTS:
+        vals = []
+        for m, _, _ in MODELS:
+            d = df[(df.model == m) & (df.dataset == "vad") & (df.concept == key)]
+            base = d[(d.variant == "direct") & (d.run == 0)]["correct"].mean() * 100
+            dsg = d[(d.variant == "dsg_full") & d.run.isin(RUNS)].groupby("run")["correct"].mean().mean() * 100
+            vals.append(f"{base:.0f} / {dsg:.0f}")
+        lines.append(" & ".join([name] + vals) + " \\\\")
+    write(path, "\n".join(lines) + "\n")
+
+
+def schema_table(schema_path, path):
+    """Schema sample 0 of every VAB concept, components in dependency order with their parents."""
+    import json
+    with open(schema_path) as f:
+        schemas = json.load(f)["schemas"]
+    lines = ["\\begin{tabular}{p{0.24\\linewidth}p{0.70\\linewidth}}", "\\toprule",
+             "Concept & Components of schema sample 0 ($s \\leftarrow$ parents)\\\\", "\\midrule"]
+    for key, name in CONCEPTS:
+        parts = []
+        for term, deps in schemas[key][0]["components"]:
+            parts.append(f"\\textit{{{term}}}" + (f" $\\leftarrow$ {', '.join(deps)}" if deps else ""))
+        lines.append(f"{name} & " + "; ".join(parts) + " \\\\")
+    write(path, "\n".join(lines + ["\\bottomrule", "\\end{tabular}"]) + "\n")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--results", default="results")
     ap.add_argument("--out", default="report/tables")
+    ap.add_argument("--schemas", default="schemas/qwen3.8-27b_c3.json")
     a = ap.parse_args()
     df = pd.read_parquet(os.path.join(a.results, "predictions.parquet"))
-    model_table(df, "vad", ["blind", "direct", "cot", "ccot", "|", "dsg_full", "dsg_release", "|",
-                            "dsg_x", "dsg_q", "dsg_sc3", "dsg_gate"], NAMES, os.path.join(a.out, "vad_main.tex"))
-    model_table(df, "vad", ["direct", "dsg_schema", "dsg_seq", "dsg_hier", "dsg_full", "|", "dsg_shuffle",
-                            "dsg_wrong", "dsg_generic"], SHORT, os.path.join(a.out, "vad_ablation.tex"), std=False,
+    model_table(df, "vad", ["blind", "direct", "cot", "ccot", "|", "dsg_release", "dsg_full", "dsg_sc3", "|",
+                            "dsg_x", "dsg_q"], NAMES, os.path.join(a.out, "vad_main.tex"))
+    model_table(df, "vad", ["direct", "dsg_schema", "dsg_seq", "dsg_hier", "dsg_full", "|", "dsg_generic",
+                            "dsg_wrong", "dsg_shuffle"], SHORT, os.path.join(a.out, "vad_ablation.tex"), std=False,
                 bold_skip=("blind", "dsg_shuffle", "dsg_wrong", "dsg_generic"))
-    canonical_table(df, ["blind", "direct", "cot", "ccot", "|", "dsg_full", "|", "dsg_x", "dsg_q", "dsg_sc3", "dsg_gate"],
+    canonical_table(df, ["blind", "direct", "cot", "ccot", "|", "dsg_full", "dsg_sc3", "|", "dsg_x", "dsg_q"],
                     os.path.join(a.out, "canonical.tex"))
+    concept_table(df, os.path.join(a.out, "vad_concepts.tex"))
+    schema_table(a.schemas, os.path.join(a.out, "schemas.tex"))
     print("tables written to", a.out)
 
 

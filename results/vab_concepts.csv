@@ -1,0 +1,673 @@
+model,variant,concept,runs,accuracy
+internvl3.5-8b,blind,atom,1,0.2667
+internvl3.5-8b,blind,cell,1,0.1556
+internvl3.5-8b,blind,deceiving,1,0.3333
+internvl3.5-8b,blind,helping,1,0.7111
+internvl3.5-8b,blind,maze,1,0.4889
+internvl3.5-8b,blind,negotiating,1,0.5333
+internvl3.5-8b,blind,putting up decorations on a door,1,0.3556
+internvl3.5-8b,blind,setting up a table for two,1,0.5778
+internvl3.5-8b,blind,solar system,1,0.3778
+internvl3.5-8b,blind,tic-tac-toe,1,0.3556
+internvl3.5-8b,blind,tidying up a guest room,1,0.4222
+internvl3.5-8b,blind,treasure map,1,0.3333
+internvl3.5-8b,ccot,atom,1,0.4889
+internvl3.5-8b,ccot,cell,1,0.5556
+internvl3.5-8b,ccot,deceiving,1,0.5333
+internvl3.5-8b,ccot,helping,1,0.6444
+internvl3.5-8b,ccot,maze,1,0.7111
+internvl3.5-8b,ccot,negotiating,1,0.6444
+internvl3.5-8b,ccot,putting up decorations on a door,1,0.7111
+internvl3.5-8b,ccot,setting up a table for two,1,0.5111
+internvl3.5-8b,ccot,solar system,1,0.3556
+internvl3.5-8b,ccot,tic-tac-toe,1,0.5333
+internvl3.5-8b,ccot,tidying up a guest room,1,0.6889
+internvl3.5-8b,ccot,treasure map,1,0.7333
+internvl3.5-8b,cot,atom,1,0.5556
+internvl3.5-8b,cot,cell,1,0.5333
+internvl3.5-8b,cot,deceiving,1,0.5778
+internvl3.5-8b,cot,helping,1,0.7778
+internvl3.5-8b,cot,maze,1,0.8444
+internvl3.5-8b,cot,negotiating,1,0.5778
+internvl3.5-8b,cot,putting up decorations on a door,1,0.7778
+internvl3.5-8b,cot,setting up a table for two,1,0.5556
+internvl3.5-8b,cot,solar system,1,0.6000
+internvl3.5-8b,cot,tic-tac-toe,1,0.5778
+internvl3.5-8b,cot,tidying up a guest room,1,0.6889
+internvl3.5-8b,cot,treasure map,1,0.6667
+internvl3.5-8b,direct,atom,1,0.3778
+internvl3.5-8b,direct,cell,1,0.3778
+internvl3.5-8b,direct,deceiving,1,0.6667
+internvl3.5-8b,direct,helping,1,0.6889
+internvl3.5-8b,direct,maze,1,0.7333
+internvl3.5-8b,direct,negotiating,1,0.6444
+internvl3.5-8b,direct,putting up decorations on a door,1,0.6667
+internvl3.5-8b,direct,setting up a table for two,1,0.7778
+internvl3.5-8b,direct,solar system,1,0.4000
+internvl3.5-8b,direct,tic-tac-toe,1,0.5111
+internvl3.5-8b,direct,tidying up a guest room,1,0.6889
+internvl3.5-8b,direct,treasure map,1,0.6444
+internvl3.5-8b,dsg_full,atom,3,0.6815
+internvl3.5-8b,dsg_full,cell,3,0.5407
+internvl3.5-8b,dsg_full,deceiving,3,0.7111
+internvl3.5-8b,dsg_full,helping,3,0.7111
+internvl3.5-8b,dsg_full,maze,3,0.7778
+internvl3.5-8b,dsg_full,negotiating,3,0.6296
+internvl3.5-8b,dsg_full,putting up decorations on a door,3,0.7259
+internvl3.5-8b,dsg_full,setting up a table for two,3,0.7778
+internvl3.5-8b,dsg_full,solar system,3,0.4148
+internvl3.5-8b,dsg_full,tic-tac-toe,3,0.4667
+internvl3.5-8b,dsg_full,tidying up a guest room,3,0.5926
+internvl3.5-8b,dsg_full,treasure map,3,0.6815
+internvl3.5-8b,dsg_generic,atom,1,0.6889
+internvl3.5-8b,dsg_generic,cell,1,0.6889
+internvl3.5-8b,dsg_generic,deceiving,1,0.6444
+internvl3.5-8b,dsg_generic,helping,1,0.6667
+internvl3.5-8b,dsg_generic,maze,1,0.7556
+internvl3.5-8b,dsg_generic,negotiating,1,0.7111
+internvl3.5-8b,dsg_generic,putting up decorations on a door,1,0.7111
+internvl3.5-8b,dsg_generic,setting up a table for two,1,0.7778
+internvl3.5-8b,dsg_generic,solar system,1,0.4222
+internvl3.5-8b,dsg_generic,tic-tac-toe,1,0.6667
+internvl3.5-8b,dsg_generic,tidying up a guest room,1,0.6889
+internvl3.5-8b,dsg_generic,treasure map,1,0.6444
+internvl3.5-8b,dsg_hier,atom,3,0.5407
+internvl3.5-8b,dsg_hier,cell,3,0.5185
+internvl3.5-8b,dsg_hier,deceiving,3,0.6963
+internvl3.5-8b,dsg_hier,helping,3,0.6963
+internvl3.5-8b,dsg_hier,maze,3,0.8222
+internvl3.5-8b,dsg_hier,negotiating,3,0.6593
+internvl3.5-8b,dsg_hier,putting up decorations on a door,3,0.6815
+internvl3.5-8b,dsg_hier,setting up a table for two,3,0.7185
+internvl3.5-8b,dsg_hier,solar system,3,0.3704
+internvl3.5-8b,dsg_hier,tic-tac-toe,3,0.5704
+internvl3.5-8b,dsg_hier,tidying up a guest room,3,0.6593
+internvl3.5-8b,dsg_hier,treasure map,3,0.6444
+internvl3.5-8b,dsg_q,atom,3,0.5037
+internvl3.5-8b,dsg_q,cell,3,0.4963
+internvl3.5-8b,dsg_q,deceiving,3,0.5704
+internvl3.5-8b,dsg_q,helping,3,0.6815
+internvl3.5-8b,dsg_q,maze,3,0.7185
+internvl3.5-8b,dsg_q,negotiating,3,0.6519
+internvl3.5-8b,dsg_q,putting up decorations on a door,3,0.7333
+internvl3.5-8b,dsg_q,setting up a table for two,3,0.6741
+internvl3.5-8b,dsg_q,solar system,3,0.5407
+internvl3.5-8b,dsg_q,tic-tac-toe,3,0.4222
+internvl3.5-8b,dsg_q,tidying up a guest room,3,0.5704
+internvl3.5-8b,dsg_q,treasure map,3,0.7037
+internvl3.5-8b,dsg_release,atom,3,0.5556
+internvl3.5-8b,dsg_release,cell,3,0.5111
+internvl3.5-8b,dsg_release,deceiving,3,0.6741
+internvl3.5-8b,dsg_release,helping,3,0.7037
+internvl3.5-8b,dsg_release,maze,3,0.8148
+internvl3.5-8b,dsg_release,negotiating,3,0.6444
+internvl3.5-8b,dsg_release,putting up decorations on a door,3,0.7037
+internvl3.5-8b,dsg_release,setting up a table for two,3,0.7556
+internvl3.5-8b,dsg_release,solar system,3,0.4148
+internvl3.5-8b,dsg_release,tic-tac-toe,3,0.5111
+internvl3.5-8b,dsg_release,tidying up a guest room,3,0.6148
+internvl3.5-8b,dsg_release,treasure map,3,0.6741
+internvl3.5-8b,dsg_schema,atom,3,0.5185
+internvl3.5-8b,dsg_schema,cell,3,0.6074
+internvl3.5-8b,dsg_schema,deceiving,3,0.5111
+internvl3.5-8b,dsg_schema,helping,3,0.8148
+internvl3.5-8b,dsg_schema,maze,3,0.7481
+internvl3.5-8b,dsg_schema,negotiating,3,0.5481
+internvl3.5-8b,dsg_schema,putting up decorations on a door,3,0.6889
+internvl3.5-8b,dsg_schema,setting up a table for two,3,0.6889
+internvl3.5-8b,dsg_schema,solar system,3,0.6074
+internvl3.5-8b,dsg_schema,tic-tac-toe,3,0.5333
+internvl3.5-8b,dsg_schema,tidying up a guest room,3,0.6519
+internvl3.5-8b,dsg_schema,treasure map,3,0.6963
+internvl3.5-8b,dsg_seq,atom,3,0.5630
+internvl3.5-8b,dsg_seq,cell,3,0.4815
+internvl3.5-8b,dsg_seq,deceiving,3,0.7111
+internvl3.5-8b,dsg_seq,helping,3,0.6963
+internvl3.5-8b,dsg_seq,maze,3,0.8370
+internvl3.5-8b,dsg_seq,negotiating,3,0.6741
+internvl3.5-8b,dsg_seq,putting up decorations on a door,3,0.6963
+internvl3.5-8b,dsg_seq,setting up a table for two,3,0.6963
+internvl3.5-8b,dsg_seq,solar system,3,0.3926
+internvl3.5-8b,dsg_seq,tic-tac-toe,3,0.5407
+internvl3.5-8b,dsg_seq,tidying up a guest room,3,0.6519
+internvl3.5-8b,dsg_seq,treasure map,3,0.6370
+internvl3.5-8b,dsg_shuffle,atom,1,0.4667
+internvl3.5-8b,dsg_shuffle,cell,1,0.4444
+internvl3.5-8b,dsg_shuffle,deceiving,1,0.6889
+internvl3.5-8b,dsg_shuffle,helping,1,0.6889
+internvl3.5-8b,dsg_shuffle,maze,1,0.7556
+internvl3.5-8b,dsg_shuffle,negotiating,1,0.6889
+internvl3.5-8b,dsg_shuffle,putting up decorations on a door,1,0.6000
+internvl3.5-8b,dsg_shuffle,setting up a table for two,1,0.7111
+internvl3.5-8b,dsg_shuffle,solar system,1,0.4222
+internvl3.5-8b,dsg_shuffle,tic-tac-toe,1,0.4889
+internvl3.5-8b,dsg_shuffle,tidying up a guest room,1,0.6222
+internvl3.5-8b,dsg_shuffle,treasure map,1,0.5778
+internvl3.5-8b,dsg_wrong,atom,1,0.6444
+internvl3.5-8b,dsg_wrong,cell,1,0.6000
+internvl3.5-8b,dsg_wrong,deceiving,1,0.6222
+internvl3.5-8b,dsg_wrong,helping,1,0.7111
+internvl3.5-8b,dsg_wrong,maze,1,0.7333
+internvl3.5-8b,dsg_wrong,negotiating,1,0.7778
+internvl3.5-8b,dsg_wrong,putting up decorations on a door,1,0.6667
+internvl3.5-8b,dsg_wrong,setting up a table for two,1,0.6000
+internvl3.5-8b,dsg_wrong,solar system,1,0.4000
+internvl3.5-8b,dsg_wrong,tic-tac-toe,1,0.6444
+internvl3.5-8b,dsg_wrong,tidying up a guest room,1,0.5778
+internvl3.5-8b,dsg_wrong,treasure map,1,0.7333
+internvl3.5-8b,dsg_x,atom,3,0.7259
+internvl3.5-8b,dsg_x,cell,3,0.5111
+internvl3.5-8b,dsg_x,deceiving,3,0.7185
+internvl3.5-8b,dsg_x,helping,3,0.7407
+internvl3.5-8b,dsg_x,maze,3,0.7704
+internvl3.5-8b,dsg_x,negotiating,3,0.6741
+internvl3.5-8b,dsg_x,putting up decorations on a door,3,0.7259
+internvl3.5-8b,dsg_x,setting up a table for two,3,0.7556
+internvl3.5-8b,dsg_x,solar system,3,0.3630
+internvl3.5-8b,dsg_x,tic-tac-toe,3,0.6000
+internvl3.5-8b,dsg_x,tidying up a guest room,3,0.5778
+internvl3.5-8b,dsg_x,treasure map,3,0.6667
+llava-ov-7b,blind,atom,1,0.2889
+llava-ov-7b,blind,cell,1,0.1111
+llava-ov-7b,blind,deceiving,1,0.2889
+llava-ov-7b,blind,helping,1,0.7111
+llava-ov-7b,blind,maze,1,0.3111
+llava-ov-7b,blind,negotiating,1,0.2222
+llava-ov-7b,blind,putting up decorations on a door,1,0.5556
+llava-ov-7b,blind,setting up a table for two,1,0.5778
+llava-ov-7b,blind,solar system,1,0.5333
+llava-ov-7b,blind,tic-tac-toe,1,0.2222
+llava-ov-7b,blind,tidying up a guest room,1,0.4222
+llava-ov-7b,blind,treasure map,1,0.3111
+llava-ov-7b,ccot,atom,1,0.4000
+llava-ov-7b,ccot,cell,1,0.4444
+llava-ov-7b,ccot,deceiving,1,0.3333
+llava-ov-7b,ccot,helping,1,0.6667
+llava-ov-7b,ccot,maze,1,0.6667
+llava-ov-7b,ccot,negotiating,1,0.6000
+llava-ov-7b,ccot,putting up decorations on a door,1,0.7333
+llava-ov-7b,ccot,setting up a table for two,1,0.6444
+llava-ov-7b,ccot,solar system,1,0.6222
+llava-ov-7b,ccot,tic-tac-toe,1,0.4222
+llava-ov-7b,ccot,tidying up a guest room,1,0.5111
+llava-ov-7b,ccot,treasure map,1,0.7111
+llava-ov-7b,cot,atom,1,0.5111
+llava-ov-7b,cot,cell,1,0.6222
+llava-ov-7b,cot,deceiving,1,0.5111
+llava-ov-7b,cot,helping,1,0.5778
+llava-ov-7b,cot,maze,1,0.6000
+llava-ov-7b,cot,negotiating,1,0.5333
+llava-ov-7b,cot,putting up decorations on a door,1,0.6889
+llava-ov-7b,cot,setting up a table for two,1,0.4889
+llava-ov-7b,cot,solar system,1,0.4222
+llava-ov-7b,cot,tic-tac-toe,1,0.5556
+llava-ov-7b,cot,tidying up a guest room,1,0.6667
+llava-ov-7b,cot,treasure map,1,0.8222
+llava-ov-7b,direct,atom,1,0.5111
+llava-ov-7b,direct,cell,1,0.6000
+llava-ov-7b,direct,deceiving,1,0.3778
+llava-ov-7b,direct,helping,1,0.7333
+llava-ov-7b,direct,maze,1,0.6222
+llava-ov-7b,direct,negotiating,1,0.5778
+llava-ov-7b,direct,putting up decorations on a door,1,0.7556
+llava-ov-7b,direct,setting up a table for two,1,0.6222
+llava-ov-7b,direct,solar system,1,0.6889
+llava-ov-7b,direct,tic-tac-toe,1,0.4889
+llava-ov-7b,direct,tidying up a guest room,1,0.6667
+llava-ov-7b,direct,treasure map,1,0.7556
+llava-ov-7b,dsg_full,atom,3,0.3778
+llava-ov-7b,dsg_full,cell,3,0.5037
+llava-ov-7b,dsg_full,deceiving,3,0.4741
+llava-ov-7b,dsg_full,helping,3,0.7778
+llava-ov-7b,dsg_full,maze,3,0.6667
+llava-ov-7b,dsg_full,negotiating,3,0.5556
+llava-ov-7b,dsg_full,putting up decorations on a door,3,0.7556
+llava-ov-7b,dsg_full,setting up a table for two,3,0.6370
+llava-ov-7b,dsg_full,solar system,3,0.6963
+llava-ov-7b,dsg_full,tic-tac-toe,3,0.4148
+llava-ov-7b,dsg_full,tidying up a guest room,3,0.6222
+llava-ov-7b,dsg_full,treasure map,3,0.7481
+llava-ov-7b,dsg_generic,atom,1,0.4667
+llava-ov-7b,dsg_generic,cell,1,0.6000
+llava-ov-7b,dsg_generic,deceiving,1,0.4222
+llava-ov-7b,dsg_generic,helping,1,0.7556
+llava-ov-7b,dsg_generic,maze,1,0.6667
+llava-ov-7b,dsg_generic,negotiating,1,0.5333
+llava-ov-7b,dsg_generic,putting up decorations on a door,1,0.7778
+llava-ov-7b,dsg_generic,setting up a table for two,1,0.5778
+llava-ov-7b,dsg_generic,solar system,1,0.6667
+llava-ov-7b,dsg_generic,tic-tac-toe,1,0.4667
+llava-ov-7b,dsg_generic,tidying up a guest room,1,0.7111
+llava-ov-7b,dsg_generic,treasure map,1,0.7556
+llava-ov-7b,dsg_hier,atom,3,0.4741
+llava-ov-7b,dsg_hier,cell,3,0.5556
+llava-ov-7b,dsg_hier,deceiving,3,0.4148
+llava-ov-7b,dsg_hier,helping,3,0.7778
+llava-ov-7b,dsg_hier,maze,3,0.6667
+llava-ov-7b,dsg_hier,negotiating,3,0.4074
+llava-ov-7b,dsg_hier,putting up decorations on a door,3,0.7778
+llava-ov-7b,dsg_hier,setting up a table for two,3,0.6222
+llava-ov-7b,dsg_hier,solar system,3,0.6667
+llava-ov-7b,dsg_hier,tic-tac-toe,3,0.4148
+llava-ov-7b,dsg_hier,tidying up a guest room,3,0.6370
+llava-ov-7b,dsg_hier,treasure map,3,0.7407
+llava-ov-7b,dsg_q,atom,3,0.3333
+llava-ov-7b,dsg_q,cell,3,0.4593
+llava-ov-7b,dsg_q,deceiving,3,0.3259
+llava-ov-7b,dsg_q,helping,3,0.7630
+llava-ov-7b,dsg_q,maze,3,0.6222
+llava-ov-7b,dsg_q,negotiating,3,0.4222
+llava-ov-7b,dsg_q,putting up decorations on a door,3,0.8148
+llava-ov-7b,dsg_q,setting up a table for two,3,0.5481
+llava-ov-7b,dsg_q,solar system,3,0.6000
+llava-ov-7b,dsg_q,tic-tac-toe,3,0.4222
+llava-ov-7b,dsg_q,tidying up a guest room,3,0.5407
+llava-ov-7b,dsg_q,treasure map,3,0.6444
+llava-ov-7b,dsg_release,atom,3,0.4296
+llava-ov-7b,dsg_release,cell,3,0.5407
+llava-ov-7b,dsg_release,deceiving,3,0.4370
+llava-ov-7b,dsg_release,helping,3,0.7778
+llava-ov-7b,dsg_release,maze,3,0.6667
+llava-ov-7b,dsg_release,negotiating,3,0.4296
+llava-ov-7b,dsg_release,putting up decorations on a door,3,0.7778
+llava-ov-7b,dsg_release,setting up a table for two,3,0.6519
+llava-ov-7b,dsg_release,solar system,3,0.6963
+llava-ov-7b,dsg_release,tic-tac-toe,3,0.4148
+llava-ov-7b,dsg_release,tidying up a guest room,3,0.6074
+llava-ov-7b,dsg_release,treasure map,3,0.7407
+llava-ov-7b,dsg_schema,atom,3,0.5778
+llava-ov-7b,dsg_schema,cell,3,0.6148
+llava-ov-7b,dsg_schema,deceiving,3,0.5407
+llava-ov-7b,dsg_schema,helping,3,0.4741
+llava-ov-7b,dsg_schema,maze,3,0.6444
+llava-ov-7b,dsg_schema,negotiating,3,0.6667
+llava-ov-7b,dsg_schema,putting up decorations on a door,3,0.7333
+llava-ov-7b,dsg_schema,setting up a table for two,3,0.5481
+llava-ov-7b,dsg_schema,solar system,3,0.5037
+llava-ov-7b,dsg_schema,tic-tac-toe,3,0.5037
+llava-ov-7b,dsg_schema,tidying up a guest room,3,0.7037
+llava-ov-7b,dsg_schema,treasure map,3,0.7407
+llava-ov-7b,dsg_seq,atom,3,0.4741
+llava-ov-7b,dsg_seq,cell,3,0.5630
+llava-ov-7b,dsg_seq,deceiving,3,0.4000
+llava-ov-7b,dsg_seq,helping,3,0.7704
+llava-ov-7b,dsg_seq,maze,3,0.6593
+llava-ov-7b,dsg_seq,negotiating,3,0.4370
+llava-ov-7b,dsg_seq,putting up decorations on a door,3,0.7778
+llava-ov-7b,dsg_seq,setting up a table for two,3,0.6370
+llava-ov-7b,dsg_seq,solar system,3,0.6667
+llava-ov-7b,dsg_seq,tic-tac-toe,3,0.4296
+llava-ov-7b,dsg_seq,tidying up a guest room,3,0.6519
+llava-ov-7b,dsg_seq,treasure map,3,0.7259
+llava-ov-7b,dsg_shuffle,atom,1,0.4000
+llava-ov-7b,dsg_shuffle,cell,1,0.4000
+llava-ov-7b,dsg_shuffle,deceiving,1,0.4222
+llava-ov-7b,dsg_shuffle,helping,1,0.7333
+llava-ov-7b,dsg_shuffle,maze,1,0.6444
+llava-ov-7b,dsg_shuffle,negotiating,1,0.6222
+llava-ov-7b,dsg_shuffle,putting up decorations on a door,1,0.8000
+llava-ov-7b,dsg_shuffle,setting up a table for two,1,0.6444
+llava-ov-7b,dsg_shuffle,solar system,1,0.6889
+llava-ov-7b,dsg_shuffle,tic-tac-toe,1,0.4222
+llava-ov-7b,dsg_shuffle,tidying up a guest room,1,0.6667
+llava-ov-7b,dsg_shuffle,treasure map,1,0.7333
+llava-ov-7b,dsg_wrong,atom,1,0.4444
+llava-ov-7b,dsg_wrong,cell,1,0.6000
+llava-ov-7b,dsg_wrong,deceiving,1,0.4444
+llava-ov-7b,dsg_wrong,helping,1,0.7333
+llava-ov-7b,dsg_wrong,maze,1,0.6889
+llava-ov-7b,dsg_wrong,negotiating,1,0.5778
+llava-ov-7b,dsg_wrong,putting up decorations on a door,1,0.7778
+llava-ov-7b,dsg_wrong,setting up a table for two,1,0.5778
+llava-ov-7b,dsg_wrong,solar system,1,0.6444
+llava-ov-7b,dsg_wrong,tic-tac-toe,1,0.4444
+llava-ov-7b,dsg_wrong,tidying up a guest room,1,0.6222
+llava-ov-7b,dsg_wrong,treasure map,1,0.7111
+llava-ov-7b,dsg_x,atom,3,0.3778
+llava-ov-7b,dsg_x,cell,3,0.4667
+llava-ov-7b,dsg_x,deceiving,3,0.4815
+llava-ov-7b,dsg_x,helping,3,0.7778
+llava-ov-7b,dsg_x,maze,3,0.6519
+llava-ov-7b,dsg_x,negotiating,3,0.5704
+llava-ov-7b,dsg_x,putting up decorations on a door,3,0.7704
+llava-ov-7b,dsg_x,setting up a table for two,3,0.6222
+llava-ov-7b,dsg_x,solar system,3,0.6815
+llava-ov-7b,dsg_x,tic-tac-toe,3,0.4370
+llava-ov-7b,dsg_x,tidying up a guest room,3,0.6000
+llava-ov-7b,dsg_x,treasure map,3,0.7630
+qwen3-vl-4b,blind,atom,1,0.3556
+qwen3-vl-4b,blind,cell,1,0.2000
+qwen3-vl-4b,blind,deceiving,1,0.1111
+qwen3-vl-4b,blind,helping,1,0.7111
+qwen3-vl-4b,blind,maze,1,0.5111
+qwen3-vl-4b,blind,negotiating,1,0.3778
+qwen3-vl-4b,blind,putting up decorations on a door,1,0.4889
+qwen3-vl-4b,blind,setting up a table for two,1,0.7111
+qwen3-vl-4b,blind,solar system,1,0.5333
+qwen3-vl-4b,blind,tic-tac-toe,1,0.3556
+qwen3-vl-4b,blind,tidying up a guest room,1,0.4444
+qwen3-vl-4b,blind,treasure map,1,0.3111
+qwen3-vl-4b,ccot,atom,1,0.6222
+qwen3-vl-4b,ccot,cell,1,0.6000
+qwen3-vl-4b,ccot,deceiving,1,0.4667
+qwen3-vl-4b,ccot,helping,1,0.6667
+qwen3-vl-4b,ccot,maze,1,0.6667
+qwen3-vl-4b,ccot,negotiating,1,0.5778
+qwen3-vl-4b,ccot,putting up decorations on a door,1,0.6889
+qwen3-vl-4b,ccot,setting up a table for two,1,0.6000
+qwen3-vl-4b,ccot,solar system,1,0.4000
+qwen3-vl-4b,ccot,tic-tac-toe,1,0.6222
+qwen3-vl-4b,ccot,tidying up a guest room,1,0.6000
+qwen3-vl-4b,ccot,treasure map,1,0.7556
+qwen3-vl-4b,cot,atom,1,0.7333
+qwen3-vl-4b,cot,cell,1,0.5111
+qwen3-vl-4b,cot,deceiving,1,0.4444
+qwen3-vl-4b,cot,helping,1,0.6889
+qwen3-vl-4b,cot,maze,1,0.8222
+qwen3-vl-4b,cot,negotiating,1,0.5778
+qwen3-vl-4b,cot,putting up decorations on a door,1,0.7778
+qwen3-vl-4b,cot,setting up a table for two,1,0.6444
+qwen3-vl-4b,cot,solar system,1,0.5111
+qwen3-vl-4b,cot,tic-tac-toe,1,0.6000
+qwen3-vl-4b,cot,tidying up a guest room,1,0.7556
+qwen3-vl-4b,cot,treasure map,1,0.6667
+qwen3-vl-4b,direct,atom,1,0.6000
+qwen3-vl-4b,direct,cell,1,0.4889
+qwen3-vl-4b,direct,deceiving,1,0.5556
+qwen3-vl-4b,direct,helping,1,0.6889
+qwen3-vl-4b,direct,maze,1,0.7111
+qwen3-vl-4b,direct,negotiating,1,0.7333
+qwen3-vl-4b,direct,putting up decorations on a door,1,0.7333
+qwen3-vl-4b,direct,setting up a table for two,1,0.7333
+qwen3-vl-4b,direct,solar system,1,0.4667
+qwen3-vl-4b,direct,tic-tac-toe,1,0.4667
+qwen3-vl-4b,direct,tidying up a guest room,1,0.6222
+qwen3-vl-4b,direct,treasure map,1,0.6444
+qwen3-vl-4b,dsg_full,atom,3,0.6741
+qwen3-vl-4b,dsg_full,cell,3,0.6444
+qwen3-vl-4b,dsg_full,deceiving,3,0.5852
+qwen3-vl-4b,dsg_full,helping,3,0.7704
+qwen3-vl-4b,dsg_full,maze,3,0.8074
+qwen3-vl-4b,dsg_full,negotiating,3,0.7111
+qwen3-vl-4b,dsg_full,putting up decorations on a door,3,0.7037
+qwen3-vl-4b,dsg_full,setting up a table for two,3,0.7778
+qwen3-vl-4b,dsg_full,solar system,3,0.4370
+qwen3-vl-4b,dsg_full,tic-tac-toe,3,0.5556
+qwen3-vl-4b,dsg_full,tidying up a guest room,3,0.6074
+qwen3-vl-4b,dsg_full,treasure map,3,0.7407
+qwen3-vl-4b,dsg_generic,atom,1,0.6444
+qwen3-vl-4b,dsg_generic,cell,1,0.7111
+qwen3-vl-4b,dsg_generic,deceiving,1,0.5333
+qwen3-vl-4b,dsg_generic,helping,1,0.6444
+qwen3-vl-4b,dsg_generic,maze,1,0.8667
+qwen3-vl-4b,dsg_generic,negotiating,1,0.8000
+qwen3-vl-4b,dsg_generic,putting up decorations on a door,1,0.6667
+qwen3-vl-4b,dsg_generic,setting up a table for two,1,0.7778
+qwen3-vl-4b,dsg_generic,solar system,1,0.4444
+qwen3-vl-4b,dsg_generic,tic-tac-toe,1,0.5111
+qwen3-vl-4b,dsg_generic,tidying up a guest room,1,0.6444
+qwen3-vl-4b,dsg_generic,treasure map,1,0.7556
+qwen3-vl-4b,dsg_hier,atom,3,0.5630
+qwen3-vl-4b,dsg_hier,cell,3,0.5333
+qwen3-vl-4b,dsg_hier,deceiving,3,0.6519
+qwen3-vl-4b,dsg_hier,helping,3,0.7259
+qwen3-vl-4b,dsg_hier,maze,3,0.7481
+qwen3-vl-4b,dsg_hier,negotiating,3,0.5481
+qwen3-vl-4b,dsg_hier,putting up decorations on a door,3,0.6963
+qwen3-vl-4b,dsg_hier,setting up a table for two,3,0.6963
+qwen3-vl-4b,dsg_hier,solar system,3,0.4148
+qwen3-vl-4b,dsg_hier,tic-tac-toe,3,0.5704
+qwen3-vl-4b,dsg_hier,tidying up a guest room,3,0.6074
+qwen3-vl-4b,dsg_hier,treasure map,3,0.5704
+qwen3-vl-4b,dsg_q,atom,3,0.6296
+qwen3-vl-4b,dsg_q,cell,3,0.5778
+qwen3-vl-4b,dsg_q,deceiving,3,0.5778
+qwen3-vl-4b,dsg_q,helping,3,0.7037
+qwen3-vl-4b,dsg_q,maze,3,0.7037
+qwen3-vl-4b,dsg_q,negotiating,3,0.6444
+qwen3-vl-4b,dsg_q,putting up decorations on a door,3,0.7778
+qwen3-vl-4b,dsg_q,setting up a table for two,3,0.7333
+qwen3-vl-4b,dsg_q,solar system,3,0.6370
+qwen3-vl-4b,dsg_q,tic-tac-toe,3,0.5333
+qwen3-vl-4b,dsg_q,tidying up a guest room,3,0.6148
+qwen3-vl-4b,dsg_q,treasure map,3,0.7778
+qwen3-vl-4b,dsg_release,atom,3,0.6370
+qwen3-vl-4b,dsg_release,cell,3,0.5852
+qwen3-vl-4b,dsg_release,deceiving,3,0.6667
+qwen3-vl-4b,dsg_release,helping,3,0.7630
+qwen3-vl-4b,dsg_release,maze,3,0.7926
+qwen3-vl-4b,dsg_release,negotiating,3,0.6444
+qwen3-vl-4b,dsg_release,putting up decorations on a door,3,0.6815
+qwen3-vl-4b,dsg_release,setting up a table for two,3,0.7333
+qwen3-vl-4b,dsg_release,solar system,3,0.4370
+qwen3-vl-4b,dsg_release,tic-tac-toe,3,0.6222
+qwen3-vl-4b,dsg_release,tidying up a guest room,3,0.5852
+qwen3-vl-4b,dsg_release,treasure map,3,0.6593
+qwen3-vl-4b,dsg_schema,atom,3,0.6815
+qwen3-vl-4b,dsg_schema,cell,3,0.5926
+qwen3-vl-4b,dsg_schema,deceiving,3,0.5407
+qwen3-vl-4b,dsg_schema,helping,3,0.7185
+qwen3-vl-4b,dsg_schema,maze,3,0.7926
+qwen3-vl-4b,dsg_schema,negotiating,3,0.5556
+qwen3-vl-4b,dsg_schema,putting up decorations on a door,3,0.7407
+qwen3-vl-4b,dsg_schema,setting up a table for two,3,0.5333
+qwen3-vl-4b,dsg_schema,solar system,3,0.5333
+qwen3-vl-4b,dsg_schema,tic-tac-toe,3,0.5704
+qwen3-vl-4b,dsg_schema,tidying up a guest room,3,0.6148
+qwen3-vl-4b,dsg_schema,treasure map,3,0.7852
+qwen3-vl-4b,dsg_seq,atom,3,0.6296
+qwen3-vl-4b,dsg_seq,cell,3,0.5111
+qwen3-vl-4b,dsg_seq,deceiving,3,0.6519
+qwen3-vl-4b,dsg_seq,helping,3,0.7111
+qwen3-vl-4b,dsg_seq,maze,3,0.7481
+qwen3-vl-4b,dsg_seq,negotiating,3,0.5481
+qwen3-vl-4b,dsg_seq,putting up decorations on a door,3,0.6741
+qwen3-vl-4b,dsg_seq,setting up a table for two,3,0.6889
+qwen3-vl-4b,dsg_seq,solar system,3,0.4148
+qwen3-vl-4b,dsg_seq,tic-tac-toe,3,0.5481
+qwen3-vl-4b,dsg_seq,tidying up a guest room,3,0.6074
+qwen3-vl-4b,dsg_seq,treasure map,3,0.5778
+qwen3-vl-4b,dsg_shuffle,atom,1,0.5556
+qwen3-vl-4b,dsg_shuffle,cell,1,0.4667
+qwen3-vl-4b,dsg_shuffle,deceiving,1,0.6222
+qwen3-vl-4b,dsg_shuffle,helping,1,0.7778
+qwen3-vl-4b,dsg_shuffle,maze,1,0.7333
+qwen3-vl-4b,dsg_shuffle,negotiating,1,0.6222
+qwen3-vl-4b,dsg_shuffle,putting up decorations on a door,1,0.6222
+qwen3-vl-4b,dsg_shuffle,setting up a table for two,1,0.7333
+qwen3-vl-4b,dsg_shuffle,solar system,1,0.4000
+qwen3-vl-4b,dsg_shuffle,tic-tac-toe,1,0.4000
+qwen3-vl-4b,dsg_shuffle,tidying up a guest room,1,0.5778
+qwen3-vl-4b,dsg_shuffle,treasure map,1,0.6000
+qwen3-vl-4b,dsg_wrong,atom,1,0.7778
+qwen3-vl-4b,dsg_wrong,cell,1,0.7333
+qwen3-vl-4b,dsg_wrong,deceiving,1,0.4444
+qwen3-vl-4b,dsg_wrong,helping,1,0.6444
+qwen3-vl-4b,dsg_wrong,maze,1,0.8222
+qwen3-vl-4b,dsg_wrong,negotiating,1,0.6889
+qwen3-vl-4b,dsg_wrong,putting up decorations on a door,1,0.6222
+qwen3-vl-4b,dsg_wrong,setting up a table for two,1,0.7111
+qwen3-vl-4b,dsg_wrong,solar system,1,0.3778
+qwen3-vl-4b,dsg_wrong,tic-tac-toe,1,0.5333
+qwen3-vl-4b,dsg_wrong,tidying up a guest room,1,0.6222
+qwen3-vl-4b,dsg_wrong,treasure map,1,0.6667
+qwen3-vl-4b,dsg_x,atom,3,0.6741
+qwen3-vl-4b,dsg_x,cell,3,0.6222
+qwen3-vl-4b,dsg_x,deceiving,3,0.6519
+qwen3-vl-4b,dsg_x,helping,3,0.7704
+qwen3-vl-4b,dsg_x,maze,3,0.7778
+qwen3-vl-4b,dsg_x,negotiating,3,0.7481
+qwen3-vl-4b,dsg_x,putting up decorations on a door,3,0.6963
+qwen3-vl-4b,dsg_x,setting up a table for two,3,0.7333
+qwen3-vl-4b,dsg_x,solar system,3,0.4074
+qwen3-vl-4b,dsg_x,tic-tac-toe,3,0.6222
+qwen3-vl-4b,dsg_x,tidying up a guest room,3,0.5926
+qwen3-vl-4b,dsg_x,treasure map,3,0.7259
+qwen3-vl-8b,blind,atom,1,0.3556
+qwen3-vl-8b,blind,cell,1,0.2222
+qwen3-vl-8b,blind,deceiving,1,0.4000
+qwen3-vl-8b,blind,helping,1,0.7111
+qwen3-vl-8b,blind,maze,1,0.5556
+qwen3-vl-8b,blind,negotiating,1,0.3778
+qwen3-vl-8b,blind,putting up decorations on a door,1,0.5111
+qwen3-vl-8b,blind,setting up a table for two,1,0.5778
+qwen3-vl-8b,blind,solar system,1,0.5333
+qwen3-vl-8b,blind,tic-tac-toe,1,0.3556
+qwen3-vl-8b,blind,tidying up a guest room,1,0.4222
+qwen3-vl-8b,blind,treasure map,1,0.2667
+qwen3-vl-8b,ccot,atom,1,0.6444
+qwen3-vl-8b,ccot,cell,1,0.4889
+qwen3-vl-8b,ccot,deceiving,1,0.6667
+qwen3-vl-8b,ccot,helping,1,0.7778
+qwen3-vl-8b,ccot,maze,1,0.7778
+qwen3-vl-8b,ccot,negotiating,1,0.6667
+qwen3-vl-8b,ccot,putting up decorations on a door,1,0.7556
+qwen3-vl-8b,ccot,setting up a table for two,1,0.5556
+qwen3-vl-8b,ccot,solar system,1,0.5333
+qwen3-vl-8b,ccot,tic-tac-toe,1,0.6889
+qwen3-vl-8b,ccot,tidying up a guest room,1,0.6889
+qwen3-vl-8b,ccot,treasure map,1,0.6667
+qwen3-vl-8b,cot,atom,1,0.6667
+qwen3-vl-8b,cot,cell,1,0.6444
+qwen3-vl-8b,cot,deceiving,1,0.5778
+qwen3-vl-8b,cot,helping,1,0.7111
+qwen3-vl-8b,cot,maze,1,0.7556
+qwen3-vl-8b,cot,negotiating,1,0.6000
+qwen3-vl-8b,cot,putting up decorations on a door,1,0.7111
+qwen3-vl-8b,cot,setting up a table for two,1,0.6000
+qwen3-vl-8b,cot,solar system,1,0.6222
+qwen3-vl-8b,cot,tic-tac-toe,1,0.6889
+qwen3-vl-8b,cot,tidying up a guest room,1,0.7778
+qwen3-vl-8b,cot,treasure map,1,0.7111
+qwen3-vl-8b,direct,atom,1,0.4444
+qwen3-vl-8b,direct,cell,1,0.5556
+qwen3-vl-8b,direct,deceiving,1,0.7111
+qwen3-vl-8b,direct,helping,1,0.7778
+qwen3-vl-8b,direct,maze,1,0.7556
+qwen3-vl-8b,direct,negotiating,1,0.8667
+qwen3-vl-8b,direct,putting up decorations on a door,1,0.7111
+qwen3-vl-8b,direct,setting up a table for two,1,0.6667
+qwen3-vl-8b,direct,solar system,1,0.5111
+qwen3-vl-8b,direct,tic-tac-toe,1,0.6444
+qwen3-vl-8b,direct,tidying up a guest room,1,0.5556
+qwen3-vl-8b,direct,treasure map,1,0.7111
+qwen3-vl-8b,dsg_full,atom,3,0.6370
+qwen3-vl-8b,dsg_full,cell,3,0.6963
+qwen3-vl-8b,dsg_full,deceiving,3,0.6815
+qwen3-vl-8b,dsg_full,helping,3,0.8222
+qwen3-vl-8b,dsg_full,maze,3,0.7778
+qwen3-vl-8b,dsg_full,negotiating,3,0.7556
+qwen3-vl-8b,dsg_full,putting up decorations on a door,3,0.7111
+qwen3-vl-8b,dsg_full,setting up a table for two,3,0.6593
+qwen3-vl-8b,dsg_full,solar system,3,0.4741
+qwen3-vl-8b,dsg_full,tic-tac-toe,3,0.5185
+qwen3-vl-8b,dsg_full,tidying up a guest room,3,0.6519
+qwen3-vl-8b,dsg_full,treasure map,3,0.7852
+qwen3-vl-8b,dsg_generic,atom,1,0.6667
+qwen3-vl-8b,dsg_generic,cell,1,0.6889
+qwen3-vl-8b,dsg_generic,deceiving,1,0.6222
+qwen3-vl-8b,dsg_generic,helping,1,0.8000
+qwen3-vl-8b,dsg_generic,maze,1,0.9111
+qwen3-vl-8b,dsg_generic,negotiating,1,0.8444
+qwen3-vl-8b,dsg_generic,putting up decorations on a door,1,0.7111
+qwen3-vl-8b,dsg_generic,setting up a table for two,1,0.5778
+qwen3-vl-8b,dsg_generic,solar system,1,0.5556
+qwen3-vl-8b,dsg_generic,tic-tac-toe,1,0.5778
+qwen3-vl-8b,dsg_generic,tidying up a guest room,1,0.6444
+qwen3-vl-8b,dsg_generic,treasure map,1,0.7556
+qwen3-vl-8b,dsg_hier,atom,3,0.5333
+qwen3-vl-8b,dsg_hier,cell,3,0.6000
+qwen3-vl-8b,dsg_hier,deceiving,3,0.7333
+qwen3-vl-8b,dsg_hier,helping,3,0.7259
+qwen3-vl-8b,dsg_hier,maze,3,0.7852
+qwen3-vl-8b,dsg_hier,negotiating,3,0.7037
+qwen3-vl-8b,dsg_hier,putting up decorations on a door,3,0.7481
+qwen3-vl-8b,dsg_hier,setting up a table for two,3,0.6593
+qwen3-vl-8b,dsg_hier,solar system,3,0.5111
+qwen3-vl-8b,dsg_hier,tic-tac-toe,3,0.6148
+qwen3-vl-8b,dsg_hier,tidying up a guest room,3,0.6370
+qwen3-vl-8b,dsg_hier,treasure map,3,0.7037
+qwen3-vl-8b,dsg_q,atom,3,0.5259
+qwen3-vl-8b,dsg_q,cell,3,0.6148
+qwen3-vl-8b,dsg_q,deceiving,3,0.6741
+qwen3-vl-8b,dsg_q,helping,3,0.8222
+qwen3-vl-8b,dsg_q,maze,3,0.7852
+qwen3-vl-8b,dsg_q,negotiating,3,0.6741
+qwen3-vl-8b,dsg_q,putting up decorations on a door,3,0.7556
+qwen3-vl-8b,dsg_q,setting up a table for two,3,0.6519
+qwen3-vl-8b,dsg_q,solar system,3,0.6148
+qwen3-vl-8b,dsg_q,tic-tac-toe,3,0.5259
+qwen3-vl-8b,dsg_q,tidying up a guest room,3,0.6741
+qwen3-vl-8b,dsg_q,treasure map,3,0.7556
+qwen3-vl-8b,dsg_release,atom,3,0.5481
+qwen3-vl-8b,dsg_release,cell,3,0.6593
+qwen3-vl-8b,dsg_release,deceiving,3,0.7259
+qwen3-vl-8b,dsg_release,helping,3,0.7333
+qwen3-vl-8b,dsg_release,maze,3,0.7852
+qwen3-vl-8b,dsg_release,negotiating,3,0.7037
+qwen3-vl-8b,dsg_release,putting up decorations on a door,3,0.7556
+qwen3-vl-8b,dsg_release,setting up a table for two,3,0.6963
+qwen3-vl-8b,dsg_release,solar system,3,0.4815
+qwen3-vl-8b,dsg_release,tic-tac-toe,3,0.6074
+qwen3-vl-8b,dsg_release,tidying up a guest room,3,0.6148
+qwen3-vl-8b,dsg_release,treasure map,3,0.7259
+qwen3-vl-8b,dsg_schema,atom,3,0.7852
+qwen3-vl-8b,dsg_schema,cell,3,0.6000
+qwen3-vl-8b,dsg_schema,deceiving,3,0.6370
+qwen3-vl-8b,dsg_schema,helping,3,0.7778
+qwen3-vl-8b,dsg_schema,maze,3,0.8444
+qwen3-vl-8b,dsg_schema,negotiating,3,0.7037
+qwen3-vl-8b,dsg_schema,putting up decorations on a door,3,0.8074
+qwen3-vl-8b,dsg_schema,setting up a table for two,3,0.6000
+qwen3-vl-8b,dsg_schema,solar system,3,0.6296
+qwen3-vl-8b,dsg_schema,tic-tac-toe,3,0.5333
+qwen3-vl-8b,dsg_schema,tidying up a guest room,3,0.6889
+qwen3-vl-8b,dsg_schema,treasure map,3,0.7407
+qwen3-vl-8b,dsg_seq,atom,3,0.5704
+qwen3-vl-8b,dsg_seq,cell,3,0.5704
+qwen3-vl-8b,dsg_seq,deceiving,3,0.6741
+qwen3-vl-8b,dsg_seq,helping,3,0.7481
+qwen3-vl-8b,dsg_seq,maze,3,0.7926
+qwen3-vl-8b,dsg_seq,negotiating,3,0.7333
+qwen3-vl-8b,dsg_seq,putting up decorations on a door,3,0.7407
+qwen3-vl-8b,dsg_seq,setting up a table for two,3,0.6519
+qwen3-vl-8b,dsg_seq,solar system,3,0.4667
+qwen3-vl-8b,dsg_seq,tic-tac-toe,3,0.6148
+qwen3-vl-8b,dsg_seq,tidying up a guest room,3,0.6444
+qwen3-vl-8b,dsg_seq,treasure map,3,0.6815
+qwen3-vl-8b,dsg_shuffle,atom,1,0.4444
+qwen3-vl-8b,dsg_shuffle,cell,1,0.4667
+qwen3-vl-8b,dsg_shuffle,deceiving,1,0.6444
+qwen3-vl-8b,dsg_shuffle,helping,1,0.7333
+qwen3-vl-8b,dsg_shuffle,maze,1,0.8000
+qwen3-vl-8b,dsg_shuffle,negotiating,1,0.7778
+qwen3-vl-8b,dsg_shuffle,putting up decorations on a door,1,0.5778
+qwen3-vl-8b,dsg_shuffle,setting up a table for two,1,0.6889
+qwen3-vl-8b,dsg_shuffle,solar system,1,0.4667
+qwen3-vl-8b,dsg_shuffle,tic-tac-toe,1,0.5778
+qwen3-vl-8b,dsg_shuffle,tidying up a guest room,1,0.6000
+qwen3-vl-8b,dsg_shuffle,treasure map,1,0.7111
+qwen3-vl-8b,dsg_wrong,atom,1,0.6444
+qwen3-vl-8b,dsg_wrong,cell,1,0.6667
+qwen3-vl-8b,dsg_wrong,deceiving,1,0.5111
+qwen3-vl-8b,dsg_wrong,helping,1,0.7778
+qwen3-vl-8b,dsg_wrong,maze,1,0.8667
+qwen3-vl-8b,dsg_wrong,negotiating,1,0.7333
+qwen3-vl-8b,dsg_wrong,putting up decorations on a door,1,0.6667
+qwen3-vl-8b,dsg_wrong,setting up a table for two,1,0.6222
+qwen3-vl-8b,dsg_wrong,solar system,1,0.4222
+qwen3-vl-8b,dsg_wrong,tic-tac-toe,1,0.5111
+qwen3-vl-8b,dsg_wrong,tidying up a guest room,1,0.6000
+qwen3-vl-8b,dsg_wrong,treasure map,1,0.7778
+qwen3-vl-8b,dsg_x,atom,3,0.6889
+qwen3-vl-8b,dsg_x,cell,3,0.7333
+qwen3-vl-8b,dsg_x,deceiving,3,0.6519
+qwen3-vl-8b,dsg_x,helping,3,0.8148
+qwen3-vl-8b,dsg_x,maze,3,0.8222
+qwen3-vl-8b,dsg_x,negotiating,3,0.7185
+qwen3-vl-8b,dsg_x,putting up decorations on a door,3,0.6963
+qwen3-vl-8b,dsg_x,setting up a table for two,3,0.6000
+qwen3-vl-8b,dsg_x,solar system,3,0.4370
+qwen3-vl-8b,dsg_x,tic-tac-toe,3,0.6000
+qwen3-vl-8b,dsg_x,tidying up a guest room,3,0.6222
+qwen3-vl-8b,dsg_x,treasure map,3,0.7407
