@@ -1,0 +1,50 @@
+{
+  "name": "improve",
+  "schemas": "schemas/qwen3.8-27b_c3.json",
+  "jobs": [
+    {
+      "dataset": "vad",
+      "methods": [
+        "dsg_x"
+      ],
+      "runs": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "dataset": "maze",
+      "methods": [
+        "dsg_x"
+      ],
+      "runs": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "dataset": "maze_nolegend",
+      "methods": [
+        "dsg_x"
+      ],
+      "runs": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "dataset": "ai2d",
+      "methods": [
+        "dsg_x"
+      ],
+      "runs": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

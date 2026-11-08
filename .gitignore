@@ -1,0 +1,14 @@
+# macOS metadata (AppleDouble files appear on exFAT/FAT drives)
+._*
+.DS_Store
+__pycache__/
+*.pyc
+# data, models, runs and caches stay outside the repository
+data/
+models/
+runs/
+cache/
+logs/
+results/*.parquet
+*.sqlite
+*.zip

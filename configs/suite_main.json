@@ -1,0 +1,145 @@
+{
+  "name": "main",
+  "schemas": "schemas/qwen3.8-27b_c3.json",
+  "jobs": [
+    {
+      "dataset": "vad",
+      "methods": [
+        "blind"
+      ],
+      "runs": [
+        0
+      ]
+    },
+    {
+      "dataset": "maze",
+      "methods": [
+        "blind"
+      ],
+      "runs": [
+        0
+      ]
+    },
+    {
+      "dataset": "maze_nolegend",
+      "methods": [
+        "blind"
+      ],
+      "runs": [
+        0
+      ]
+    },
+    {
+      "dataset": "ai2d",
+      "methods": [
+        "blind"
+      ],
+      "runs": [
+        0
+      ]
+    },
+    {
+      "dataset": "vad",
+      "methods": [
+        "direct",
+        "cot",
+        "ccot"
+      ],
+      "runs": [
+        0
+      ]
+    },
+    {
+      "dataset": "vad",
+      "methods": [
+        "dsg_schema",
+        "dsg_seq",
+        "dsg_hier",
+        "dsg_full",
+        "dsg_release"
+      ],
+      "runs": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "dataset": "vad",
+      "methods": [
+        "dsg_shuffle",
+        "dsg_wrong",
+        "dsg_generic"
+      ],
+      "runs": [
+        0
+      ]
+    },
+    {
+      "dataset": "maze",
+      "methods": [
+        "direct",
+        "cot",
+        "ccot"
+      ],
+      "runs": [
+        0
+      ]
+    },
+    {
+      "dataset": "maze",
+      "methods": [
+        "dsg_full"
+      ],
+      "runs": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "dataset": "maze_nolegend",
+      "methods": [
+        "direct",
+        "cot",
+        "ccot"
+      ],
+      "runs": [
+        0
+      ]
+    },
+    {
+      "dataset": "maze_nolegend",
+      "methods": [
+        "dsg_full"
+      ],
+      "runs": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "dataset": "ai2d",
+      "methods": [
+        "direct",
+        "cot",
+        "ccot"
+      ],
+      "runs": [
+        0
+      ]
+    },
+    {
+      "dataset": "ai2d",
+      "methods": [
+        "dsg_full"
+      ],
+      "runs": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}

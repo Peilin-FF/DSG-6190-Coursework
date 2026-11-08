@@ -1,0 +1,3615 @@
+{
+ "meta": {
+  "model": "qwen3.8-27b",
+  "size": 7,
+  "samples": 5,
+  "temperature": 0.7,
+  "top_p": 0.95,
+  "thinking": false,
+  "prompt_example": "Can you give me a program representing the schema for a concept? For example,\ngen(concept=academia) =\ngen(campus | concept=academia)\ngen(faculty | concept=academia, campus)\ngen(students | concept=academia, campus)\ngen(courses | concept=academia, faculty, students)\ngen(funding | concept=academia, faculty)\ngen(research-output | concept=academia, faculty, students, funding)\ngen(publications | concept=academia, research-output)\nPlease do the same for gen(concept=<concept>) in the same format without explanation. Keep the program simple with eight or less components. Use only the most necessary parts of the schema that can be mapped to objects in an image."
+ },
+ "schemas": {
+  "atom": [
+   {
+    "concept": "atom",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "protons",
+      [
+       "nucleus"
+      ]
+     ],
+     [
+      "neutrons",
+      [
+       "nucleus"
+      ]
+     ],
+     [
+      "electrons",
+      []
+     ],
+     [
+      "electron shells",
+      [
+       "electrons"
+      ]
+     ],
+     [
+      "bonding",
+      [
+       "electron shells"
+      ]
+     ],
+     [
+      "molecule",
+      [
+       "bonding"
+      ]
+     ],
+     [
+      "properties",
+      [
+       "protons",
+       "neutrons",
+       "electrons"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "protons",
+     "neutrons",
+     "electrons",
+     "electron shells",
+     "bonding",
+     "molecule",
+     "properties"
+    ],
+    "program": "gen(concept=atom) =\ngen(nucleus | concept=atom)\ngen(protons | concept=atom, nucleus)\ngen(neutrons | concept=atom, nucleus)\ngen(electrons | concept=atom)\ngen(electron-shells | concept=atom, electrons)\ngen(bonding | concept=atom, electron-shells)\ngen(molecule | concept=atom, bonding)\ngen(properties | concept=atom, protons, neutrons, electrons)",
+    "source": "qwen3.8-27b/size7/k0/try0"
+   },
+   {
+    "concept": "atom",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "protons",
+      [
+       "nucleus"
+      ]
+     ],
+     [
+      "neutrons",
+      [
+       "nucleus"
+      ]
+     ],
+     [
+      "electron cloud",
+      []
+     ],
+     [
+      "electrons",
+      [
+       "electron cloud"
+      ]
+     ],
+     [
+      "shells",
+      [
+       "electron cloud"
+      ]
+     ],
+     [
+      "bonds",
+      [
+       "electrons"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "protons",
+     "neutrons",
+     "electron cloud",
+     "electrons",
+     "shells",
+     "bonds"
+    ],
+    "program": "gen(concept=atom) =\ngen(nucleus | concept=atom)\ngen(protons | concept=atom, nucleus)\ngen(neutrons | concept=atom, nucleus)\ngen(electron-cloud | concept=atom)\ngen(electrons | concept=atom, electron-cloud)\ngen(shells | concept=atom, electron-cloud)\ngen(bonds | concept=atom, electrons)",
+    "source": "qwen3.8-27b/size7/k1/try0"
+   },
+   {
+    "concept": "atom",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "protons",
+      [
+       "nucleus"
+      ]
+     ],
+     [
+      "neutrons",
+      [
+       "nucleus"
+      ]
+     ],
+     [
+      "electrons",
+      []
+     ],
+     [
+      "orbitals",
+      [
+       "electrons"
+      ]
+     ],
+     [
+      "energy levels",
+      [
+       "orbitals"
+      ]
+     ],
+     [
+      "bonds",
+      [
+       "electrons",
+       "orbitals"
+      ]
+     ],
+     [
+      "molecule",
+      [
+       "bonds"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "protons",
+     "neutrons",
+     "electrons",
+     "orbitals",
+     "energy levels",
+     "bonds",
+     "molecule"
+    ],
+    "program": "gen(concept=atom) =\ngen(nucleus | concept=atom)\ngen(protons | concept=atom, nucleus)\ngen(neutrons | concept=atom, nucleus)\ngen(electrons | concept=atom)\ngen(orbitals | concept=atom, electrons)\ngen(energy-levels | concept=atom, orbitals)\ngen(bonds | concept=atom, electrons, orbitals)\ngen(molecule | concept=atom, bonds)",
+    "source": "qwen3.8-27b/size7/k2/try0"
+   },
+   {
+    "concept": "atom",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "protons",
+      [
+       "nucleus"
+      ]
+     ],
+     [
+      "neutrons",
+      [
+       "nucleus"
+      ]
+     ],
+     [
+      "electron cloud",
+      []
+     ],
+     [
+      "electrons",
+      [
+       "electron cloud"
+      ]
+     ],
+     [
+      "energy levels",
+      [
+       "electron cloud"
+      ]
+     ],
+     [
+      "chemical bond",
+      [
+       "electrons"
+      ]
+     ],
+     [
+      "molecule",
+      [
+       "chemical bond"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "protons",
+     "neutrons",
+     "electron cloud",
+     "electrons",
+     "energy levels",
+     "chemical bond",
+     "molecule"
+    ],
+    "program": "gen(concept=atom) =\ngen(nucleus | concept=atom)\ngen(protons | concept=atom, nucleus)\ngen(neutrons | concept=atom, nucleus)\ngen(electron-cloud | concept=atom)\ngen(electrons | concept=atom, electron-cloud)\ngen(energy-levels | concept=atom, electron-cloud)\ngen(chemical-bond | concept=atom, electrons)\ngen(molecule | concept=atom, chemical-bond)",
+    "source": "qwen3.8-27b/size7/k3/try0"
+   },
+   {
+    "concept": "atom",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "protons",
+      [
+       "nucleus"
+      ]
+     ],
+     [
+      "neutrons",
+      [
+       "nucleus"
+      ]
+     ],
+     [
+      "electrons",
+      []
+     ],
+     [
+      "energy levels",
+      [
+       "electrons"
+      ]
+     ],
+     [
+      "electron cloud",
+      [
+       "electrons",
+       "energy levels"
+      ]
+     ],
+     [
+      "bonding orbitals",
+      [
+       "electron cloud"
+      ]
+     ],
+     [
+      "nuclear force",
+      [
+       "protons",
+       "neutrons"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "protons",
+     "neutrons",
+     "electrons",
+     "energy levels",
+     "electron cloud",
+     "bonding orbitals",
+     "nuclear force"
+    ],
+    "program": "gen(concept=atom) =\ngen(nucleus | concept=atom)\ngen(protons | concept=atom, nucleus)\ngen(neutrons | concept=atom, nucleus)\ngen(electrons | concept=atom)\ngen(energy-levels | concept=atom, electrons)\ngen(electron-cloud | concept=atom, electrons, energy-levels)\ngen(bonding-orbitals | concept=atom, electron-cloud)\ngen(nuclear-force | concept=atom, protons, neutrons)",
+    "source": "qwen3.8-27b/size7/k4/try0"
+   }
+  ],
+  "cell": [
+   {
+    "concept": "cell",
+    "components": [
+     [
+      "membrane",
+      []
+     ],
+     [
+      "cytoplasm",
+      [
+       "membrane"
+      ]
+     ],
+     [
+      "nucleus",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "chromatin",
+      [
+       "nucleus"
+      ]
+     ],
+     [
+      "mitochondria",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "ribosomes",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "endoplasmic reticulum",
+      [
+       "cytoplasm",
+       "ribosomes"
+      ]
+     ],
+     [
+      "golgi apparatus",
+      [
+       "cytoplasm",
+       "endoplasmic reticulum"
+      ]
+     ]
+    ],
+    "final": [
+     "membrane",
+     "cytoplasm",
+     "nucleus",
+     "chromatin",
+     "mitochondria",
+     "ribosomes",
+     "endoplasmic reticulum",
+     "golgi apparatus"
+    ],
+    "program": "gen(concept=cell) =\ngen(membrane | concept=cell)\ngen(cytoplasm | concept=cell, membrane)\ngen(nucleus | concept=cell, cytoplasm)\ngen(chromatin | concept=cell, nucleus)\ngen(mitochondria | concept=cell, cytoplasm)\ngen(ribosomes | concept=cell, cytoplasm)\ngen(endoplasmic-reticulum | concept=cell, cytoplasm, ribosomes)\ngen(golgi-apparatus | concept=cell, cytoplasm, endoplasmic-reticulum)",
+    "source": "qwen3.8-27b/size7/k0/try0"
+   },
+   {
+    "concept": "cell",
+    "components": [
+     [
+      "membrane",
+      []
+     ],
+     [
+      "cytoplasm",
+      [
+       "membrane"
+      ]
+     ],
+     [
+      "nucleus",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "ribosomes",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "mitochondria",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "endoplasmic reticulum",
+      [
+       "cytoplasm",
+       "ribosomes"
+      ]
+     ],
+     [
+      "golgi apparatus",
+      [
+       "endoplasmic reticulum"
+      ]
+     ],
+     [
+      "vacuoles",
+      [
+       "cytoplasm"
+      ]
+     ]
+    ],
+    "final": [
+     "membrane",
+     "cytoplasm",
+     "nucleus",
+     "ribosomes",
+     "mitochondria",
+     "endoplasmic reticulum",
+     "golgi apparatus",
+     "vacuoles"
+    ],
+    "program": "gen(concept=cell) =\ngen(membrane | concept=cell)\ngen(cytoplasm | concept=cell, membrane)\ngen(nucleus | concept=cell, cytoplasm)\ngen(ribosomes | concept=cell, cytoplasm)\ngen(mitochondria | concept=cell, cytoplasm)\ngen(endoplasmic-reticulum | concept=cell, cytoplasm, ribosomes)\ngen(golgi-apparatus | concept=cell, endoplasmic-reticulum)\ngen(vacuoles | concept=cell, cytoplasm)",
+    "source": "qwen3.8-27b/size7/k1/try0"
+   },
+   {
+    "concept": "cell",
+    "components": [
+     [
+      "membrane",
+      []
+     ],
+     [
+      "nucleus",
+      [
+       "membrane"
+      ]
+     ],
+     [
+      "cytoplasm",
+      [
+       "membrane"
+      ]
+     ],
+     [
+      "mitochondria",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "ribosomes",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "endoplasmic reticulum",
+      [
+       "nucleus",
+       "cytoplasm"
+      ]
+     ],
+     [
+      "golgi apparatus",
+      [
+       "endoplasmic reticulum"
+      ]
+     ],
+     [
+      "cell wall",
+      [
+       "membrane"
+      ]
+     ]
+    ],
+    "final": [
+     "membrane",
+     "nucleus",
+     "cytoplasm",
+     "mitochondria",
+     "ribosomes",
+     "endoplasmic reticulum",
+     "golgi apparatus",
+     "cell wall"
+    ],
+    "program": "gen(concept=cell) =\ngen(membrane | concept=cell)\ngen(nucleus | concept=cell, membrane)\ngen(cytoplasm | concept=cell, membrane)\ngen(mitochondria | concept=cell, cytoplasm)\ngen(ribosomes | concept=cell, cytoplasm)\ngen(endoplasmic-reticulum | concept=cell, nucleus, cytoplasm)\ngen(golgi-apparatus | concept=cell, endoplasmic-reticulum)\ngen(cell-wall | concept=cell, membrane)",
+    "source": "qwen3.8-27b/size7/k2/try0"
+   },
+   {
+    "concept": "cell",
+    "components": [
+     [
+      "cell membrane",
+      []
+     ],
+     [
+      "cytoplasm",
+      [
+       "cell membrane"
+      ]
+     ],
+     [
+      "nucleus",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "mitochondria",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "ribosomes",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "endoplasmic reticulum",
+      [
+       "cytoplasm",
+       "ribosomes"
+      ]
+     ],
+     [
+      "golgi apparatus",
+      [
+       "endoplasmic reticulum"
+      ]
+     ],
+     [
+      "vacuole",
+      [
+       "cytoplasm"
+      ]
+     ]
+    ],
+    "final": [
+     "cell membrane",
+     "cytoplasm",
+     "nucleus",
+     "mitochondria",
+     "ribosomes",
+     "endoplasmic reticulum",
+     "golgi apparatus",
+     "vacuole"
+    ],
+    "program": "gen(concept=cell) =\ngen(cell-membrane | concept=cell)\ngen(cytoplasm | concept=cell, cell-membrane)\ngen(nucleus | concept=cell, cytoplasm)\ngen(mitochondria | concept=cell, cytoplasm)\ngen(ribosomes | concept=cell, cytoplasm)\ngen(endoplasmic-reticulum | concept=cell, cytoplasm, ribosomes)\ngen(golgi-apparatus | concept=cell, endoplasmic-reticulum)\ngen(vacuole | concept=cell, cytoplasm)",
+    "source": "qwen3.8-27b/size7/k3/try0"
+   },
+   {
+    "concept": "cell",
+    "components": [
+     [
+      "cell membrane",
+      []
+     ],
+     [
+      "cytoplasm",
+      [
+       "cell membrane"
+      ]
+     ],
+     [
+      "nucleus",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "nucleolus",
+      [
+       "nucleus"
+      ]
+     ],
+     [
+      "ribosomes",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "mitochondria",
+      [
+       "cytoplasm"
+      ]
+     ],
+     [
+      "endoplasmic reticulum",
+      [
+       "cytoplasm",
+       "ribosomes"
+      ]
+     ],
+     [
+      "golgi apparatus",
+      [
+       "cytoplasm",
+       "endoplasmic reticulum"
+      ]
+     ]
+    ],
+    "final": [
+     "cell membrane",
+     "cytoplasm",
+     "nucleus",
+     "nucleolus",
+     "ribosomes",
+     "mitochondria",
+     "endoplasmic reticulum",
+     "golgi apparatus"
+    ],
+    "program": "gen(concept=cell) =\ngen(cell-membrane | concept=cell)\ngen(cytoplasm | concept=cell, cell-membrane)\ngen(nucleus | concept=cell, cytoplasm)\ngen(nucleolus | concept=cell, nucleus)\ngen(ribosomes | concept=cell, cytoplasm)\ngen(mitochondria | concept=cell, cytoplasm)\ngen(endoplasmic-reticulum | concept=cell, cytoplasm, ribosomes)\ngen(golgi-apparatus | concept=cell, cytoplasm, endoplasmic-reticulum)",
+    "source": "qwen3.8-27b/size7/k4/try0"
+   }
+  ],
+  "deceiving": [
+   {
+    "concept": "deceiving",
+    "components": [
+     [
+      "actor",
+      []
+     ],
+     [
+      "mask",
+      [
+       "actor"
+      ]
+     ],
+     [
+      "veil",
+      [
+       "mask"
+      ]
+     ],
+     [
+      "target",
+      []
+     ],
+     [
+      "gesture",
+      [
+       "actor",
+       "target"
+      ]
+     ],
+     [
+      "smile",
+      [
+       "gesture",
+       "mask"
+      ]
+     ],
+     [
+      "hidden intent",
+      [
+       "actor",
+       "target"
+      ]
+     ],
+     [
+      "reaction",
+      [
+       "target",
+       "gesture",
+       "smile"
+      ]
+     ]
+    ],
+    "final": [
+     "actor",
+     "mask",
+     "veil",
+     "target",
+     "gesture",
+     "smile",
+     "hidden intent",
+     "reaction"
+    ],
+    "program": "gen(concept=deceiving) =\ngen(actor | concept=deceiving)\ngen(mask | concept=deceiving, actor)\ngen(veil | concept=deceiving, mask)\ngen(target | concept=deceiving)\ngen(gesture | concept=deceiving, actor, target)\ngen(smile | concept=deceiving, gesture, mask)\ngen(hidden-intent | concept=deceiving, actor, target)\ngen(reaction | concept=deceiving, target, gesture, smile)",
+    "source": "qwen3.8-27b/size7/k0/try0"
+   },
+   {
+    "concept": "deceiving",
+    "components": [
+     [
+      "actor",
+      []
+     ],
+     [
+      "target",
+      [
+       "actor"
+      ]
+     ],
+     [
+      "disguise",
+      [
+       "actor"
+      ]
+     ],
+     [
+      "false signal",
+      [
+       "actor",
+       "disguise"
+      ]
+     ],
+     [
+      "hidden intent",
+      [
+       "actor",
+       "target"
+      ]
+     ],
+     [
+      "gullibility",
+      [
+       "target",
+       "false signal"
+      ]
+     ],
+     [
+      "misconception",
+      [
+       "target",
+       "gullibility",
+       "false signal"
+      ]
+     ],
+     [
+      "outcome",
+      [
+       "actor",
+       "target",
+       "misconception"
+      ]
+     ]
+    ],
+    "final": [
+     "actor",
+     "target",
+     "disguise",
+     "false signal",
+     "hidden intent",
+     "gullibility",
+     "misconception",
+     "outcome"
+    ],
+    "program": "gen(concept=deceiving) =\ngen(actor | concept=deceiving)\ngen(target | concept=deceiving, actor)\ngen(disguise | concept=deceiving, actor)\ngen(false-signal | concept=deceiving, actor, disguise)\ngen(hidden-intent | concept=deceiving, actor, target)\ngen(gullibility | concept=deceiving, target, false-signal)\ngen(misconception | concept=deceiving, target, gullibility, false-signal)\ngen(outcome | concept=deceiving, actor, target, misconception)",
+    "source": "qwen3.8-27b/size7/k1/try0"
+   },
+   {
+    "concept": "deceiving",
+    "components": [
+     [
+      "surface appearance",
+      []
+     ],
+     [
+      "hidden intent",
+      []
+     ],
+     [
+      "hidden reality",
+      [
+       "hidden intent"
+      ]
+     ],
+     [
+      "signals",
+      [
+       "surface appearance"
+      ]
+     ],
+     [
+      "beliefs",
+      [
+       "signals"
+      ]
+     ],
+     [
+      "trust",
+      [
+       "beliefs"
+      ]
+     ],
+     [
+      "outcome",
+      [
+       "hidden reality",
+       "trust"
+      ]
+     ]
+    ],
+    "final": [
+     "surface appearance",
+     "hidden intent",
+     "hidden reality",
+     "signals",
+     "beliefs",
+     "trust",
+     "outcome"
+    ],
+    "program": "gen(concept=deceiving) =\ngen(surface-appearance | concept=deceiving)\ngen(hidden-intent | concept=deceiving)\ngen(hidden-reality | concept=deceiving, hidden-intent)\ngen(signals | concept=deceiving, surface-appearance)\ngen(beliefs | concept=deceiving, signals)\ngen(trust | concept=deceiving, beliefs)\ngen(outcome | concept=deceiving, hidden-reality, trust)",
+    "source": "qwen3.8-27b/size7/k2/try0"
+   },
+   {
+    "concept": "deceiving",
+    "components": [
+     [
+      "face",
+      []
+     ],
+     [
+      "smile",
+      [
+       "face"
+      ]
+     ],
+     [
+      "eyes",
+      [
+       "face"
+      ]
+     ],
+     [
+      "hands",
+      []
+     ],
+     [
+      "object",
+      []
+     ],
+     [
+      "gesture",
+      [
+       "hands",
+       "object"
+      ]
+     ],
+     [
+      "context",
+      []
+     ],
+     [
+      "cue",
+      [
+       "context"
+      ]
+     ]
+    ],
+    "final": [
+     "face",
+     "smile",
+     "eyes",
+     "hands",
+     "object",
+     "gesture",
+     "context",
+     "cue"
+    ],
+    "program": "gen(concept=deceiving) =\ngen(face | concept=deceiving)\ngen(smile | concept=deceiving, face)\ngen(eyes | concept=deceiving, face)\ngen(hands | concept=deceiving)\ngen(object | concept=deceiving)\ngen(gesture | concept=deceiving, hands, object)\ngen(context | concept=deceiving)\ngen(cue | concept=deceiving, context)",
+    "source": "qwen3.8-27b/size7/k3/try0"
+   },
+   {
+    "concept": "deceiving",
+    "components": [
+     [
+      "actor",
+      []
+     ],
+     [
+      "target",
+      [
+       "actor"
+      ]
+     ],
+     [
+      "mask",
+      [
+       "actor"
+      ]
+     ],
+     [
+      "action",
+      [
+       "actor",
+       "mask"
+      ]
+     ],
+     [
+      "claim",
+      [
+       "action"
+      ]
+     ],
+     [
+      "reality",
+      [
+       "target"
+      ]
+     ],
+     [
+      "discrepancy",
+      [
+       "claim",
+       "reality"
+      ]
+     ],
+     [
+      "reaction",
+      [
+       "target",
+       "discrepancy"
+      ]
+     ]
+    ],
+    "final": [
+     "actor",
+     "target",
+     "mask",
+     "action",
+     "claim",
+     "reality",
+     "discrepancy",
+     "reaction"
+    ],
+    "program": "gen(concept=deceiving) =\ngen(actor | concept=deceiving)\ngen(target | concept=deceiving, actor)\ngen(mask | concept=deceiving, actor)\ngen(action | concept=deceiving, actor, mask)\ngen(claim | concept=deceiving, action)\ngen(reality | concept=deceiving, target)\ngen(discrepancy | concept=deceiving, claim, reality)\ngen(reaction | concept=deceiving, target, discrepancy)",
+    "source": "qwen3.8-27b/size7/k4/try0"
+   }
+  ],
+  "helping": [
+   {
+    "concept": "helping",
+    "components": [
+     [
+      "person",
+      []
+     ],
+     [
+      "object",
+      [
+       "person"
+      ]
+     ],
+     [
+      "action",
+      [
+       "person",
+       "object"
+      ]
+     ],
+     [
+      "beneficiary",
+      [
+       "object"
+      ]
+     ],
+     [
+      "interaction",
+      [
+       "action",
+       "beneficiary"
+      ]
+     ],
+     [
+      "environment",
+      [
+       "interaction"
+      ]
+     ],
+     [
+      "outcome",
+      [
+       "interaction",
+       "beneficiary"
+      ]
+     ]
+    ],
+    "final": [
+     "person",
+     "object",
+     "action",
+     "beneficiary",
+     "interaction",
+     "environment",
+     "outcome"
+    ],
+    "program": "gen(concept=helping) =\ngen(person | concept=helping)\ngen(object | concept=helping, person)\ngen(action | concept=helping, person, object)\ngen(beneficiary | concept=helping, object)\ngen(interaction | concept=helping, action, beneficiary)\ngen(environment | concept=helping, interaction)\ngen(outcome | concept=helping, interaction, beneficiary)",
+    "source": "qwen3.8-27b/size7/k0/try0"
+   },
+   {
+    "concept": "helping",
+    "components": [
+     [
+      "helpful person",
+      []
+     ],
+     [
+      "need person",
+      []
+     ],
+     [
+      "help action",
+      [
+       "helpful person",
+       "need person"
+      ]
+     ],
+     [
+      "assistance object",
+      [
+       "help action"
+      ]
+     ],
+     [
+      "positive reaction",
+      [
+       "need person",
+       "help action"
+      ]
+     ]
+    ],
+    "final": [
+     "helpful person",
+     "need person",
+     "help action",
+     "assistance object",
+     "positive reaction"
+    ],
+    "program": "gen(concept=helping) =\ngen(helpful-person | concept=helping)\ngen(need-person | concept=helping)\ngen(help-action | concept=helping, helpful-person, need-person)\ngen(assistance-object | concept=helping, help-action)\ngen(positive-reaction | concept=helping, need-person, help-action)",
+    "source": "qwen3.8-27b/size7/k1/try0"
+   },
+   {
+    "concept": "helping",
+    "components": [
+     [
+      "person a",
+      []
+     ],
+     [
+      "person b",
+      [
+       "person a"
+      ]
+     ],
+     [
+      "action",
+      [
+       "person a",
+       "person b"
+      ]
+     ],
+     [
+      "object",
+      [
+       "action"
+      ]
+     ],
+     [
+      "environment",
+      [
+       "person a",
+       "person b"
+      ]
+     ],
+     [
+      "interaction",
+      [
+       "action",
+       "object"
+      ]
+     ],
+     [
+      "response",
+      [
+       "interaction",
+       "person b"
+      ]
+     ],
+     [
+      "outcome",
+      [
+       "response",
+       "environment"
+      ]
+     ]
+    ],
+    "final": [
+     "person a",
+     "person b",
+     "action",
+     "object",
+     "environment",
+     "interaction",
+     "response",
+     "outcome"
+    ],
+    "program": "gen(concept=helping) =\ngen(person_a | concept=helping)\ngen(person_b | concept=helping, person_a)\ngen(action | concept=helping, person_a, person_b)\ngen(object | concept=helping, action)\ngen(environment | concept=helping, person_a, person_b)\ngen(interaction | concept=helping, action, object)\ngen(response | concept=helping, interaction, person_b)\ngen(outcome | concept=helping, response, environment)",
+    "source": "qwen3.8-27b/size7/k2/try0"
+   },
+   {
+    "concept": "helping",
+    "components": [
+     [
+      "helpful person",
+      []
+     ],
+     [
+      "helped person",
+      []
+     ],
+     [
+      "object of need",
+      [
+       "helped person"
+      ]
+     ],
+     [
+      "handover",
+      [
+       "helpful person",
+       "object of need"
+      ]
+     ],
+     [
+      "interaction",
+      [
+       "helpful person",
+       "helped person",
+       "handover"
+      ]
+     ],
+     [
+      "expression",
+      [
+       "interaction"
+      ]
+     ],
+     [
+      "context",
+      [
+       "interaction"
+      ]
+     ]
+    ],
+    "final": [
+     "helpful person",
+     "helped person",
+     "object of need",
+     "handover",
+     "interaction",
+     "expression",
+     "context"
+    ],
+    "program": "gen(concept=helping) =\ngen(helpful-person | concept=helping)\ngen(helped-person | concept=helping)\ngen(object-of-need | concept=helping, helped-person)\ngen(handover | concept=helping, helpful-person, object-of-need)\ngen(interaction | concept=helping, helpful-person, helped-person, handover)\ngen(expression | concept=helping, interaction)\ngen(context | concept=helping, interaction)",
+    "source": "qwen3.8-27b/size7/k3/try0"
+   },
+   {
+    "concept": "helping",
+    "components": [
+     [
+      "giver",
+      []
+     ],
+     [
+      "recipient",
+      []
+     ],
+     [
+      "gesture",
+      [
+       "giver",
+       "recipient"
+      ]
+     ],
+     [
+      "object",
+      [
+       "recipient"
+      ]
+     ],
+     [
+      "interaction",
+      [
+       "giver",
+       "recipient",
+       "gesture"
+      ]
+     ],
+     [
+      "response",
+      [
+       "recipient",
+       "interaction"
+      ]
+     ],
+     [
+      "outcome",
+      [
+       "recipient",
+       "response"
+      ]
+     ]
+    ],
+    "final": [
+     "giver",
+     "recipient",
+     "gesture",
+     "object",
+     "interaction",
+     "response",
+     "outcome"
+    ],
+    "program": "gen(concept=helping) =\ngen(giver | concept=helping)\ngen(recipient | concept=helping)\ngen(gesture | concept=helping, giver, recipient)\ngen(object | concept=helping, recipient)\ngen(interaction | concept=helping, giver, recipient, gesture)\ngen(response | concept=helping, recipient, interaction)\ngen(outcome | concept=helping, recipient, response)",
+    "source": "qwen3.8-27b/size7/k4/try0"
+   }
+  ],
+  "maze": [
+   {
+    "concept": "maze",
+    "components": [
+     [
+      "walls",
+      []
+     ],
+     [
+      "paths",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "entrance",
+      [
+       "walls",
+       "paths"
+      ]
+     ],
+     [
+      "exit",
+      [
+       "walls",
+       "paths"
+      ]
+     ],
+     [
+      "dead ends",
+      [
+       "paths"
+      ]
+     ],
+     [
+      "solution path",
+      [
+       "entrance",
+       "exit",
+       "paths"
+      ]
+     ],
+     [
+      "hints",
+      [
+       "solution path"
+      ]
+     ],
+     [
+      "maze image",
+      [
+       "walls",
+       "paths",
+       "entrance",
+       "exit",
+       "dead ends",
+       "solution path",
+       "hints"
+      ]
+     ]
+    ],
+    "final": [
+     "walls",
+     "paths",
+     "entrance",
+     "exit",
+     "dead ends",
+     "solution path",
+     "hints",
+     "maze image"
+    ],
+    "program": "gen(concept=maze) =\ngen(walls | concept=maze)\ngen(paths | concept=maze, walls)\ngen(entrance | concept=maze, walls, paths)\ngen(exit | concept=maze, walls, paths)\ngen(dead-ends | concept=maze, paths)\ngen(solution-path | concept=maze, entrance, exit, paths)\ngen(hints | concept=maze, solution-path)\ngen(maze-image | concept=maze, walls, paths, entrance, exit, dead-ends, solution-path, hints)",
+    "source": "qwen3.8-27b/size7/k0/try0"
+   },
+   {
+    "concept": "maze",
+    "components": [
+     [
+      "walls",
+      []
+     ],
+     [
+      "path",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "start",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "goal",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "dead ends",
+      [
+       "walls",
+       "path"
+      ]
+     ],
+     [
+      "entrance",
+      [
+       "start",
+       "walls"
+      ]
+     ],
+     [
+      "exit",
+      [
+       "goal",
+       "walls"
+      ]
+     ]
+    ],
+    "final": [
+     "walls",
+     "path",
+     "start",
+     "goal",
+     "dead ends",
+     "entrance",
+     "exit"
+    ],
+    "program": "gen(concept=maze) =\ngen(walls | concept=maze)\ngen(path | concept=maze, walls)\ngen(start | concept=maze, walls)\ngen(goal | concept=maze, walls)\ngen(dead-ends | concept=maze, walls, path)\ngen(entrance | concept=maze, start, walls)\ngen(exit | concept=maze, goal, walls)",
+    "source": "qwen3.8-27b/size7/k1/try0"
+   },
+   {
+    "concept": "maze",
+    "components": [
+     [
+      "walls",
+      []
+     ],
+     [
+      "path",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "entrance",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "exit",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "dead ends",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "branches",
+      [
+       "walls",
+       "path"
+      ]
+     ],
+     [
+      "solution",
+      [
+       "entrance",
+       "exit",
+       "path"
+      ]
+     ],
+     [
+      "scale",
+      [
+       "walls",
+       "path"
+      ]
+     ]
+    ],
+    "final": [
+     "walls",
+     "path",
+     "entrance",
+     "exit",
+     "dead ends",
+     "branches",
+     "solution",
+     "scale"
+    ],
+    "program": "gen(concept=maze) =\ngen(walls | concept=maze)\ngen(path | concept=maze, walls)\ngen(entrance | concept=maze, walls)\ngen(exit | concept=maze, walls)\ngen(dead-ends | concept=maze, walls)\ngen(branches | concept=maze, walls, path)\ngen(solution | concept=maze, entrance, exit, path)\ngen(scale | concept=maze, walls, path)",
+    "source": "qwen3.8-27b/size7/k2/try0"
+   },
+   {
+    "concept": "maze",
+    "components": [
+     [
+      "walls",
+      []
+     ],
+     [
+      "paths",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "start",
+      [
+       "paths"
+      ]
+     ],
+     [
+      "end",
+      [
+       "paths"
+      ]
+     ],
+     [
+      "obstacles",
+      [
+       "paths",
+       "walls"
+      ]
+     ],
+     [
+      "player",
+      [
+       "start"
+      ]
+     ],
+     [
+      "goal",
+      [
+       "end"
+      ]
+     ]
+    ],
+    "final": [
+     "walls",
+     "paths",
+     "start",
+     "end",
+     "obstacles",
+     "player",
+     "goal"
+    ],
+    "program": "gen(concept=maze) =\ngen(walls | concept=maze)\ngen(paths | concept=maze, walls)\ngen(start | concept=maze, paths)\ngen(end | concept=maze, paths)\ngen(obstacles | concept=maze, paths, walls)\ngen(player | concept=maze, start)\ngen(goal | concept=maze, end)",
+    "source": "qwen3.8-27b/size7/k3/try0"
+   },
+   {
+    "concept": "maze",
+    "components": [
+     [
+      "walls",
+      []
+     ],
+     [
+      "path",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "entrance",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "exit",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "solver",
+      [
+       "entrance",
+       "exit"
+      ]
+     ],
+     [
+      "distractions",
+      [
+       "walls",
+       "path"
+      ]
+     ],
+     [
+      "solution",
+      [
+       "path",
+       "entrance",
+       "exit"
+      ]
+     ],
+     [
+      "completion",
+      [
+       "solver",
+       "exit",
+       "solution"
+      ]
+     ]
+    ],
+    "final": [
+     "walls",
+     "path",
+     "entrance",
+     "exit",
+     "solver",
+     "distractions",
+     "solution",
+     "completion"
+    ],
+    "program": "gen(concept=maze) =\ngen(walls | concept=maze)\ngen(path | concept=maze, walls)\ngen(entrance | concept=maze, walls)\ngen(exit | concept=maze, walls)\ngen(solver | concept=maze, entrance, exit)\ngen(distractions | concept=maze, walls, path)\ngen(solution | concept=maze, path, entrance, exit)\ngen(completion | concept=maze, solver, exit, solution)",
+    "source": "qwen3.8-27b/size7/k4/try0"
+   }
+  ],
+  "negotiating": [
+   {
+    "concept": "negotiating",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "parties",
+      [
+       "table"
+      ]
+     ],
+     [
+      "agenda",
+      [
+       "parties"
+      ]
+     ],
+     [
+      "offers",
+      [
+       "parties",
+       "agenda"
+      ]
+     ],
+     [
+      "concessions",
+      [
+       "offers"
+      ]
+     ],
+     [
+      "agreement",
+      [
+       "concessions"
+      ]
+     ],
+     [
+      "outcome",
+      [
+       "agreement"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "parties",
+     "agenda",
+     "offers",
+     "concessions",
+     "agreement",
+     "outcome"
+    ],
+    "program": "gen(concept=negotiating)\ngen(table | concept=negotiating)\ngen(parties | concept=negotiating, table)\ngen(agenda | concept=negotiating, parties)\ngen(offers | concept=negotiating, parties, agenda)\ngen(concessions | concept=negotiating, offers)\ngen(agreement | concept=negotiating, concessions)\ngen(outcome | concept=negotiating, agreement)",
+    "source": "qwen3.8-27b/size7/k0/try0"
+   },
+   {
+    "concept": "negotiating",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "parties",
+      [
+       "table"
+      ]
+     ],
+     [
+      "demands",
+      [
+       "parties"
+      ]
+     ],
+     [
+      "concessions",
+      [
+       "parties",
+       "demands"
+      ]
+     ],
+     [
+      "agreement",
+      [
+       "parties",
+       "concessions"
+      ]
+     ],
+     [
+      "signature",
+      [
+       "agreement"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "parties",
+     "demands",
+     "concessions",
+     "agreement",
+     "signature"
+    ],
+    "program": "gen(concept=negotiating) =\ngen(table | concept=negotiating)\ngen(parties | concept=negotiating, table)\ngen(demands | concept=negotiating, parties)\ngen(concessions | concept=negotiating, parties, demands)\ngen(agreement | concept=negotiating, parties, concessions)\ngen(signature | concept=negotiating, agreement)",
+    "source": "qwen3.8-27b/size7/k1/try0"
+   },
+   {
+    "concept": "negotiating",
+    "components": [
+     [
+      "parties",
+      []
+     ],
+     [
+      "table",
+      [
+       "parties"
+      ]
+     ],
+     [
+      "document",
+      [
+       "parties"
+      ]
+     ],
+     [
+      "gesture",
+      [
+       "parties"
+      ]
+     ],
+     [
+      "expression",
+      [
+       "parties"
+      ]
+     ],
+     [
+      "outcome",
+      [
+       "parties",
+       "gesture",
+       "expression"
+      ]
+     ],
+     [
+      "agreement",
+      [
+       "outcome",
+       "document"
+      ]
+     ],
+     [
+      "atmosphere",
+      [
+       "parties",
+       "table"
+      ]
+     ]
+    ],
+    "final": [
+     "parties",
+     "table",
+     "document",
+     "gesture",
+     "expression",
+     "outcome",
+     "agreement",
+     "atmosphere"
+    ],
+    "program": "gen(concept=negotiating) =\ngen(parties | concept=negotiating)\ngen(table | concept=negotiating, parties)\ngen(document | concept=negotiating, parties)\ngen(gesture | concept=negotiating, parties)\ngen(expression | concept=negotiating, parties)\ngen(outcome | concept=negotiating, parties, gesture, expression)\ngen(agreement | concept=negotiating, outcome, document)\ngen(atmosphere | concept=negotiating, parties, table)",
+    "source": "qwen3.8-27b/size7/k2/try0"
+   },
+   {
+    "concept": "negotiating",
+    "components": [
+     [
+      "parties",
+      []
+     ],
+     [
+      "table",
+      [
+       "parties"
+      ]
+     ],
+     [
+      "agenda",
+      [
+       "parties"
+      ]
+     ],
+     [
+      "proposals",
+      [
+       "agenda"
+      ]
+     ],
+     [
+      "reactions",
+      [
+       "proposals",
+       "parties"
+      ]
+     ],
+     [
+      "concessions",
+      [
+       "reactions"
+      ]
+     ],
+     [
+      "agreement",
+      [
+       "concessions",
+       "parties"
+      ]
+     ],
+     [
+      "outcome",
+      [
+       "agreement"
+      ]
+     ]
+    ],
+    "final": [
+     "parties",
+     "table",
+     "agenda",
+     "proposals",
+     "reactions",
+     "concessions",
+     "agreement",
+     "outcome"
+    ],
+    "program": "gen(concept=negotiating) =\ngen(parties | concept=negotiating)\ngen(table | concept=negotiating, parties)\ngen(agenda | concept=negotiating, parties)\ngen(proposals | concept=negotiating, agenda)\ngen(reactions | concept=negotiating, proposals, parties)\ngen(concessions | concept=negotiating, reactions)\ngen(agreement | concept=negotiating, concessions, parties)\ngen(outcome | concept=negotiating, agreement)",
+    "source": "qwen3.8-27b/size7/k3/try0"
+   },
+   {
+    "concept": "negotiating",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "parties",
+      [
+       "table"
+      ]
+     ],
+     [
+      "agenda",
+      [
+       "parties"
+      ]
+     ],
+     [
+      "offers",
+      [
+       "parties",
+       "agenda"
+      ]
+     ],
+     [
+      "terms",
+      [
+       "offers"
+      ]
+     ],
+     [
+      "agreement",
+      [
+       "terms"
+      ]
+     ],
+     [
+      "signature",
+      [
+       "agreement"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "parties",
+     "agenda",
+     "offers",
+     "terms",
+     "agreement",
+     "signature"
+    ],
+    "program": "gen(concept=negotiating) =\ngen(table | concept=negotiating)\ngen(parties | concept=negotiating, table)\ngen(agenda | concept=negotiating, parties)\ngen(offers | concept=negotiating, parties, agenda)\ngen(terms | concept=negotiating, offers)\ngen(agreement | concept=negotiating, terms)\ngen(signature | concept=negotiating, agreement)",
+    "source": "qwen3.8-27b/size7/k4/try0"
+   }
+  ],
+  "putting up decorations on a door": [
+   {
+    "concept": "putting up decorations on a door",
+    "components": [
+     [
+      "door",
+      []
+     ],
+     [
+      "decorations",
+      []
+     ],
+     [
+      "person",
+      []
+     ],
+     [
+      "tool",
+      [
+       "person"
+      ]
+     ],
+     [
+      "adhesive",
+      [
+       "decorations"
+      ]
+     ],
+     [
+      "action",
+      [
+       "person",
+       "decorations",
+       "door"
+      ]
+     ],
+     [
+      "result",
+      [
+       "action",
+       "door",
+       "decorations"
+      ]
+     ]
+    ],
+    "final": [
+     "door",
+     "decorations",
+     "person",
+     "tool",
+     "adhesive",
+     "action",
+     "result"
+    ],
+    "program": "gen(concept=putting-up-decorations-on-a-door) =\ngen(door | concept=putting-up-decorations-on-a-door)\ngen(decorations | concept=putting-up-decorations-on-a-door)\ngen(person | concept=putting-up-decorations-on-a-door)\ngen(tool | concept=putting-up-decorations-on-a-door, person)\ngen(adhesive | concept=putting-up-decorations-on-a-door, decorations)\ngen(action | concept=putting-up-decorations-on-a-door, person, decorations, door)\ngen(result | concept=putting-up-decorations-on-a-door, action, door, decorations)",
+    "source": "qwen3.8-27b/size7/k0/try0"
+   },
+   {
+    "concept": "putting up decorations on a door",
+    "components": [
+     [
+      "door",
+      []
+     ],
+     [
+      "decoration",
+      [
+       "door"
+      ]
+     ],
+     [
+      "string",
+      [
+       "door",
+       "decoration"
+      ]
+     ],
+     [
+      "adhesive",
+      [
+       "door",
+       "decoration"
+      ]
+     ],
+     [
+      "hand",
+      [
+       "decoration"
+      ]
+     ],
+     [
+      "tool",
+      [
+       "hand",
+       "decoration"
+      ]
+     ],
+     [
+      "person",
+      [
+       "hand",
+       "tool"
+      ]
+     ],
+     [
+      "ambient light",
+      [
+       "door",
+       "decoration"
+      ]
+     ]
+    ],
+    "final": [
+     "door",
+     "decoration",
+     "string",
+     "adhesive",
+     "hand",
+     "tool",
+     "person",
+     "ambient light"
+    ],
+    "program": "gen(concept=putting-up-decorations-on-a-door) =\ngen(door | concept=putting-up-decorations-on-a-door)\ngen(decoration | concept=putting-up-decorations-on-a-door, door)\ngen(string | concept=putting-up-decorations-on-a-door, door, decoration)\ngen(adhesive | concept=putting-up-decorations-on-a-door, door, decoration)\ngen(hand | concept=putting-up-decorations-on-a-door, decoration)\ngen(tool | concept=putting-up-decorations-on-a-door, hand, decoration)\ngen(person | concept=putting-up-decorations-on-a-door, hand, tool)\ngen(ambient-light | concept=putting-up-decorations-on-a-door, door, decoration)",
+    "source": "qwen3.8-27b/size7/k1/try0"
+   },
+   {
+    "concept": "putting up decorations on a door",
+    "components": [
+     [
+      "door",
+      []
+     ],
+     [
+      "decoration",
+      [
+       "door"
+      ]
+     ],
+     [
+      "person",
+      []
+     ],
+     [
+      "hands",
+      [
+       "person"
+      ]
+     ],
+     [
+      "attachment point",
+      [
+       "door",
+       "decoration"
+      ]
+     ],
+     [
+      "garland",
+      [
+       "decoration"
+      ]
+     ],
+     [
+      "ornament",
+      [
+       "decoration"
+      ]
+     ],
+     [
+      "string",
+      [
+       "decoration",
+       "attachment point"
+      ]
+     ]
+    ],
+    "final": [
+     "door",
+     "decoration",
+     "person",
+     "hands",
+     "attachment point",
+     "garland",
+     "ornament",
+     "string"
+    ],
+    "program": "gen(concept=putting-up-decorations-on-a-door) =\ngen(door | concept=putting-up-decorations-on-a-door)\ngen(decoration | concept=putting-up-decorations-on-a-door, door)\ngen(person | concept=putting-up-decorations-on-a-door)\ngen(hands | concept=putting-up-decorations-on-a-door, person)\ngen(attachment-point | concept=putting-up-decorations-on-a-door, door, decoration)\ngen(garland | concept=putting-up-decorations-on-a-door, decoration)\ngen(ornament | concept=putting-up-decorations-on-a-door, decoration)\ngen(string | concept=putting-up-decorations-on-a-door, decoration, attachment-point)",
+    "source": "qwen3.8-27b/size7/k2/try0"
+   },
+   {
+    "concept": "putting up decorations on a door",
+    "components": [
+     [
+      "door",
+      []
+     ],
+     [
+      "decorations",
+      [
+       "door"
+      ]
+     ],
+     [
+      "hands",
+      [
+       "decorations"
+      ]
+     ],
+     [
+      "person",
+      [
+       "hands"
+      ]
+     ],
+     [
+      "tool",
+      [
+       "person",
+       "decorations"
+      ]
+     ],
+     [
+      "frame",
+      [
+       "door"
+      ]
+     ],
+     [
+      "string",
+      [
+       "decorations",
+       "frame"
+      ]
+     ],
+     [
+      "surface",
+      [
+       "door",
+       "string"
+      ]
+     ]
+    ],
+    "final": [
+     "door",
+     "decorations",
+     "hands",
+     "person",
+     "tool",
+     "frame",
+     "string",
+     "surface"
+    ],
+    "program": "gen(concept=putting-up-decorations-on-a-door) =\ngen(door | concept=putting-up-decorations-on-a-door)\ngen(decorations | concept=putting-up-decorations-on-a-door, door)\ngen(hands | concept=putting-up-decorations-on-a-door, decorations)\ngen(person | concept=putting-up-decorations-on-a-door, hands)\ngen(tool | concept=putting-up-decorations-on-a-door, person, decorations)\ngen(frame | concept=putting-up-decorations-on-a-door, door)\ngen(string | concept=putting-up-decorations-on-a-door, decorations, frame)\ngen(surface | concept=putting-up-decorations-on-a-door, door, string)",
+    "source": "qwen3.8-27b/size7/k3/try0"
+   },
+   {
+    "concept": "putting up decorations on a door",
+    "components": [
+     [
+      "door",
+      []
+     ],
+     [
+      "decorations",
+      []
+     ],
+     [
+      "hands",
+      []
+     ],
+     [
+      "attachment mechanism",
+      [
+       "decorations"
+      ]
+     ],
+     [
+      "placement action",
+      [
+       "hands",
+       "decorations",
+       "door"
+      ]
+     ],
+     [
+      "visual result",
+      [
+       "door",
+       "decorations",
+       "placement action"
+      ]
+     ]
+    ],
+    "final": [
+     "door",
+     "decorations",
+     "hands",
+     "attachment mechanism",
+     "placement action",
+     "visual result"
+    ],
+    "program": "gen(concept=putting-up-decorations-on-a-door)\ngen(door | concept=putting-up-decorations-on-a-door)\ngen(decorations | concept=putting-up-decorations-on-a-door)\ngen(hands | concept=putting-up-decorations-on-a-door)\ngen(attachment-mechanism | concept=putting-up-decorations-on-a-door, decorations)\ngen(placement-action | concept=putting-up-decorations-on-a-door, hands, decorations, door)\ngen(visual-result | concept=putting-up-decorations-on-a-door, door, decorations, placement-action)",
+    "source": "qwen3.8-27b/size7/k4/try0"
+   }
+  ],
+  "setting up a table for two": [
+   {
+    "concept": "setting up a table for two",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "place settings",
+      [
+       "table"
+      ]
+     ],
+     [
+      "plates",
+      [
+       "place settings"
+      ]
+     ],
+     [
+      "cutlery",
+      [
+       "place settings"
+      ]
+     ],
+     [
+      "glasses",
+      [
+       "place settings"
+      ]
+     ],
+     [
+      "tablecloth",
+      [
+       "table"
+      ]
+     ],
+     [
+      "centerpiece",
+      [
+       "table"
+      ]
+     ],
+     [
+      "chairs",
+      [
+       "table"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "place settings",
+     "plates",
+     "cutlery",
+     "glasses",
+     "tablecloth",
+     "centerpiece",
+     "chairs"
+    ],
+    "program": "gen(concept=setting-up-a-table-for-two) =\ngen(table | concept=setting-up-a-table-for-two)\ngen(place-settings | concept=setting-up-a-table-for-two, table)\ngen(plates | concept=setting-up-a-table-for-two, place-settings)\ngen(cutlery | concept=setting-up-a-table-for-two, place-settings)\ngen(glasses | concept=setting-up-a-table-for-two, place-settings)\ngen(tablecloth | concept=setting-up-a-table-for-two, table)\ngen(centerpiece | concept=setting-up-a-table-for-two, table)\ngen(chairs | concept=setting-up-a-table-for-two, table)",
+    "source": "qwen3.8-27b/size7/k0/try0"
+   },
+   {
+    "concept": "setting up a table for two",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "chair left",
+      [
+       "table"
+      ]
+     ],
+     [
+      "chair right",
+      [
+       "table"
+      ]
+     ],
+     [
+      "place settings",
+      [
+       "table"
+      ]
+     ],
+     [
+      "plate left",
+      [
+       "place settings"
+      ]
+     ],
+     [
+      "plate right",
+      [
+       "place settings"
+      ]
+     ],
+     [
+      "cutlery",
+      [
+       "plate left",
+       "plate right"
+      ]
+     ],
+     [
+      "glassware",
+      [
+       "plate left",
+       "plate right"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "chair left",
+     "chair right",
+     "place settings",
+     "plate left",
+     "plate right",
+     "cutlery",
+     "glassware"
+    ],
+    "program": "gen(concept=setting-up-a-table-for-two) =\ngen(table | concept=setting-up-a-table-for-two)\ngen(chair-left | concept=setting-up-a-table-for-two, table)\ngen(chair-right | concept=setting-up-a-table-for-two, table)\ngen(place-settings | concept=setting-up-a-table-for-two, table)\ngen(plate-left | concept=setting-up-a-table-for-two, place-settings)\ngen(plate-right | concept=setting-up-a-table-for-two, place-settings)\ngen(cutlery | concept=setting-up-a-table-for-two, plate-left, plate-right)\ngen(glassware | concept=setting-up-a-table-for-two, plate-left, plate-right)",
+    "source": "qwen3.8-27b/size7/k1/try0"
+   },
+   {
+    "concept": "setting up a table for two",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "chairs",
+      [
+       "table"
+      ]
+     ],
+     [
+      "tablecloth",
+      [
+       "table"
+      ]
+     ],
+     [
+      "plates",
+      [
+       "tablecloth"
+      ]
+     ],
+     [
+      "glasses",
+      [
+       "plates"
+      ]
+     ],
+     [
+      "cutlery",
+      [
+       "plates"
+      ]
+     ],
+     [
+      "napkins",
+      [
+       "plates",
+       "cutlery"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "chairs",
+     "tablecloth",
+     "plates",
+     "glasses",
+     "cutlery",
+     "napkins"
+    ],
+    "program": "gen(concept=setting-up-a-table-for-two) =\ngen(table | concept=setting-up-a-table-for-two)\ngen(chairs | concept=setting-up-a-table-for-two, table)\ngen(tablecloth | concept=setting-up-a-table-for-two, table)\ngen(plates | concept=setting-up-a-table-for-two, tablecloth)\ngen(glasses | concept=setting-up-a-table-for-two, plates)\ngen(cutlery | concept=setting-up-a-table-for-two, plates)\ngen(napkins | concept=setting-up-a-table-for-two, plates, cutlery)",
+    "source": "qwen3.8-27b/size7/k2/try0"
+   },
+   {
+    "concept": "setting up a table for two",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "chairs",
+      [
+       "table"
+      ]
+     ],
+     [
+      "tablecloth",
+      [
+       "table"
+      ]
+     ],
+     [
+      "place settings",
+      [
+       "table"
+      ]
+     ],
+     [
+      "plates",
+      [
+       "place settings"
+      ]
+     ],
+     [
+      "glassware",
+      [
+       "place settings"
+      ]
+     ],
+     [
+      "utensils",
+      [
+       "place settings"
+      ]
+     ],
+     [
+      "centerpiece",
+      [
+       "table"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "chairs",
+     "tablecloth",
+     "place settings",
+     "plates",
+     "glassware",
+     "utensils",
+     "centerpiece"
+    ],
+    "program": "gen(concept=setting-up-a-table-for-two) =\ngen(table | concept=setting-up-a-table-for-two)\ngen(chairs | concept=setting-up-a-table-for-two, table)\ngen(tablecloth | concept=setting-up-a-table-for-two, table)\ngen(place-settings | concept=setting-up-a-table-for-two, table)\ngen(plates | concept=setting-up-a-table-for-two, place-settings)\ngen(glassware | concept=setting-up-a-table-for-two, place-settings)\ngen(utensils | concept=setting-up-a-table-for-two, place-settings)\ngen(centerpiece | concept=setting-up-a-table-for-two, table)",
+    "source": "qwen3.8-27b/size7/k3/try0"
+   },
+   {
+    "concept": "setting up a table for two",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "tablecloth",
+      [
+       "table"
+      ]
+     ],
+     [
+      "plate left",
+      [
+       "table"
+      ]
+     ],
+     [
+      "plate right",
+      [
+       "table"
+      ]
+     ],
+     [
+      "glass left",
+      [
+       "plate left"
+      ]
+     ],
+     [
+      "glass right",
+      [
+       "plate right"
+      ]
+     ],
+     [
+      "cutlery",
+      [
+       "plate left",
+       "plate right"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "tablecloth",
+     "plate left",
+     "plate right",
+     "glass left",
+     "glass right",
+     "cutlery"
+    ],
+    "program": "gen(concept=setting-up-a-table-for-two)\ngen(table | concept=setting-up-a-table-for-two)\ngen(tablecloth | concept=setting-up-a-table-for-two, table)\ngen(plate-left | concept=setting-up-a-table-for-two, table)\ngen(plate-right | concept=setting-up-a-table-for-two, table)\ngen(glass-left | concept=setting-up-a-table-for-two, plate-left)\ngen(glass-right | concept=setting-up-a-table-for-two, plate-right)\ngen(cutlery | concept=setting-up-a-table-for-two, plate-left, plate-right)",
+    "source": "qwen3.8-27b/size7/k4/try0"
+   }
+  ],
+  "solar system": [
+   {
+    "concept": "solar system",
+    "components": [
+     [
+      "sun",
+      []
+     ],
+     [
+      "planets",
+      [
+       "sun"
+      ]
+     ],
+     [
+      "asteroid belt",
+      [
+       "planets"
+      ]
+     ],
+     [
+      "moons",
+      [
+       "planets"
+      ]
+     ],
+     [
+      "comets",
+      [
+       "sun"
+      ]
+     ],
+     [
+      "stars",
+      [
+       "sun"
+      ]
+     ]
+    ],
+    "final": [
+     "sun",
+     "planets",
+     "asteroid belt",
+     "moons",
+     "comets",
+     "stars"
+    ],
+    "program": "gen(concept=solar-system)\ngen(sun | concept=solar-system)\ngen(planets | concept=solar-system, sun)\ngen(asteroid-belt | concept=solar-system, planets)\ngen(moons | concept=solar-system, planets)\ngen(comets | concept=solar-system, sun)\ngen(stars | concept=solar-system, sun)",
+    "source": "qwen3.8-27b/size7/k0/try0"
+   },
+   {
+    "concept": "solar system",
+    "components": [
+     [
+      "star",
+      []
+     ],
+     [
+      "planets",
+      [
+       "star"
+      ]
+     ],
+     [
+      "moons",
+      [
+       "planets"
+      ]
+     ],
+     [
+      "asteroid belt",
+      [
+       "star",
+       "planets"
+      ]
+     ],
+     [
+      "orbit paths",
+      [
+       "planets"
+      ]
+     ],
+     [
+      "celestial sphere",
+      [
+       "star",
+       "planets"
+      ]
+     ]
+    ],
+    "final": [
+     "star",
+     "planets",
+     "moons",
+     "asteroid belt",
+     "orbit paths",
+     "celestial sphere"
+    ],
+    "program": "gen(concept=solar-system) =\ngen(star | concept=solar-system)\ngen(planets | concept=solar-system, star)\ngen(moons | concept=solar-system, planets)\ngen(asteroid-belt | concept=solar-system, star, planets)\ngen(orbit-paths | concept=solar-system, planets)\ngen(celestial-sphere | concept=solar-system, star, planets)",
+    "source": "qwen3.8-27b/size7/k1/try0"
+   },
+   {
+    "concept": "solar system",
+    "components": [
+     [
+      "star",
+      []
+     ],
+     [
+      "planets",
+      [
+       "star"
+      ]
+     ],
+     [
+      "moons",
+      [
+       "planets"
+      ]
+     ],
+     [
+      "asteroids",
+      [
+       "star",
+       "planets"
+      ]
+     ],
+     [
+      "comets",
+      [
+       "star"
+      ]
+     ],
+     [
+      "space",
+      []
+     ],
+     [
+      "gravity",
+      [
+       "star",
+       "planets"
+      ]
+     ],
+     [
+      "light",
+      [
+       "star"
+      ]
+     ]
+    ],
+    "final": [
+     "star",
+     "planets",
+     "moons",
+     "asteroids",
+     "comets",
+     "space",
+     "gravity",
+     "light"
+    ],
+    "program": "gen(concept=solar-system) =\ngen(star | concept=solar-system)\ngen(planets | concept=solar-system, star)\ngen(moons | concept=solar-system, planets)\ngen(asteroids | concept=solar-system, star, planets)\ngen(comets | concept=solar-system, star)\ngen(space | concept=solar-system)\ngen(gravity | concept=solar-system, star, planets)\ngen(light | concept=solar-system, star)",
+    "source": "qwen3.8-27b/size7/k2/try0"
+   },
+   {
+    "concept": "solar system",
+    "components": [
+     [
+      "sun",
+      []
+     ],
+     [
+      "planets",
+      [
+       "sun"
+      ]
+     ],
+     [
+      "moons",
+      [
+       "planets"
+      ]
+     ],
+     [
+      "asteroid belt",
+      [
+       "planets"
+      ]
+     ],
+     [
+      "orbit paths",
+      [
+       "planets"
+      ]
+     ],
+     [
+      "stars",
+      [
+       "sun"
+      ]
+     ],
+     [
+      "space background",
+      []
+     ],
+     [
+      "comets",
+      [
+       "sun"
+      ]
+     ]
+    ],
+    "final": [
+     "sun",
+     "planets",
+     "moons",
+     "asteroid belt",
+     "orbit paths",
+     "stars",
+     "space background",
+     "comets"
+    ],
+    "program": "gen(concept=solar-system) =\ngen(sun | concept=solar-system)\ngen(planets | concept=solar-system, sun)\ngen(moons | concept=solar-system, planets)\ngen(asteroid-belt | concept=solar-system, planets)\ngen(orbit-paths | concept=solar-system, planets)\ngen(stars | concept=solar-system, sun)\ngen(space-background | concept=solar-system)\ngen(comets | concept=solar-system, sun)",
+    "source": "qwen3.8-27b/size7/k3/try0"
+   },
+   {
+    "concept": "solar system",
+    "components": [
+     [
+      "star",
+      []
+     ],
+     [
+      "planet",
+      [
+       "star"
+      ]
+     ],
+     [
+      "moon",
+      [
+       "planet"
+      ]
+     ],
+     [
+      "asteroid",
+      [
+       "star"
+      ]
+     ],
+     [
+      "orbit",
+      [
+       "star",
+       "planet"
+      ]
+     ],
+     [
+      "space",
+      []
+     ],
+     [
+      "light",
+      [
+       "star"
+      ]
+     ],
+     [
+      "sky",
+      [
+       "space"
+      ]
+     ]
+    ],
+    "final": [
+     "star",
+     "planet",
+     "moon",
+     "asteroid",
+     "orbit",
+     "space",
+     "light",
+     "sky"
+    ],
+    "program": "gen(concept=solar-system) =\ngen(star | concept=solar-system)\ngen(planet | concept=solar-system, star)\ngen(moon | concept=solar-system, planet)\ngen(asteroid | concept=solar-system, star)\ngen(orbit | concept=solar-system, star, planet)\ngen(space | concept=solar-system)\ngen(light | concept=solar-system, star)\ngen(sky | concept=solar-system, space)",
+    "source": "qwen3.8-27b/size7/k4/try0"
+   }
+  ],
+  "tic-tac-toe": [
+   {
+    "concept": "tic-tac-toe",
+    "components": [
+     [
+      "board",
+      []
+     ],
+     [
+      "grid lines",
+      [
+       "board"
+      ]
+     ],
+     [
+      "crosses",
+      [
+       "grid lines"
+      ]
+     ],
+     [
+      "noughts",
+      [
+       "grid lines"
+      ]
+     ],
+     [
+      "winner",
+      [
+       "crosses",
+       "noughts"
+      ]
+     ]
+    ],
+    "final": [
+     "board",
+     "grid lines",
+     "crosses",
+     "noughts",
+     "winner"
+    ],
+    "program": "gen(concept=tic-tac-toe) =\ngen(board | concept=tic-tac-toe)\ngen(grid-lines | concept=tic-tac-toe, board)\ngen(crosses | concept=tic-tac-toe, grid-lines)\ngen(noughts | concept=tic-tac-toe, grid-lines)\ngen(winner | concept=tic-tac-toe, crosses, noughts)",
+    "source": "qwen3.8-27b/size7/k0/try0"
+   },
+   {
+    "concept": "tic-tac-toe",
+    "components": [
+     [
+      "board",
+      []
+     ],
+     [
+      "grid",
+      [
+       "board"
+      ]
+     ],
+     [
+      "cells",
+      [
+       "grid"
+      ]
+     ],
+     [
+      "player x",
+      []
+     ],
+     [
+      "player o",
+      []
+     ],
+     [
+      "marks x",
+      [
+       "player x",
+       "cells"
+      ]
+     ],
+     [
+      "marks o",
+      [
+       "player o",
+       "cells"
+      ]
+     ],
+     [
+      "win line",
+      [
+       "marks x",
+       "marks o"
+      ]
+     ]
+    ],
+    "final": [
+     "board",
+     "grid",
+     "cells",
+     "player x",
+     "player o",
+     "marks x",
+     "marks o",
+     "win line"
+    ],
+    "program": "gen(concept=tic-tac-toe) =\ngen(board | concept=tic-tac-toe)\ngen(grid | concept=tic-tac-toe, board)\ngen(cells | concept=tic-tac-toe, grid)\ngen(player-x | concept=tic-tac-toe)\ngen(player-o | concept=tic-tac-toe)\ngen(marks-x | concept=tic-tac-toe, player-x, cells)\ngen(marks-o | concept=tic-tac-toe, player-o, cells)\ngen(win-line | concept=tic-tac-toe, marks-x, marks-o)",
+    "source": "qwen3.8-27b/size7/k1/try0"
+   },
+   {
+    "concept": "tic-tac-toe",
+    "components": [
+     [
+      "grid",
+      []
+     ],
+     [
+      "cell",
+      [
+       "grid"
+      ]
+     ],
+     [
+      "mark x",
+      [
+       "cell"
+      ]
+     ],
+     [
+      "mark o",
+      [
+       "cell"
+      ]
+     ],
+     [
+      "state",
+      [
+       "mark x",
+       "mark o"
+      ]
+     ]
+    ],
+    "final": [
+     "grid",
+     "cell",
+     "mark x",
+     "mark o",
+     "state"
+    ],
+    "program": "gen(concept=tic-tac-toe) =\ngen(grid | concept=tic-tac-toe)\ngen(cell | concept=tic-tac-toe, grid)\ngen(mark-x | concept=tic-tac-toe, cell)\ngen(mark-o | concept=tic-tac-toe, cell)\ngen(state | concept=tic-tac-toe, mark-x, mark-o)",
+    "source": "qwen3.8-27b/size7/k2/try0"
+   },
+   {
+    "concept": "tic-tac-toe",
+    "components": [
+     [
+      "grid",
+      []
+     ],
+     [
+      "player x",
+      [
+       "grid"
+      ]
+     ],
+     [
+      "player o",
+      [
+       "grid"
+      ]
+     ],
+     [
+      "moves",
+      [
+       "grid",
+       "player x",
+       "player o"
+      ]
+     ]
+    ],
+    "final": [
+     "grid",
+     "player x",
+     "player o",
+     "moves"
+    ],
+    "program": "gen(concept=tic-tac-toe) =\ngen(grid | concept=tic-tac-toe)\ngen(player-x | concept=tic-tac-toe, grid)\ngen(player-o | concept=tic-tac-toe, grid)\ngen(moves | concept=tic-tac-toe, grid, player-x, player-o)",
+    "source": "qwen3.8-27b/size7/k3/try0"
+   },
+   {
+    "concept": "tic-tac-toe",
+    "components": [
+     [
+      "board",
+      []
+     ],
+     [
+      "grid lines",
+      [
+       "board"
+      ]
+     ],
+     [
+      "cells",
+      [
+       "grid lines"
+      ]
+     ],
+     [
+      "x marks",
+      [
+       "cells"
+      ]
+     ],
+     [
+      "o marks",
+      [
+       "cells"
+      ]
+     ],
+     [
+      "empty spaces",
+      [
+       "cells"
+      ]
+     ],
+     [
+      "win line",
+      [
+       "x marks",
+       "o marks"
+      ]
+     ]
+    ],
+    "final": [
+     "board",
+     "grid lines",
+     "cells",
+     "x marks",
+     "o marks",
+     "empty spaces",
+     "win line"
+    ],
+    "program": "gen(concept=tic-tac-toe) =\ngen(board | concept=tic-tac-toe)\ngen(grid-lines | concept=tic-tac-toe, board)\ngen(cells | concept=tic-tac-toe, grid-lines)\ngen(x-marks | concept=tic-tac-toe, cells)\ngen(o-marks | concept=tic-tac-toe, cells)\ngen(empty-spaces | concept=tic-tac-toe, cells)\ngen(win-line | concept=tic-tac-toe, x-marks, o-marks)",
+    "source": "qwen3.8-27b/size7/k4/try0"
+   }
+  ],
+  "tidying up a guest room": [
+   {
+    "concept": "tidying up a guest room",
+    "components": [
+     [
+      "room",
+      []
+     ],
+     [
+      "bed",
+      [
+       "room"
+      ]
+     ],
+     [
+      "linen",
+      [
+       "bed"
+      ]
+     ],
+     [
+      "dust",
+      [
+       "room"
+      ]
+     ],
+     [
+      "cleaner",
+      [
+       "room"
+      ]
+     ],
+     [
+      "clutter",
+      [
+       "room"
+      ]
+     ],
+     [
+      "organized state",
+      [
+       "cleaner",
+       "linen",
+       "dust",
+       "clutter"
+      ]
+     ]
+    ],
+    "final": [
+     "room",
+     "bed",
+     "linen",
+     "dust",
+     "cleaner",
+     "clutter",
+     "organized state"
+    ],
+    "program": "gen(concept=tidying-up-a-guest-room) =\ngen(room | concept=tidying-up-a-guest-room)\ngen(bed | concept=tidying-up-a-guest-room, room)\ngen(linen | concept=tidying-up-a-guest-room, bed)\ngen(dust | concept=tidying-up-a-guest-room, room)\ngen(cleaner | concept=tidying-up-a-guest-room, room)\ngen(clutter | concept=tidying-up-a-guest-room, room)\ngen(organized-state | concept=tidying-up-a-guest-room, cleaner, linen, dust, clutter)",
+    "source": "qwen3.8-27b/size7/k0/try0"
+   },
+   {
+    "concept": "tidying up a guest room",
+    "components": [
+     [
+      "bed",
+      []
+     ],
+     [
+      "linen",
+      [
+       "bed"
+      ]
+     ],
+     [
+      "dust",
+      []
+     ],
+     [
+      "surfaces",
+      [
+       "dust"
+      ]
+     ],
+     [
+      "clutter",
+      []
+     ],
+     [
+      "bins",
+      [
+       "clutter"
+      ]
+     ],
+     [
+      "person",
+      []
+     ],
+     [
+      "actions",
+      [
+       "person",
+       "linen",
+       "dust",
+       "clutter",
+       "bins"
+      ]
+     ]
+    ],
+    "final": [
+     "bed",
+     "linen",
+     "dust",
+     "surfaces",
+     "clutter",
+     "bins",
+     "person",
+     "actions"
+    ],
+    "program": "gen(concept=tidying-up-a-guest-room) =\ngen(bed | concept=tidying-up-a-guest-room)\ngen(linen | concept=tidying-up-a-guest-room, bed)\ngen(dust | concept=tidying-up-a-guest-room)\ngen(surfaces | concept=tidying-up-a-guest-room, dust)\ngen(clutter | concept=tidying-up-a-guest-room)\ngen(bins | concept=tidying-up-a-guest-room, clutter)\ngen(person | concept=tidying-up-a-guest-room)\ngen(actions | concept=tidying-up-a-guest-room, person, linen, dust, clutter, bins)",
+    "source": "qwen3.8-27b/size7/k1/try0"
+   },
+   {
+    "concept": "tidying up a guest room",
+    "components": [
+     [
+      "bed",
+      []
+     ],
+     [
+      "pillows",
+      [
+       "bed"
+      ]
+     ],
+     [
+      "duvet",
+      [
+       "bed"
+      ]
+     ],
+     [
+      "nightstand",
+      []
+     ],
+     [
+      "clutter",
+      [
+       "nightstand"
+      ]
+     ],
+     [
+      "bin",
+      []
+     ],
+     [
+      "hanger",
+      []
+     ],
+     [
+      "clothes",
+      [
+       "hanger"
+      ]
+     ]
+    ],
+    "final": [
+     "bed",
+     "pillows",
+     "duvet",
+     "nightstand",
+     "clutter",
+     "bin",
+     "hanger",
+     "clothes"
+    ],
+    "program": "gen(concept=tidying-up-a-guest-room) =\ngen(bed | concept=tidying-up-a-guest-room)\ngen(pillows | concept=tidying-up-a-guest-room, bed)\ngen(duvet | concept=tidying-up-a-guest-room, bed)\ngen(nightstand | concept=tidying-up-a-guest-room)\ngen(clutter | concept=tidying-up-a-guest-room, nightstand)\ngen(bin | concept=tidying-up-a-guest-room)\ngen(hanger | concept=tidying-up-a-guest-room)\ngen(clothes | concept=tidying-up-a-guest-room, hanger)",
+    "source": "qwen3.8-27b/size7/k2/try0"
+   },
+   {
+    "concept": "tidying up a guest room",
+    "components": [
+     [
+      "bed",
+      []
+     ],
+     [
+      "pillows",
+      [
+       "bed"
+      ]
+     ],
+     [
+      "duvet",
+      [
+       "bed"
+      ]
+     ],
+     [
+      "nightstand",
+      [
+       "bed"
+      ]
+     ],
+     [
+      "lamp",
+      [
+       "nightstand"
+      ]
+     ],
+     [
+      "rug",
+      []
+     ],
+     [
+      "window",
+      []
+     ],
+     [
+      "curtains",
+      [
+       "window"
+      ]
+     ]
+    ],
+    "final": [
+     "bed",
+     "pillows",
+     "duvet",
+     "nightstand",
+     "lamp",
+     "rug",
+     "window",
+     "curtains"
+    ],
+    "program": "gen(concept=tidying-up-a-guest-room) =\ngen(bed | concept=tidying-up-a-guest-room)\ngen(pillows | concept=tidying-up-a-guest-room, bed)\ngen(duvet | concept=tidying-up-a-guest-room, bed)\ngen(nightstand | concept=tidying-up-a-guest-room, bed)\ngen(lamp | concept=tidying-up-a-guest-room, nightstand)\ngen(rug | concept=tidying-up-a-guest-room)\ngen(window | concept=tidying-up-a-guest-room)\ngen(curtains | concept=tidying-up-a-guest-room, window)",
+    "source": "qwen3.8-27b/size7/k3/try0"
+   },
+   {
+    "concept": "tidying up a guest room",
+    "components": [
+     [
+      "bed",
+      []
+     ],
+     [
+      "bedding",
+      [
+       "bed"
+      ]
+     ],
+     [
+      "wardrobe",
+      []
+     ],
+     [
+      "clothes",
+      [
+       "wardrobe"
+      ]
+     ],
+     [
+      "surface",
+      []
+     ],
+     [
+      "clutter",
+      [
+       "surface"
+      ]
+     ],
+     [
+      "bin",
+      [
+       "surface"
+      ]
+     ],
+     [
+      "clean room",
+      [
+       "bed",
+       "bedding",
+       "wardrobe",
+       "clothes",
+       "surface",
+       "clutter",
+       "bin"
+      ]
+     ]
+    ],
+    "final": [
+     "bed",
+     "bedding",
+     "wardrobe",
+     "clothes",
+     "surface",
+     "clutter",
+     "bin",
+     "clean room"
+    ],
+    "program": "gen(concept=tidying-up-a-guest-room)\ngen(bed | concept=tidying-up-a-guest-room)\ngen(bedding | concept=tidying-up-a-guest-room, bed)\ngen(wardrobe | concept=tidying-up-a-guest-room)\ngen(clothes | concept=tidying-up-a-guest-room, wardrobe)\ngen(surface | concept=tidying-up-a-guest-room)\ngen(clutter | concept=tidying-up-a-guest-room, surface)\ngen(bin | concept=tidying-up-a-guest-room, surface)\ngen(clean-room | concept=tidying-up-a-guest-room, bed, bedding, wardrobe, clothes, surface, clutter, bin)",
+    "source": "qwen3.8-27b/size7/k4/try0"
+   }
+  ],
+  "treasure map": [
+   {
+    "concept": "treasure map",
+    "components": [
+     [
+      "map paper",
+      []
+     ],
+     [
+      "landmarks",
+      [
+       "map paper"
+      ]
+     ],
+     [
+      "path",
+      [
+       "map paper",
+       "landmarks"
+      ]
+     ],
+     [
+      "x mark",
+      [
+       "map paper",
+       "path"
+      ]
+     ],
+     [
+      "compass",
+      [
+       "map paper"
+      ]
+     ],
+     [
+      "edges",
+      [
+       "map paper"
+      ]
+     ]
+    ],
+    "final": [
+     "map paper",
+     "landmarks",
+     "path",
+     "x mark",
+     "compass",
+     "edges"
+    ],
+    "program": "gen(concept=treasure-map) =\ngen(map-paper | concept=treasure-map)\ngen(landmarks | concept=treasure-map, map-paper)\ngen(path | concept=treasure-map, map-paper, landmarks)\ngen(x-mark | concept=treasure-map, map-paper, path)\ngen(compass | concept=treasure-map, map-paper)\ngen(edges | concept=treasure-map, map-paper)",
+    "source": "qwen3.8-27b/size7/k0/try0"
+   },
+   {
+    "concept": "treasure map",
+    "components": [
+     [
+      "paper",
+      []
+     ],
+     [
+      "compass",
+      [
+       "paper"
+      ]
+     ],
+     [
+      "islands",
+      [
+       "paper",
+       "compass"
+      ]
+     ],
+     [
+      "path",
+      [
+       "paper",
+       "islands"
+      ]
+     ],
+     [
+      "x",
+      [
+       "paper",
+       "path"
+      ]
+     ],
+     [
+      "treasure",
+      [
+       "x"
+      ]
+     ],
+     [
+      "legend",
+      [
+       "paper",
+       "compass",
+       "islands"
+      ]
+     ]
+    ],
+    "final": [
+     "paper",
+     "compass",
+     "islands",
+     "path",
+     "x",
+     "treasure",
+     "legend"
+    ],
+    "program": "gen(concept=treasure-map) =\ngen(paper | concept=treasure-map)\ngen(compass | concept=treasure-map, paper)\ngen(islands | concept=treasure-map, paper, compass)\ngen(path | concept=treasure-map, paper, islands)\ngen(x | concept=treasure-map, paper, path)\ngen(treasure | concept=treasure-map, x)\ngen(legend | concept=treasure-map, paper, compass, islands)",
+    "source": "qwen3.8-27b/size7/k1/try0"
+   },
+   {
+    "concept": "treasure map",
+    "components": [
+     [
+      "parchment",
+      []
+     ],
+     [
+      "terrain",
+      [
+       "parchment"
+      ]
+     ],
+     [
+      "water",
+      [
+       "parchment",
+       "terrain"
+      ]
+     ],
+     [
+      "island",
+      [
+       "terrain",
+       "water"
+      ]
+     ],
+     [
+      "path",
+      [
+       "terrain",
+       "island"
+      ]
+     ],
+     [
+      "x mark",
+      [
+       "path",
+       "island"
+      ]
+     ],
+     [
+      "compass rose",
+      [
+       "parchment",
+       "water"
+      ]
+     ],
+     [
+      "treasure chest",
+      [
+       "x mark",
+       "island"
+      ]
+     ]
+    ],
+    "final": [
+     "parchment",
+     "terrain",
+     "water",
+     "island",
+     "path",
+     "x mark",
+     "compass rose",
+     "treasure chest"
+    ],
+    "program": "gen(concept=treasure-map) =\ngen(parchment | concept=treasure-map)\ngen(terrain | concept=treasure-map, parchment)\ngen(water | concept=treasure-map, parchment, terrain)\ngen(island | concept=treasure-map, terrain, water)\ngen(path | concept=treasure-map, terrain, island)\ngen(x-mark | concept=treasure-map, path, island)\ngen(compass-rose | concept=treasure-map, parchment, water)\ngen(treasure-chest | concept=treasure-map, x-mark, island)",
+    "source": "qwen3.8-27b/size7/k2/try0"
+   },
+   {
+    "concept": "treasure map",
+    "components": [
+     [
+      "map paper",
+      []
+     ],
+     [
+      "coastline",
+      [
+       "map paper"
+      ]
+     ],
+     [
+      "island",
+      [
+       "map paper",
+       "coastline"
+      ]
+     ],
+     [
+      "x mark",
+      [
+       "island"
+      ]
+     ],
+     [
+      "compass",
+      [
+       "map paper"
+      ]
+     ],
+     [
+      "edge wear",
+      [
+       "map paper"
+      ]
+     ],
+     [
+      "ink stain",
+      [
+       "map paper"
+      ]
+     ]
+    ],
+    "final": [
+     "map paper",
+     "coastline",
+     "island",
+     "x mark",
+     "compass",
+     "edge wear",
+     "ink stain"
+    ],
+    "program": "gen(concept=treasure-map)\ngen(map-paper | concept=treasure-map)\ngen(coastline | concept=treasure-map, map-paper)\ngen(island | concept=treasure-map, map-paper, coastline)\ngen(x-mark | concept=treasure-map, island)\ngen(compass | concept=treasure-map, map-paper)\ngen(edge-wear | concept=treasure-map, map-paper)\ngen(ink-stain | concept=treasure-map, map-paper)",
+    "source": "qwen3.8-27b/size7/k3/try0"
+   },
+   {
+    "concept": "treasure map",
+    "components": [
+     [
+      "parchment",
+      []
+     ],
+     [
+      "landmarks",
+      [
+       "parchment"
+      ]
+     ],
+     [
+      "path",
+      [
+       "landmarks"
+      ]
+     ],
+     [
+      "x mark",
+      [
+       "path"
+      ]
+     ],
+     [
+      "compass",
+      [
+       "parchment"
+      ]
+     ],
+     [
+      "border",
+      [
+       "parchment"
+      ]
+     ],
+     [
+      "text",
+      [
+       "parchment",
+       "x mark"
+      ]
+     ]
+    ],
+    "final": [
+     "parchment",
+     "landmarks",
+     "path",
+     "x mark",
+     "compass",
+     "border",
+     "text"
+    ],
+    "program": "gen(concept=treasure-map) =\ngen(parchment | concept=treasure-map)\ngen(landmarks | concept=treasure-map, parchment)\ngen(path | concept=treasure-map, landmarks)\ngen(x-mark | concept=treasure-map, path)\ngen(compass | concept=treasure-map, parchment)\ngen(border | concept=treasure-map, parchment)\ngen(text | concept=treasure-map, parchment, x-mark)",
+    "source": "qwen3.8-27b/size7/k4/try0"
+   }
+  ]
+ }
+}

@@ -1,0 +1,3821 @@
+{
+ "meta": {
+  "model": "qwen3-vl-8b",
+  "size": 3,
+  "samples": 5,
+  "temperature": 0.7,
+  "top_p": 0.95,
+  "thinking": false,
+  "prompt_example": "Can you give me a program representing the schema for a concept? For example,\ngen(concept=academia) =\ngen(faculty | concept=academia)\ngen(students | concept=academia)\ngen(research-output | concept=academia, faculty, students)\nPlease do the same for gen(concept=<concept>) in the same format without explanation. Keep the program simple with four or less components. Use only the most necessary parts of the schema that can be mapped to objects in an image."
+ },
+ "schemas": {
+  "atom": [
+   {
+    "concept": "atom",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "electrons",
+      []
+     ],
+     [
+      "orbital",
+      [
+       "electrons"
+      ]
+     ],
+     [
+      "shell",
+      [
+       "electrons"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "electrons",
+     "orbital",
+     "shell"
+    ],
+    "program": "gen(concept=atom) =\ngen(nucleus | concept=atom)\ngen(electrons | concept=atom)\ngen(orbital | concept=atom, electrons)\ngen(shell | concept=atom, electrons)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "atom",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "electron",
+      []
+     ],
+     [
+      "orbital",
+      [
+       "electron"
+      ]
+     ],
+     [
+      "shell",
+      [
+       "electron"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "electron",
+     "orbital",
+     "shell"
+    ],
+    "program": "gen(concept=atom) =\ngen(nucleus | concept=atom)\ngen(electron | concept=atom)\ngen(orbital | concept=atom, electron)\ngen(shell | concept=atom, electron)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "atom",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "electron",
+      []
+     ],
+     [
+      "orbit",
+      [
+       "electron"
+      ]
+     ],
+     [
+      "shell",
+      [
+       "electron"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "electron",
+     "orbit",
+     "shell"
+    ],
+    "program": "gen(concept=atom) =\ngen(nucleus | concept=atom)\ngen(electron | concept=atom)\ngen(orbit | concept=atom, electron)\ngen(shell | concept=atom, electron)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "atom",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "electrons",
+      []
+     ],
+     [
+      "orbit",
+      [
+       "electrons"
+      ]
+     ],
+     [
+      "shell",
+      [
+       "electrons"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "electrons",
+     "orbit",
+     "shell"
+    ],
+    "program": "gen(concept=atom) =\ngen(nucleus | concept=atom)\ngen(electrons | concept=atom)\ngen(orbit | concept=atom, electrons)\ngen(shell | concept=atom, electrons)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "atom",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "electron",
+      []
+     ],
+     [
+      "orbit",
+      [
+       "electron"
+      ]
+     ],
+     [
+      "shell",
+      [
+       "electron"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "electron",
+     "orbit",
+     "shell"
+    ],
+    "program": "gen(concept=atom) =\ngen(nucleus | concept=atom)\ngen(electron | concept=atom)\ngen(orbit | concept=atom, electron)\ngen(shell | concept=atom, electron)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "cell": [
+   {
+    "concept": "cell",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "membrane",
+      []
+     ],
+     [
+      "cytoplasm",
+      []
+     ],
+     [
+      "nucleolus",
+      [
+       "nucleus"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "membrane",
+     "cytoplasm",
+     "nucleolus"
+    ],
+    "program": "gen(concept=cell) =\ngen(nucleus | concept=cell)\ngen(membrane | concept=cell)\ngen(cytoplasm | concept=cell)\ngen(nucleolus | concept=cell, nucleus)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "cell",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "mitochondria",
+      []
+     ],
+     [
+      "cell membrane",
+      []
+     ],
+     [
+      "cytoplasm",
+      []
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "mitochondria",
+     "cell membrane",
+     "cytoplasm"
+    ],
+    "program": "gen(concept=cell) =\ngen(nucleus | concept=cell)\ngen(mitochondria | concept=cell)\ngen(cell-membrane | concept=cell)\ngen(cytoplasm | concept=cell)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "cell",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "membrane",
+      []
+     ],
+     [
+      "cytoplasm",
+      []
+     ],
+     [
+      "nucleolus",
+      [
+       "nucleus"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "membrane",
+     "cytoplasm",
+     "nucleolus"
+    ],
+    "program": "gen(concept=cell) =\ngen(nucleus | concept=cell)\ngen(membrane | concept=cell)\ngen(cytoplasm | concept=cell)\ngen(nucleolus | concept=cell, nucleus)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "cell",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "membrane",
+      []
+     ],
+     [
+      "cytoplasm",
+      []
+     ],
+     [
+      "nucleolus",
+      [
+       "nucleus"
+      ]
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "membrane",
+     "cytoplasm",
+     "nucleolus"
+    ],
+    "program": "gen(concept=cell) =  \ngen(nucleus | concept=cell)  \ngen(membrane | concept=cell)  \ngen(cytoplasm | concept=cell)  \ngen(nucleolus | concept=cell, nucleus)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "cell",
+    "components": [
+     [
+      "nucleus",
+      []
+     ],
+     [
+      "mitochondria",
+      []
+     ],
+     [
+      "cytoplasm",
+      []
+     ],
+     [
+      "cell membrane",
+      []
+     ]
+    ],
+    "final": [
+     "nucleus",
+     "mitochondria",
+     "cytoplasm",
+     "cell membrane"
+    ],
+    "program": "gen(concept=cell) =\ngen(nucleus | concept=cell)\ngen(mitochondria | concept=cell)\ngen(cytoplasm | concept=cell)\ngen(cell-membrane | concept=cell)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "deceiving": [
+   {
+    "concept": "deceiving",
+    "components": [
+     [
+      "illusion",
+      []
+     ],
+     [
+      "mask",
+      []
+     ],
+     [
+      "behavior",
+      [
+       "illusion",
+       "mask"
+      ]
+     ],
+     [
+      "target",
+      [
+       "behavior"
+      ]
+     ]
+    ],
+    "final": [
+     "illusion",
+     "mask",
+     "behavior",
+     "target"
+    ],
+    "program": "gen(concept=deceiving) =\ngen(illusion | concept=deceiving)\ngen(mask | concept=deceiving)\ngen(behavior | concept=deceiving, illusion, mask)\ngen(target | concept=deceiving, behavior)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "deceiving",
+    "components": [
+     [
+      "facade",
+      []
+     ],
+     [
+      "mask",
+      []
+     ],
+     [
+      "illusion",
+      [
+       "facade",
+       "mask"
+      ]
+     ],
+     [
+      "truth",
+      [
+       "illusion"
+      ]
+     ]
+    ],
+    "final": [
+     "facade",
+     "mask",
+     "illusion",
+     "truth"
+    ],
+    "program": "gen(concept=deceiving) =  \ngen(facade | concept=deceiving)  \ngen(mask | concept=deceiving)  \ngen(illusion | concept=deceiving, facade, mask)  \ngen(truth | concept=deceiving, illusion)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "deceiving",
+    "components": [
+     [
+      "face",
+      []
+     ],
+     [
+      "eye",
+      []
+     ],
+     [
+      "mouth",
+      []
+     ],
+     [
+      "smile",
+      [
+       "face",
+       "mouth"
+      ]
+     ]
+    ],
+    "final": [
+     "face",
+     "eye",
+     "mouth",
+     "smile"
+    ],
+    "program": "gen(concept=deceiving) =\ngen(face | concept=deceiving)\ngen(eye | concept=deceiving)\ngen(mouth | concept=deceiving)\ngen(smile | concept=deceiving, face, mouth)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "deceiving",
+    "components": [
+     [
+      "face",
+      []
+     ],
+     [
+      "eyes",
+      []
+     ],
+     [
+      "lips",
+      []
+     ],
+     [
+      "hand gesture",
+      []
+     ]
+    ],
+    "final": [
+     "face",
+     "eyes",
+     "lips",
+     "hand gesture"
+    ],
+    "program": "gen(concept=deceiving) =  \ngen(face | concept=deceiving)  \ngen(eyes | concept=deceiving)  \ngen(lips | concept=deceiving)  \ngen(hand-gesture | concept=deceiving)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "deceiving",
+    "components": [
+     [
+      "face",
+      []
+     ],
+     [
+      "eyes",
+      []
+     ],
+     [
+      "lips",
+      []
+     ],
+     [
+      "hand",
+      []
+     ]
+    ],
+    "final": [
+     "face",
+     "eyes",
+     "lips",
+     "hand"
+    ],
+    "program": "gen(concept=deceiving) =\ngen(face | concept=deceiving)\ngen(eyes | concept=deceiving)\ngen(lips | concept=deceiving)\ngen(hand | concept=deceiving)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "eclipse": [
+   {
+    "concept": "eclipse",
+    "components": [
+     [
+      "sun",
+      []
+     ],
+     [
+      "moon",
+      []
+     ],
+     [
+      "earth",
+      []
+     ],
+     [
+      "shadow",
+      [
+       "moon",
+       "earth"
+      ]
+     ]
+    ],
+    "final": [
+     "sun",
+     "moon",
+     "earth",
+     "shadow"
+    ],
+    "program": "gen(concept=eclipse) =\ngen(sun | concept=eclipse)\ngen(moon | concept=eclipse)\ngen(earth | concept=eclipse)\ngen(shadow | concept=eclipse, moon, earth)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "eclipse",
+    "components": [
+     [
+      "sun",
+      []
+     ],
+     [
+      "moon",
+      []
+     ],
+     [
+      "earth",
+      []
+     ],
+     [
+      "shadow",
+      [
+       "moon",
+       "earth"
+      ]
+     ]
+    ],
+    "final": [
+     "sun",
+     "moon",
+     "earth",
+     "shadow"
+    ],
+    "program": "gen(concept=eclipse) =\ngen(sun | concept=eclipse)\ngen(moon | concept=eclipse)\ngen(earth | concept=eclipse)\ngen(shadow | concept=eclipse, moon, earth)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "eclipse",
+    "components": [
+     [
+      "sun",
+      []
+     ],
+     [
+      "moon",
+      []
+     ],
+     [
+      "earth",
+      []
+     ],
+     [
+      "shadow",
+      [
+       "moon",
+       "earth"
+      ]
+     ]
+    ],
+    "final": [
+     "sun",
+     "moon",
+     "earth",
+     "shadow"
+    ],
+    "program": "gen(concept=eclipse) =\ngen(sun | concept=eclipse)\ngen(moon | concept=eclipse)\ngen(earth | concept=eclipse)\ngen(shadow | concept=eclipse, moon, earth)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "eclipse",
+    "components": [
+     [
+      "sun",
+      []
+     ],
+     [
+      "moon",
+      []
+     ],
+     [
+      "earth",
+      []
+     ],
+     [
+      "shadow",
+      [
+       "moon",
+       "earth"
+      ]
+     ]
+    ],
+    "final": [
+     "sun",
+     "moon",
+     "earth",
+     "shadow"
+    ],
+    "program": "gen(concept=eclipse) =\ngen(sun | concept=eclipse)\ngen(moon | concept=eclipse)\ngen(earth | concept=eclipse)\ngen(shadow | concept=eclipse, moon, earth)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "eclipse",
+    "components": [
+     [
+      "sun",
+      []
+     ],
+     [
+      "moon",
+      []
+     ],
+     [
+      "earth",
+      []
+     ],
+     [
+      "shadow",
+      [
+       "moon",
+       "earth"
+      ]
+     ]
+    ],
+    "final": [
+     "sun",
+     "moon",
+     "earth",
+     "shadow"
+    ],
+    "program": "gen(concept=eclipse) =\ngen(sun | concept=eclipse)\ngen(moon | concept=eclipse)\ngen(earth | concept=eclipse)\ngen(shadow | concept=eclipse, moon, earth)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "faults and earthquakes": [
+   {
+    "concept": "faults and earthquakes",
+    "components": [
+     [
+      "fault lines",
+      []
+     ],
+     [
+      "earthquake epicenters",
+      []
+     ],
+     [
+      "seismic wave patterns",
+      [
+       "fault lines",
+       "earthquake epicenters"
+      ]
+     ],
+     [
+      "ground shaking effects",
+      [
+       "seismic wave patterns"
+      ]
+     ]
+    ],
+    "final": [
+     "fault lines",
+     "earthquake epicenters",
+     "seismic wave patterns",
+     "ground shaking effects"
+    ],
+    "program": "gen(concept=faults-and-earthquakes) =  \ngen(fault-lines | concept=faults-and-earthquakes)  \ngen(earthquake-epicenters | concept=faults-and-earthquakes)  \ngen(seismic-wave-patterns | concept=faults-and-earthquakes, fault-lines, earthquake-epicenters)  \ngen(ground-shaking-effects | concept=faults-and-earthquakes, seismic-wave-patterns)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "faults and earthquakes",
+    "components": [
+     [
+      "fault lines",
+      []
+     ],
+     [
+      "earthquake impact zones",
+      []
+     ],
+     [
+      "seismic wave patterns",
+      [
+       "fault lines"
+      ]
+     ],
+     [
+      "earthquake epicenters",
+      [
+       "fault lines"
+      ]
+     ]
+    ],
+    "final": [
+     "fault lines",
+     "earthquake impact zones",
+     "seismic wave patterns",
+     "earthquake epicenters"
+    ],
+    "program": "gen(concept=faults-and-earthquakes) =\ngen(fault-lines | concept=faults-and-earthquakes)\ngen(earthquake-impact-zones | concept=faults-and-earthquakes)\ngen(seismic-wave-patterns | concept=faults-and-earthquakes, fault-lines)\ngen(earthquake-epicenters | concept=faults-and-earthquakes, fault-lines)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "faults and earthquakes",
+    "components": [
+     [
+      "fault lines",
+      []
+     ],
+     [
+      "earthquake epicenters",
+      []
+     ],
+     [
+      "seismic wave patterns",
+      [
+       "fault lines",
+       "earthquake epicenters"
+      ]
+     ],
+     [
+      "ground shaking effects",
+      [
+       "seismic wave patterns"
+      ]
+     ]
+    ],
+    "final": [
+     "fault lines",
+     "earthquake epicenters",
+     "seismic wave patterns",
+     "ground shaking effects"
+    ],
+    "program": "gen(concept=faults-and-earthquakes) =\ngen(fault-lines | concept=faults-and-earthquakes)\ngen(earthquake-epicenters | concept=faults-and-earthquakes)\ngen(seismic-wave-patterns | concept=faults-and-earthquakes, fault-lines, earthquake-epicenters)\ngen(ground-shaking-effects | concept=faults-and-earthquakes, seismic-wave-patterns)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "faults and earthquakes",
+    "components": [
+     [
+      "fault lines",
+      []
+     ],
+     [
+      "earthquake ruptures",
+      [
+       "fault lines"
+      ]
+     ],
+     [
+      "seismic waves",
+      [
+       "earthquake ruptures"
+      ]
+     ],
+     [
+      "ground shaking",
+      [
+       "seismic waves"
+      ]
+     ]
+    ],
+    "final": [
+     "fault lines",
+     "earthquake ruptures",
+     "seismic waves",
+     "ground shaking"
+    ],
+    "program": "gen(concept=faults-and-earthquakes) =\ngen(fault-lines | concept=faults-and-earthquakes)\ngen(earthquake-ruptures | concept=faults-and-earthquakes, fault-lines)\ngen(seismic-waves | concept=faults-and-earthquakes, earthquake-ruptures)\ngen(ground-shaking | concept=faults-and-earthquakes, seismic-waves)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "faults and earthquakes",
+    "components": [
+     [
+      "fault lines",
+      []
+     ],
+     [
+      "earthquake epicenters",
+      []
+     ],
+     [
+      "seismic waves",
+      [
+       "fault lines",
+       "earthquake epicenters"
+      ]
+     ],
+     [
+      "ground shaking",
+      [
+       "seismic waves"
+      ]
+     ]
+    ],
+    "final": [
+     "fault lines",
+     "earthquake epicenters",
+     "seismic waves",
+     "ground shaking"
+    ],
+    "program": "gen(concept=faults-and-earthquakes) =\ngen(fault-lines | concept=faults-and-earthquakes)\ngen(earthquake-epicenters | concept=faults-and-earthquakes)\ngen(seismic-waves | concept=faults-and-earthquakes, fault-lines, earthquake-epicenters)\ngen(ground-shaking | concept=faults-and-earthquakes, seismic-waves)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "food web": [
+   {
+    "concept": "food web",
+    "components": [
+     [
+      "producer",
+      []
+     ],
+     [
+      "consumer",
+      []
+     ],
+     [
+      "predator",
+      [
+       "consumer"
+      ]
+     ],
+     [
+      "producer\u2192consumer",
+      [
+       "producer",
+       "consumer"
+      ]
+     ]
+    ],
+    "final": [
+     "producer",
+     "consumer",
+     "predator",
+     "producer\u2192consumer"
+    ],
+    "program": "gen(concept=food-web) =\ngen(producer | concept=food-web)\ngen(consumer | concept=food-web)\ngen(predator | concept=food-web, consumer)\ngen(producer\u2192consumer | concept=food-web, producer, consumer)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "food web",
+    "components": [
+     [
+      "predators",
+      []
+     ],
+     [
+      "prey",
+      []
+     ],
+     [
+      "relationships",
+      [
+       "predators",
+       "prey"
+      ]
+     ]
+    ],
+    "final": [
+     "predators",
+     "prey",
+     "relationships"
+    ],
+    "program": "gen(concept=food-web) =  \ngen(predators | concept=food-web)  \ngen(prey | concept=food-web)  \ngen(relationships | concept=food-web, predators, prey)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "food web",
+    "components": [
+     [
+      "predator",
+      []
+     ],
+     [
+      "prey",
+      []
+     ],
+     [
+      "energy flow",
+      [
+       "predator",
+       "prey"
+      ]
+     ],
+     [
+      "trophic level",
+      [
+       "predator",
+       "prey"
+      ]
+     ]
+    ],
+    "final": [
+     "predator",
+     "prey",
+     "energy flow",
+     "trophic level"
+    ],
+    "program": "gen(concept=food-web) =\ngen(predator | concept=food-web)\ngen(prey | concept=food-web)\ngen(energy-flow | concept=food-web, predator, prey)\ngen(trophic-level | concept=food-web, predator, prey)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "food web",
+    "components": [
+     [
+      "producers",
+      []
+     ],
+     [
+      "consumers",
+      []
+     ],
+     [
+      "predator prey links",
+      [
+       "producers",
+       "consumers"
+      ]
+     ],
+     [
+      "trophic levels",
+      [
+       "producers",
+       "consumers"
+      ]
+     ]
+    ],
+    "final": [
+     "producers",
+     "consumers",
+     "predator prey links",
+     "trophic levels"
+    ],
+    "program": "gen(concept=food-web) =  \ngen(producers | concept=food-web)  \ngen(consumers | concept=food-web)  \ngen(predator-prey-links | concept=food-web, producers, consumers)  \ngen(trophic-levels | concept=food-web, producers, consumers)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "food web",
+    "components": [
+     [
+      "producers",
+      []
+     ],
+     [
+      "consumers",
+      []
+     ],
+     [
+      "predators",
+      [
+       "consumers"
+      ]
+     ],
+     [
+      "prey",
+      [
+       "producers",
+       "consumers"
+      ]
+     ]
+    ],
+    "final": [
+     "producers",
+     "consumers",
+     "predators",
+     "prey"
+    ],
+    "program": "gen(concept=food-web) =\ngen(producers | concept=food-web)\ngen(consumers | concept=food-web)\ngen(predators | concept=food-web, consumers)\ngen(prey | concept=food-web, producers, consumers)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "helping": [
+   {
+    "concept": "helping",
+    "components": [
+     [
+      "hand",
+      []
+     ],
+     [
+      "face smile",
+      []
+     ],
+     [
+      "arm reaching",
+      []
+     ],
+     [
+      "hand holding",
+      []
+     ]
+    ],
+    "final": [
+     "hand",
+     "face smile",
+     "arm reaching",
+     "hand holding"
+    ],
+    "program": "gen(concept=helping) =\ngen(hand | concept=helping)\ngen(face-smile | concept=helping)\ngen(arm-reaching | concept=helping)\ngen(hand-holding | concept=helping)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "helping",
+    "components": [
+     [
+      "person",
+      []
+     ],
+     [
+      "hand",
+      [
+       "person"
+      ]
+     ],
+     [
+      "face smile",
+      [
+       "person"
+      ]
+     ],
+     [
+      "hand holding",
+      [
+       "person"
+      ]
+     ]
+    ],
+    "final": [
+     "person",
+     "hand",
+     "face smile",
+     "hand holding"
+    ],
+    "program": "gen(concept=helping) =  \ngen(person | concept=helping)  \ngen(hand | concept=helping, person)  \ngen(face-smile | concept=helping, person)  \ngen(hand-holding | concept=helping, person)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "helping",
+    "components": [
+     [
+      "helper",
+      []
+     ],
+     [
+      "helped",
+      []
+     ],
+     [
+      "action",
+      [
+       "helper",
+       "helped"
+      ]
+     ],
+     [
+      "context",
+      [
+       "helper",
+       "helped"
+      ]
+     ]
+    ],
+    "final": [
+     "helper",
+     "helped",
+     "action",
+     "context"
+    ],
+    "program": "gen(concept=helping) =\ngen(helper | concept=helping)\ngen(helped | concept=helping)\ngen(action | concept=helping, helper, helped)\ngen(context | concept=helping, helper, helped)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "helping",
+    "components": [
+     [
+      "hand",
+      []
+     ],
+     [
+      "face",
+      []
+     ],
+     [
+      "arm",
+      []
+     ],
+     [
+      "heart",
+      []
+     ]
+    ],
+    "final": [
+     "hand",
+     "face",
+     "arm",
+     "heart"
+    ],
+    "program": "gen(concept=helping) =  \ngen(hand | concept=helping)  \ngen(face | concept=helping)  \ngen(arm | concept=helping)  \ngen(heart | concept=helping)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "helping",
+    "components": [
+     [
+      "person",
+      []
+     ],
+     [
+      "hand",
+      [
+       "person"
+      ]
+     ],
+     [
+      "need",
+      []
+     ],
+     [
+      "action",
+      [
+       "person",
+       "need"
+      ]
+     ]
+    ],
+    "final": [
+     "person",
+     "hand",
+     "need",
+     "action"
+    ],
+    "program": "gen(concept=helping) =\ngen(person | concept=helping)\ngen(hand | concept=helping, person)\ngen(need | concept=helping)\ngen(action | concept=helping, person, need)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "layers of the Earth": [
+   {
+    "concept": "layers of the Earth",
+    "components": [
+     [
+      "crust",
+      []
+     ],
+     [
+      "mantle",
+      []
+     ],
+     [
+      "outer core",
+      []
+     ],
+     [
+      "inner core",
+      []
+     ]
+    ],
+    "final": [
+     "crust",
+     "mantle",
+     "outer core",
+     "inner core"
+    ],
+    "program": "gen(concept=layers-of-the-Earth) =  \ngen(crust | concept=layers-of-the-Earth)  \ngen(mantle | concept=layers-of-the-Earth)  \ngen(outer-core | concept=layers-of-the-Earth)  \ngen(inner-core | concept=layers-of-the-Earth)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "layers of the Earth",
+    "components": [
+     [
+      "crust",
+      []
+     ],
+     [
+      "mantle",
+      []
+     ],
+     [
+      "outer core",
+      []
+     ],
+     [
+      "inner core",
+      []
+     ]
+    ],
+    "final": [
+     "crust",
+     "mantle",
+     "outer core",
+     "inner core"
+    ],
+    "program": "gen(concept=layers-of-the-Earth) =\ngen(crust | concept=layers-of-the-Earth)\ngen(mantle | concept=layers-of-the-Earth)\ngen(outer-core | concept=layers-of-the-Earth)\ngen(inner-core | concept=layers-of-the-Earth)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "layers of the Earth",
+    "components": [
+     [
+      "crust",
+      []
+     ],
+     [
+      "mantle",
+      []
+     ],
+     [
+      "outer core",
+      []
+     ],
+     [
+      "inner core",
+      []
+     ]
+    ],
+    "final": [
+     "crust",
+     "mantle",
+     "outer core",
+     "inner core"
+    ],
+    "program": "gen(concept=layers-of-the-Earth) =\ngen(crust | concept=layers-of-the-Earth)\ngen(mantle | concept=layers-of-the-Earth)\ngen(outer-core | concept=layers-of-the-Earth)\ngen(inner-core | concept=layers-of-the-Earth)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "layers of the Earth",
+    "components": [
+     [
+      "crust",
+      []
+     ],
+     [
+      "mantle",
+      []
+     ],
+     [
+      "outer core",
+      []
+     ],
+     [
+      "inner core",
+      []
+     ]
+    ],
+    "final": [
+     "crust",
+     "mantle",
+     "outer core",
+     "inner core"
+    ],
+    "program": "gen(concept=layers-of-the-Earth) =\ngen(crust | concept=layers-of-the-Earth)\ngen(mantle | concept=layers-of-the-Earth)\ngen(outer-core | concept=layers-of-the-Earth)\ngen(inner-core | concept=layers-of-the-Earth)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "layers of the Earth",
+    "components": [
+     [
+      "core",
+      []
+     ],
+     [
+      "mantle",
+      []
+     ],
+     [
+      "crust",
+      []
+     ],
+     [
+      "boundary lines",
+      [
+       "core",
+       "mantle",
+       "crust"
+      ]
+     ]
+    ],
+    "final": [
+     "core",
+     "mantle",
+     "crust",
+     "boundary lines"
+    ],
+    "program": "gen(concept=layers-of-the-Earth) =\ngen(core | concept=layers-of-the-Earth)\ngen(mantle | concept=layers-of-the-Earth)\ngen(crust | concept=layers-of-the-Earth)\ngen(boundary-lines | concept=layers-of-the-Earth, core, mantle, crust)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "life cycle": [
+   {
+    "concept": "life cycle",
+    "components": [
+     [
+      "phase",
+      []
+     ],
+     [
+      "transformation",
+      [
+       "phase"
+      ]
+     ],
+     [
+      "start point",
+      [
+       "phase"
+      ]
+     ],
+     [
+      "end point",
+      [
+       "phase"
+      ]
+     ]
+    ],
+    "final": [
+     "phase",
+     "transformation",
+     "start point",
+     "end point"
+    ],
+    "program": "gen(concept=life-cycle) =\ngen(phase | concept=life-cycle)\ngen(transformation | concept=life-cycle, phase)\ngen(start-point | concept=life-cycle, phase)\ngen(end-point | concept=life-cycle, phase)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "life cycle",
+    "components": [
+     [
+      "phase",
+      []
+     ],
+     [
+      "transition",
+      [
+       "phase"
+      ]
+     ],
+     [
+      "start point",
+      [
+       "phase"
+      ]
+     ],
+     [
+      "end point",
+      [
+       "phase"
+      ]
+     ]
+    ],
+    "final": [
+     "phase",
+     "transition",
+     "start point",
+     "end point"
+    ],
+    "program": "gen(concept=life-cycle) =  \ngen(phase | concept=life-cycle)  \ngen(transition | concept=life-cycle, phase)  \ngen(start-point | concept=life-cycle, phase)  \ngen(end-point | concept=life-cycle, phase)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "life cycle",
+    "components": [
+     [
+      "phase",
+      []
+     ],
+     [
+      "transition",
+      [
+       "phase"
+      ]
+     ],
+     [
+      "duration",
+      [
+       "phase"
+      ]
+     ],
+     [
+      "event",
+      [
+       "phase"
+      ]
+     ]
+    ],
+    "final": [
+     "phase",
+     "transition",
+     "duration",
+     "event"
+    ],
+    "program": "gen(concept=life-cycle) =\ngen(phase | concept=life-cycle)\ngen(transition | concept=life-cycle, phase)\ngen(duration | concept=life-cycle, phase)\ngen(event | concept=life-cycle, phase)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "life cycle",
+    "components": [
+     [
+      "phase",
+      []
+     ],
+     [
+      "transition",
+      [
+       "phase"
+      ]
+     ],
+     [
+      "duration",
+      [
+       "phase"
+      ]
+     ],
+     [
+      "event",
+      [
+       "phase",
+       "transition"
+      ]
+     ]
+    ],
+    "final": [
+     "phase",
+     "transition",
+     "duration",
+     "event"
+    ],
+    "program": "gen(concept=life-cycle) =  \ngen(phase | concept=life-cycle)  \ngen(transition | concept=life-cycle, phase)  \ngen(duration | concept=life-cycle, phase)  \ngen(event | concept=life-cycle, phase, transition)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "life cycle",
+    "components": [
+     [
+      "phase",
+      []
+     ],
+     [
+      "transition",
+      [
+       "phase"
+      ]
+     ],
+     [
+      "duration",
+      [
+       "phase"
+      ]
+     ],
+     [
+      "visual marker",
+      [
+       "phase"
+      ]
+     ]
+    ],
+    "final": [
+     "phase",
+     "transition",
+     "duration",
+     "visual marker"
+    ],
+    "program": "gen(concept=life-cycle) =\ngen(phase | concept=life-cycle)\ngen(transition | concept=life-cycle, phase)\ngen(duration | concept=life-cycle, phase)\ngen(visual-marker | concept=life-cycle, phase)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "maze": [
+   {
+    "concept": "maze",
+    "components": [
+     [
+      "walls",
+      []
+     ],
+     [
+      "path",
+      []
+     ],
+     [
+      "start",
+      [
+       "path"
+      ]
+     ],
+     [
+      "end",
+      [
+       "path"
+      ]
+     ]
+    ],
+    "final": [
+     "walls",
+     "path",
+     "start",
+     "end"
+    ],
+    "program": "gen(concept=maze) =\ngen(walls | concept=maze)\ngen(path | concept=maze)\ngen(start | concept=maze, path)\ngen(end | concept=maze, path)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "maze",
+    "components": [
+     [
+      "walls",
+      []
+     ],
+     [
+      "path",
+      []
+     ],
+     [
+      "start point",
+      []
+     ],
+     [
+      "end point",
+      []
+     ]
+    ],
+    "final": [
+     "walls",
+     "path",
+     "start point",
+     "end point"
+    ],
+    "program": "gen(concept=maze) =\ngen(walls | concept=maze)\ngen(path | concept=maze)\ngen(start-point | concept=maze)\ngen(end-point | concept=maze)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "maze",
+    "components": [
+     [
+      "walls",
+      []
+     ],
+     [
+      "path",
+      []
+     ],
+     [
+      "start",
+      [
+       "path"
+      ]
+     ],
+     [
+      "end",
+      [
+       "path"
+      ]
+     ]
+    ],
+    "final": [
+     "walls",
+     "path",
+     "start",
+     "end"
+    ],
+    "program": "gen(concept=maze) =\ngen(walls | concept=maze)\ngen(path | concept=maze)\ngen(start | concept=maze, path)\ngen(end | concept=maze, path)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "maze",
+    "components": [
+     [
+      "walls",
+      []
+     ],
+     [
+      "path",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "start",
+      [
+       "path"
+      ]
+     ],
+     [
+      "end",
+      [
+       "path"
+      ]
+     ]
+    ],
+    "final": [
+     "walls",
+     "path",
+     "start",
+     "end"
+    ],
+    "program": "gen(concept=maze) =\ngen(walls | concept=maze)\ngen(path | concept=maze, walls)\ngen(start | concept=maze, path)\ngen(end | concept=maze, path)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "maze",
+    "components": [
+     [
+      "walls",
+      []
+     ],
+     [
+      "path",
+      [
+       "walls"
+      ]
+     ],
+     [
+      "start",
+      [
+       "path"
+      ]
+     ],
+     [
+      "end",
+      [
+       "path"
+      ]
+     ]
+    ],
+    "final": [
+     "walls",
+     "path",
+     "start",
+     "end"
+    ],
+    "program": "gen(concept=maze) =\ngen(walls | concept=maze)\ngen(path | concept=maze, walls)\ngen(start | concept=maze, path)\ngen(end | concept=maze, path)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "moon phases and seasons": [
+   {
+    "concept": "moon phases and seasons",
+    "components": [
+     [
+      "moon",
+      []
+     ],
+     [
+      "phase",
+      [
+       "moon"
+      ]
+     ],
+     [
+      "earth",
+      []
+     ],
+     [
+      "season",
+      [
+       "earth"
+      ]
+     ]
+    ],
+    "final": [
+     "moon",
+     "phase",
+     "earth",
+     "season"
+    ],
+    "program": "gen(concept=moon-phases-and-seasons) =  \ngen(moon | concept=moon-phases-and-seasons)  \ngen(phase | concept=moon-phases-and-seasons, moon)  \ngen(earth | concept=moon-phases-and-seasons)  \ngen(season | concept=moon-phases-and-seasons, earth)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "moon phases and seasons",
+    "components": [
+     [
+      "moon",
+      []
+     ],
+     [
+      "phase",
+      [
+       "moon"
+      ]
+     ],
+     [
+      "season",
+      []
+     ],
+     [
+      "earth",
+      [
+       "moon"
+      ]
+     ]
+    ],
+    "final": [
+     "moon",
+     "phase",
+     "season",
+     "earth"
+    ],
+    "program": "gen(concept=moon-phases-and-seasons) =\ngen(moon | concept=moon-phases-and-seasons)\ngen(phase | concept=moon-phases-and-seasons, moon)\ngen(season | concept=moon-phases-and-seasons)\ngen(earth | concept=moon-phases-and-seasons, moon)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "moon phases and seasons",
+    "components": [
+     [
+      "moon",
+      []
+     ],
+     [
+      "phase",
+      [
+       "moon"
+      ]
+     ],
+     [
+      "season",
+      []
+     ],
+     [
+      "earth",
+      [
+       "moon",
+       "phase",
+       "season"
+      ]
+     ]
+    ],
+    "final": [
+     "moon",
+     "phase",
+     "season",
+     "earth"
+    ],
+    "program": "gen(concept=moon-phases-and-seasons) =\ngen(moon | concept=moon-phases-and-seasons)\ngen(phase | concept=moon-phases-and-seasons, moon)\ngen(season | concept=moon-phases-and-seasons)\ngen(earth | concept=moon-phases-and-seasons, moon, phase, season)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "moon phases and seasons",
+    "components": [
+     [
+      "moon",
+      []
+     ],
+     [
+      "phase",
+      [
+       "moon"
+      ]
+     ],
+     [
+      "season",
+      []
+     ],
+     [
+      "relationship",
+      [
+       "phase",
+       "season"
+      ]
+     ]
+    ],
+    "final": [
+     "moon",
+     "phase",
+     "season",
+     "relationship"
+    ],
+    "program": "gen(concept=moon-phases-and-seasons) =\ngen(moon | concept=moon-phases-and-seasons)\ngen(phase | concept=moon-phases-and-seasons, moon)\ngen(season | concept=moon-phases-and-seasons)\ngen(relationship | concept=moon-phases-and-seasons, phase, season)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "moon phases and seasons",
+    "components": [
+     [
+      "moon",
+      []
+     ],
+     [
+      "phase",
+      [
+       "moon"
+      ]
+     ],
+     [
+      "season",
+      []
+     ],
+     [
+      "earth",
+      [
+       "moon"
+      ]
+     ]
+    ],
+    "final": [
+     "moon",
+     "phase",
+     "season",
+     "earth"
+    ],
+    "program": "gen(concept=moon-phases-and-seasons) =\ngen(moon | concept=moon-phases-and-seasons)\ngen(phase | concept=moon-phases-and-seasons, moon)\ngen(season | concept=moon-phases-and-seasons)\ngen(earth | concept=moon-phases-and-seasons, moon)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "negotiating": [
+   {
+    "concept": "negotiating",
+    "components": [
+     [
+      "participants",
+      []
+     ],
+     [
+      "table",
+      []
+     ],
+     [
+      "papers",
+      [
+       "participants"
+      ]
+     ],
+     [
+      "agenda",
+      [
+       "participants",
+       "table"
+      ]
+     ]
+    ],
+    "final": [
+     "participants",
+     "table",
+     "papers",
+     "agenda"
+    ],
+    "program": "gen(concept=negotiating) =\ngen(participants | concept=negotiating)\ngen(table | concept=negotiating)\ngen(papers | concept=negotiating, participants)\ngen(agenda | concept=negotiating, participants, table)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "negotiating",
+    "components": [
+     [
+      "participants",
+      []
+     ],
+     [
+      "table",
+      []
+     ],
+     [
+      "papers",
+      [
+       "participants"
+      ]
+     ],
+     [
+      "negotiation log",
+      [
+       "participants",
+       "table"
+      ]
+     ]
+    ],
+    "final": [
+     "participants",
+     "table",
+     "papers",
+     "negotiation log"
+    ],
+    "program": "gen(concept=negotiating) =  \ngen(participants | concept=negotiating)  \ngen(table | concept=negotiating)  \ngen(papers | concept=negotiating, participants)  \ngen(negotiation-log | concept=negotiating, participants, table)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "negotiating",
+    "components": [
+     [
+      "participants",
+      []
+     ],
+     [
+      "table",
+      []
+     ],
+     [
+      "papers",
+      [
+       "participants"
+      ]
+     ],
+     [
+      "agenda",
+      [
+       "participants",
+       "table"
+      ]
+     ]
+    ],
+    "final": [
+     "participants",
+     "table",
+     "papers",
+     "agenda"
+    ],
+    "program": "gen(concept=negotiating) =\ngen(participants | concept=negotiating)\ngen(table | concept=negotiating)\ngen(papers | concept=negotiating, participants)\ngen(agenda | concept=negotiating, participants, table)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "negotiating",
+    "components": [
+     [
+      "participants",
+      []
+     ],
+     [
+      "table",
+      []
+     ],
+     [
+      "paperwork",
+      [
+       "participants"
+      ]
+     ],
+     [
+      "voices",
+      [
+       "participants"
+      ]
+     ]
+    ],
+    "final": [
+     "participants",
+     "table",
+     "paperwork",
+     "voices"
+    ],
+    "program": "gen(concept=negotiating) =  \ngen(participants | concept=negotiating)  \ngen(table | concept=negotiating)  \ngen(paperwork | concept=negotiating, participants)  \ngen(voices | concept=negotiating, participants)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "negotiating",
+    "components": [
+     [
+      "participants",
+      []
+     ],
+     [
+      "table",
+      [
+       "participants"
+      ]
+     ],
+     [
+      "papers",
+      [
+       "participants"
+      ]
+     ],
+     [
+      "voices",
+      [
+       "participants"
+      ]
+     ]
+    ],
+    "final": [
+     "participants",
+     "table",
+     "papers",
+     "voices"
+    ],
+    "program": "gen(concept=negotiating) =\ngen(participants | concept=negotiating)\ngen(table | concept=negotiating, participants)\ngen(papers | concept=negotiating, participants)\ngen(voices | concept=negotiating, participants)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "photosynthesis and respiration": [
+   {
+    "concept": "photosynthesis and respiration",
+    "components": [
+     [
+      "plant",
+      []
+     ],
+     [
+      "sunlight",
+      []
+     ],
+     [
+      "oxygen",
+      []
+     ],
+     [
+      "carbon dioxide",
+      []
+     ]
+    ],
+    "final": [
+     "plant",
+     "sunlight",
+     "oxygen",
+     "carbon dioxide"
+    ],
+    "program": "gen(concept=photosynthesis-and-respiration) =  \ngen(plant | concept=photosynthesis-and-respiration)  \ngen(sunlight | concept=photosynthesis-and-respiration)  \ngen(oxygen | concept=photosynthesis-and-respiration)  \ngen(carbon-dioxide | concept=photosynthesis-and-respiration)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "photosynthesis and respiration",
+    "components": [
+     [
+      "plant",
+      []
+     ],
+     [
+      "sunlight",
+      []
+     ],
+     [
+      "leaf",
+      [
+       "plant"
+      ]
+     ],
+     [
+      "gas exchange",
+      [
+       "leaf"
+      ]
+     ]
+    ],
+    "final": [
+     "plant",
+     "sunlight",
+     "leaf",
+     "gas exchange"
+    ],
+    "program": "gen(concept=photosynthesis-and-respiration) =\ngen(plant | concept=photosynthesis-and-respiration)\ngen(sunlight | concept=photosynthesis-and-respiration)\ngen(leaf | concept=photosynthesis-and-respiration, plant)\ngen(gas-exchange | concept=photosynthesis-and-respiration, leaf)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "photosynthesis and respiration",
+    "components": [
+     [
+      "plant",
+      []
+     ],
+     [
+      "sunlight",
+      []
+     ],
+     [
+      "leaf",
+      [
+       "plant"
+      ]
+     ],
+     [
+      "gas exchange",
+      [
+       "leaf"
+      ]
+     ]
+    ],
+    "final": [
+     "plant",
+     "sunlight",
+     "leaf",
+     "gas exchange"
+    ],
+    "program": "gen(concept=photosynthesis-and-respiration) =\ngen(plant | concept=photosynthesis-and-respiration)\ngen(sunlight | concept=photosynthesis-and-respiration)\ngen(leaf | concept=photosynthesis-and-respiration, plant)\ngen(gas-exchange | concept=photosynthesis-and-respiration, leaf)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "photosynthesis and respiration",
+    "components": [
+     [
+      "leaf",
+      []
+     ],
+     [
+      "sunlight",
+      []
+     ],
+     [
+      "water",
+      []
+     ],
+     [
+      "carbon dioxide",
+      []
+     ]
+    ],
+    "final": [
+     "leaf",
+     "sunlight",
+     "water",
+     "carbon dioxide"
+    ],
+    "program": "gen(concept=photosynthesis-and-respiration) =\ngen(leaf | concept=photosynthesis-and-respiration)\ngen(sunlight | concept=photosynthesis-and-respiration)\ngen(water | concept=photosynthesis-and-respiration)\ngen(carbon-dioxide | concept=photosynthesis-and-respiration)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "photosynthesis and respiration",
+    "components": [
+     [
+      "chloroplasts",
+      []
+     ],
+     [
+      "leaf",
+      [
+       "chloroplasts"
+      ]
+     ],
+     [
+      "air",
+      [
+       "leaf"
+      ]
+     ],
+     [
+      "glucose",
+      [
+       "leaf",
+       "air"
+      ]
+     ]
+    ],
+    "final": [
+     "chloroplasts",
+     "leaf",
+     "air",
+     "glucose"
+    ],
+    "program": "gen(concept=photosynthesis-and-respiration) =\ngen(chloroplasts | concept=photosynthesis-and-respiration)\ngen(leaf | concept=photosynthesis-and-respiration, chloroplasts)\ngen(air | concept=photosynthesis-and-respiration, leaf)\ngen(glucose | concept=photosynthesis-and-respiration, leaf, air)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "putting up decorations on a door": [
+   {
+    "concept": "putting up decorations on a door",
+    "components": [
+     [
+      "decorations",
+      []
+     ],
+     [
+      "door",
+      []
+     ],
+     [
+      "hand",
+      [
+       "door"
+      ]
+     ],
+     [
+      "hand holding decoration",
+      [
+       "hand",
+       "decorations"
+      ]
+     ]
+    ],
+    "final": [
+     "decorations",
+     "door",
+     "hand",
+     "hand holding decoration"
+    ],
+    "program": "gen(concept=putting-up-decorations-on-a-door) =\ngen(decorations | concept=putting-up-decorations-on-a-door)\ngen(door | concept=putting-up-decorations-on-a-door)\ngen(hand | concept=putting-up-decorations-on-a-door, door)\ngen(hand-holding-decoration | concept=putting-up-decorations-on-a-door, hand, decorations)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "putting up decorations on a door",
+    "components": [
+     [
+      "decorations",
+      []
+     ],
+     [
+      "door",
+      []
+     ],
+     [
+      "hand",
+      [
+       "door"
+      ]
+     ],
+     [
+      "hand attached to decorations",
+      [
+       "hand",
+       "door"
+      ]
+     ]
+    ],
+    "final": [
+     "decorations",
+     "door",
+     "hand",
+     "hand attached to decorations"
+    ],
+    "program": "gen(concept=putting-up-decorations-on-a-door) =\ngen(decorations | concept=putting-up-decorations-on-a-door)\ngen(door | concept=putting-up-decorations-on-a-door)\ngen(hand | concept=putting-up-decorations-on-a-door, door)\ngen(hand-attached-to-decorations | concept=putting-up-decorations-on-a-door, hand, door)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "putting up decorations on a door",
+    "components": [
+     [
+      "decorations",
+      []
+     ],
+     [
+      "door",
+      []
+     ],
+     [
+      "hand",
+      [
+       "door"
+      ]
+     ],
+     [
+      "hand positions",
+      [
+       "hand",
+       "door"
+      ]
+     ]
+    ],
+    "final": [
+     "decorations",
+     "door",
+     "hand",
+     "hand positions"
+    ],
+    "program": "gen(concept=putting-up-decorations-on-a-door) =\ngen(decorations | concept=putting-up-decorations-on-a-door)\ngen(door | concept=putting-up-decorations-on-a-door)\ngen(hand | concept=putting-up-decorations-on-a-door, door)\ngen(hand-positions | concept=putting-up-decorations-on-a-door, hand, door)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "putting up decorations on a door",
+    "components": [
+     [
+      "decorations",
+      []
+     ],
+     [
+      "door",
+      []
+     ],
+     [
+      "hand",
+      [
+       "door"
+      ]
+     ],
+     [
+      "hand positions",
+      [
+       "hand",
+       "door"
+      ]
+     ]
+    ],
+    "final": [
+     "decorations",
+     "door",
+     "hand",
+     "hand positions"
+    ],
+    "program": "gen(concept=putting-up-decorations-on-a-door) =\ngen(decorations | concept=putting-up-decorations-on-a-door)\ngen(door | concept=putting-up-decorations-on-a-door)\ngen(hand | concept=putting-up-decorations-on-a-door, door)\ngen(hand-positions | concept=putting-up-decorations-on-a-door, hand, door)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "putting up decorations on a door",
+    "components": [
+     [
+      "decorations",
+      []
+     ],
+     [
+      "door",
+      []
+     ],
+     [
+      "hand",
+      [
+       "door"
+      ]
+     ],
+     [
+      "hand positions",
+      [
+       "hand",
+       "door"
+      ]
+     ]
+    ],
+    "final": [
+     "decorations",
+     "door",
+     "hand",
+     "hand positions"
+    ],
+    "program": "gen(concept=putting-up-decorations-on-a-door) =\ngen(decorations | concept=putting-up-decorations-on-a-door)\ngen(door | concept=putting-up-decorations-on-a-door)\ngen(hand | concept=putting-up-decorations-on-a-door, door)\ngen(hand-positions | concept=putting-up-decorations-on-a-door, hand, door)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "rock cycle": [
+   {
+    "concept": "rock cycle",
+    "components": [
+     [
+      "igneous rocks",
+      []
+     ],
+     [
+      "sedimentary rocks",
+      []
+     ],
+     [
+      "metamorphic rocks",
+      []
+     ],
+     [
+      "transformations",
+      [
+       "igneous rocks",
+       "sedimentary rocks",
+       "metamorphic rocks"
+      ]
+     ]
+    ],
+    "final": [
+     "igneous rocks",
+     "sedimentary rocks",
+     "metamorphic rocks",
+     "transformations"
+    ],
+    "program": "gen(concept=rock-cycle) =\ngen(igneous-rocks | concept=rock-cycle)\ngen(sedimentary-rocks | concept=rock-cycle)\ngen(metamorphic-rocks | concept=rock-cycle)\ngen(transformations | concept=rock-cycle, igneous-rocks, sedimentary-rocks, metamorphic-rocks)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "rock cycle",
+    "components": [
+     [
+      "igneous rock",
+      []
+     ],
+     [
+      "sedimentary rock",
+      []
+     ],
+     [
+      "erosion and deposition",
+      [
+       "igneous rock",
+       "sedimentary rock"
+      ]
+     ]
+    ],
+    "final": [
+     "igneous rock",
+     "sedimentary rock",
+     "erosion and deposition"
+    ],
+    "program": "gen(concept=rock-cycle) =  \ngen(igneous-rock | concept=rock-cycle)  \ngen(sedimentary-rock | concept=rock-cycle)  \ngen metamorphic-rock | concept=rock-cycle)  \ngen(erosion-and-deposition | concept=rock-cycle, igneous-rock, sedimentary-rock, metamorphic-rock)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "rock cycle",
+    "components": [
+     [
+      "igneous rock",
+      []
+     ],
+     [
+      "sedimentary rock",
+      []
+     ],
+     [
+      "erosion",
+      [
+       "igneous rock",
+       "sedimentary rock"
+      ]
+     ]
+    ],
+    "final": [
+     "igneous rock",
+     "sedimentary rock",
+     "erosion"
+    ],
+    "program": "gen(concept=rock-cycle) =\ngen(igneous-rock | concept=rock-cycle)\ngen(sedimentary-rock | concept=rock-cycle)\ngen metamorphic-rock | concept=rock-cycle)\ngen(erosion | concept=rock-cycle, igneous-rock, sedimentary-rock, metamorphic-rock)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "rock cycle",
+    "components": [
+     [
+      "igneous rocks",
+      []
+     ],
+     [
+      "sedimentary rocks",
+      []
+     ],
+     [
+      "erosion and deposition",
+      []
+     ]
+    ],
+    "final": [
+     "igneous rocks",
+     "sedimentary rocks",
+     "erosion and deposition"
+    ],
+    "program": "gen(concept=rock-cycle) =  \ngen(igneous-rocks | concept=rock-cycle)  \ngen(sedimentary-rocks | concept=rock-cycle)  \ngen metamorphic-rocks | concept=rock-cycle)  \ngen(erosion-and-deposition | concept=rock-cycle)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "rock cycle",
+    "components": [
+     [
+      "igneous rock",
+      []
+     ],
+     [
+      "sedimentary rock",
+      []
+     ],
+     [
+      "metamorphic rock",
+      []
+     ],
+     [
+      "transformations",
+      [
+       "igneous rock",
+       "sedimentary rock",
+       "metamorphic rock"
+      ]
+     ]
+    ],
+    "final": [
+     "igneous rock",
+     "sedimentary rock",
+     "metamorphic rock",
+     "transformations"
+    ],
+    "program": "gen(concept=rock-cycle) =\ngen(igneous-rock | concept=rock-cycle)\ngen(sedimentary-rock | concept=rock-cycle)\ngen(metamorphic-rock | concept=rock-cycle)\ngen(transformations | concept=rock-cycle, igneous-rock, sedimentary-rock, metamorphic-rock)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "rock strata": [
+   {
+    "concept": "rock strata",
+    "components": [
+     [
+      "layer",
+      []
+     ],
+     [
+      "boundary",
+      [
+       "layer"
+      ]
+     ],
+     [
+      "texture",
+      [
+       "layer"
+      ]
+     ],
+     [
+      "color",
+      [
+       "layer"
+      ]
+     ]
+    ],
+    "final": [
+     "layer",
+     "boundary",
+     "texture",
+     "color"
+    ],
+    "program": "gen(concept=rock-strata) =\ngen(layer | concept=rock-strata)\ngen(boundary | concept=rock-strata, layer)\ngen(texture | concept=rock-strata, layer)\ngen(color | concept=rock-strata, layer)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "rock strata",
+    "components": [
+     [
+      "layers",
+      []
+     ],
+     [
+      "grain size",
+      [
+       "layers"
+      ]
+     ],
+     [
+      "fossil traces",
+      [
+       "layers"
+      ]
+     ],
+     [
+      "cross bedding",
+      [
+       "layers"
+      ]
+     ]
+    ],
+    "final": [
+     "layers",
+     "grain size",
+     "fossil traces",
+     "cross bedding"
+    ],
+    "program": "gen(concept=rock-strata) =\ngen(layers | concept=rock-strata)\ngen(grain-size | concept=rock-strata, layers)\ngen(fossil-traces | concept=rock-strata, layers)\ngen(cross-bedding | concept=rock-strata, layers)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "rock strata",
+    "components": [
+     [
+      "layer",
+      []
+     ],
+     [
+      "orientation",
+      [
+       "layer"
+      ]
+     ],
+     [
+      "fault",
+      [
+       "layer"
+      ]
+     ],
+     [
+      "contact",
+      [
+       "layer",
+       "fault"
+      ]
+     ]
+    ],
+    "final": [
+     "layer",
+     "orientation",
+     "fault",
+     "contact"
+    ],
+    "program": "gen(concept=rock-strata) =\ngen(layer | concept=rock-strata)\ngen(orientation | concept=rock-strata, layer)\ngen(fault | concept=rock-strata, layer)\ngen(contact | concept=rock-strata, layer, fault)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "rock strata",
+    "components": [
+     [
+      "layer",
+      []
+     ],
+     [
+      "fossil",
+      [
+       "layer"
+      ]
+     ],
+     [
+      "crust",
+      []
+     ],
+     [
+      "erosion feature",
+      [
+       "layer"
+      ]
+     ]
+    ],
+    "final": [
+     "layer",
+     "fossil",
+     "crust",
+     "erosion feature"
+    ],
+    "program": "gen(concept=rock-strata) =  \ngen(layer | concept=rock-strata)  \ngen(fossil | concept=rock-strata, layer)  \ngen(crust | concept=rock-strata)  \ngen(erosion-feature | concept=rock-strata, layer)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "rock strata",
+    "components": [
+     [
+      "layer",
+      []
+     ],
+     [
+      "grain size",
+      [
+       "layer"
+      ]
+     ],
+     [
+      "color",
+      [
+       "layer"
+      ]
+     ],
+     [
+      "fossil",
+      [
+       "layer"
+      ]
+     ]
+    ],
+    "final": [
+     "layer",
+     "grain size",
+     "color",
+     "fossil"
+    ],
+    "program": "gen(concept=rock-strata) =\ngen(layer | concept=rock-strata)\ngen(grain-size | concept=rock-strata, layer)\ngen(color | concept=rock-strata, layer)\ngen(fossil | concept=rock-strata, layer)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "setting up a table for two": [
+   {
+    "concept": "setting up a table for two",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "chairs",
+      []
+     ],
+     [
+      "cutlery",
+      [
+       "table",
+       "chairs"
+      ]
+     ],
+     [
+      "glassware",
+      [
+       "table",
+       "chairs"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "chairs",
+     "cutlery",
+     "glassware"
+    ],
+    "program": "gen(concept=setting-up-a-table-for-two) =  \ngen(table | concept=setting-up-a-table-for-two)  \ngen(chairs | concept=setting-up-a-table-for-two)  \ngen(cutlery | concept=setting-up-a-table-for-two, table, chairs)  \ngen(glassware | concept=setting-up-a-table-for-two, table, chairs)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "setting up a table for two",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "chairs",
+      []
+     ],
+     [
+      "cutlery",
+      [
+       "table",
+       "chairs"
+      ]
+     ],
+     [
+      "glasses",
+      [
+       "table",
+       "chairs"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "chairs",
+     "cutlery",
+     "glasses"
+    ],
+    "program": "gen(concept=setting-up-a-table-for-two) =\ngen(table | concept=setting-up-a-table-for-two)\ngen(chairs | concept=setting-up-a-table-for-two)\ngen(cutlery | concept=setting-up-a-table-for-two, table, chairs)\ngen(glasses | concept=setting-up-a-table-for-two, table, chairs)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "setting up a table for two",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "chairs",
+      []
+     ],
+     [
+      "setting",
+      [
+       "table",
+       "chairs"
+      ]
+     ],
+     [
+      "utensils",
+      [
+       "table",
+       "setting"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "chairs",
+     "setting",
+     "utensils"
+    ],
+    "program": "gen(concept=setting-up-a-table-for-two) =\ngen(table | concept=setting-up-a-table-for-two)\ngen(chairs | concept=setting-up-a-table-for-two)\ngen(setting | concept=setting-up-a-table-for-two, table, chairs)\ngen(utensils | concept=setting-up-a-table-for-two, table, setting)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "setting up a table for two",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "chairs",
+      []
+     ],
+     [
+      "cutlery",
+      [
+       "table",
+       "chairs"
+      ]
+     ],
+     [
+      "glasses",
+      [
+       "table",
+       "chairs"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "chairs",
+     "cutlery",
+     "glasses"
+    ],
+    "program": "gen(concept=setting-up-a-table-for-two) =\ngen(table | concept=setting-up-a-table-for-two)\ngen(chairs | concept=setting-up-a-table-for-two)\ngen(cutlery | concept=setting-up-a-table-for-two, table, chairs)\ngen(glasses | concept=setting-up-a-table-for-two, table, chairs)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "setting up a table for two",
+    "components": [
+     [
+      "table",
+      []
+     ],
+     [
+      "chairs",
+      []
+     ],
+     [
+      "cutlery",
+      [
+       "chairs"
+      ]
+     ],
+     [
+      "glassware",
+      [
+       "chairs"
+      ]
+     ]
+    ],
+    "final": [
+     "table",
+     "chairs",
+     "cutlery",
+     "glassware"
+    ],
+    "program": "gen(concept=setting-up-a-table-for-two) =\ngen(table | concept=setting-up-a-table-for-two)\ngen(chairs | concept=setting-up-a-table-for-two)\ngen(cutlery | concept=setting-up-a-table-for-two, chairs)\ngen(glassware | concept=setting-up-a-table-for-two, chairs)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "solar system": [
+   {
+    "concept": "solar system",
+    "components": [
+     [
+      "sun",
+      []
+     ],
+     [
+      "planets",
+      []
+     ],
+     [
+      "moons",
+      [
+       "planets"
+      ]
+     ],
+     [
+      "asteroids",
+      []
+     ]
+    ],
+    "final": [
+     "sun",
+     "planets",
+     "moons",
+     "asteroids"
+    ],
+    "program": "gen(concept=solar-system) =\ngen(sun | concept=solar-system)\ngen(planets | concept=solar-system)\ngen(moons | concept=solar-system, planets)\ngen(asteroids | concept=solar-system)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "solar system",
+    "components": [
+     [
+      "sun",
+      []
+     ],
+     [
+      "planets",
+      []
+     ],
+     [
+      "moons",
+      [
+       "planets"
+      ]
+     ],
+     [
+      "astronomical objects",
+      [
+       "sun",
+       "planets",
+       "moons"
+      ]
+     ]
+    ],
+    "final": [
+     "sun",
+     "planets",
+     "moons",
+     "astronomical objects"
+    ],
+    "program": "gen(concept=solar-system) =  \ngen(sun | concept=solar-system)  \ngen(planets | concept=solar-system)  \ngen(moons | concept=solar-system, planets)  \ngen(astronomical-objects | concept=solar-system, sun, planets, moons)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "solar system",
+    "components": [
+     [
+      "sun",
+      []
+     ],
+     [
+      "planet",
+      []
+     ],
+     [
+      "moon",
+      [
+       "planet"
+      ]
+     ],
+     [
+      "astronaut",
+      [
+       "planet"
+      ]
+     ]
+    ],
+    "final": [
+     "sun",
+     "planet",
+     "moon",
+     "astronaut"
+    ],
+    "program": "gen(concept=solar-system) =\ngen(sun | concept=solar-system)\ngen(planet | concept=solar-system)\ngen(moon | concept=solar-system, planet)\ngen(astronaut | concept=solar-system, planet)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "solar system",
+    "components": [
+     [
+      "sun",
+      []
+     ],
+     [
+      "planets",
+      []
+     ],
+     [
+      "moons",
+      [
+       "planets"
+      ]
+     ],
+     [
+      "asteroids",
+      []
+     ]
+    ],
+    "final": [
+     "sun",
+     "planets",
+     "moons",
+     "asteroids"
+    ],
+    "program": "gen(concept=solar-system) =  \ngen(sun | concept=solar-system)  \ngen(planets | concept=solar-system)  \ngen(moons | concept=solar-system, planets)  \ngen(asteroids | concept=solar-system)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "solar system",
+    "components": [
+     [
+      "sun",
+      []
+     ],
+     [
+      "planets",
+      []
+     ],
+     [
+      "moons",
+      [
+       "planets"
+      ]
+     ],
+     [
+      "astronauts",
+      []
+     ]
+    ],
+    "final": [
+     "sun",
+     "planets",
+     "moons",
+     "astronauts"
+    ],
+    "program": "gen(concept=solar-system) =\ngen(sun | concept=solar-system)\ngen(planets | concept=solar-system)\ngen(moons | concept=solar-system, planets)\ngen(astronauts | concept=solar-system)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "tic-tac-toe": [
+   {
+    "concept": "tic-tac-toe",
+    "components": [
+     [
+      "board",
+      []
+     ],
+     [
+      "player1",
+      []
+     ],
+     [
+      "player2",
+      []
+     ],
+     [
+      "moves",
+      [
+       "player1",
+       "player2"
+      ]
+     ]
+    ],
+    "final": [
+     "board",
+     "player1",
+     "player2",
+     "moves"
+    ],
+    "program": "gen(concept=tic-tac-toe) =\ngen(board | concept=tic-tac-toe)\ngen(player1 | concept=tic-tac-toe)\ngen(player2 | concept=tic-tac-toe)\ngen(moves | concept=tic-tac-toe, player1, player2)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "tic-tac-toe",
+    "components": [
+     [
+      "board",
+      []
+     ],
+     [
+      "player1",
+      []
+     ],
+     [
+      "player2",
+      []
+     ],
+     [
+      "moves",
+      [
+       "player1",
+       "player2"
+      ]
+     ]
+    ],
+    "final": [
+     "board",
+     "player1",
+     "player2",
+     "moves"
+    ],
+    "program": "gen(concept=tic-tac-toe) =\ngen(board | concept=tic-tac-toe)\ngen(player1 | concept=tic-tac-toe)\ngen(player2 | concept=tic-tac-toe)\ngen(moves | concept=tic-tac-toe, player1, player2)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "tic-tac-toe",
+    "components": [
+     [
+      "board",
+      []
+     ],
+     [
+      "player1",
+      []
+     ],
+     [
+      "player2",
+      []
+     ],
+     [
+      "moves",
+      [
+       "player1",
+       "player2"
+      ]
+     ]
+    ],
+    "final": [
+     "board",
+     "player1",
+     "player2",
+     "moves"
+    ],
+    "program": "gen(concept=tic-tac-toe) =\ngen(board | concept=tic-tac-toe)\ngen(player1 | concept=tic-tac-toe)\ngen(player2 | concept=tic-tac-toe)\ngen(moves | concept=tic-tac-toe, player1, player2)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "tic-tac-toe",
+    "components": [
+     [
+      "board",
+      []
+     ],
+     [
+      "x mark",
+      [
+       "board"
+      ]
+     ],
+     [
+      "o mark",
+      [
+       "board"
+      ]
+     ],
+     [
+      "turn",
+      [
+       "board",
+       "x mark",
+       "o mark"
+      ]
+     ]
+    ],
+    "final": [
+     "board",
+     "x mark",
+     "o mark",
+     "turn"
+    ],
+    "program": "gen(concept=tic-tac-toe) =\ngen(board | concept=tic-tac-toe)\ngen(x-mark | concept=tic-tac-toe, board)\ngen(o-mark | concept=tic-tac-toe, board)\ngen(turn | concept=tic-tac-toe, board, x-mark, o-mark)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "tic-tac-toe",
+    "components": [
+     [
+      "board",
+      []
+     ],
+     [
+      "player1",
+      []
+     ],
+     [
+      "player2",
+      []
+     ],
+     [
+      "mark",
+      [
+       "player1",
+       "player2"
+      ]
+     ]
+    ],
+    "final": [
+     "board",
+     "player1",
+     "player2",
+     "mark"
+    ],
+    "program": "gen(concept=tic-tac-toe) =\ngen(board | concept=tic-tac-toe)\ngen(player1 | concept=tic-tac-toe)\ngen(player2 | concept=tic-tac-toe)\ngen(mark | concept=tic-tac-toe, player1, player2)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "tidying up a guest room": [
+   {
+    "concept": "tidying up a guest room",
+    "components": [
+     [
+      "furniture",
+      []
+     ],
+     [
+      "clothing",
+      []
+     ],
+     [
+      "boxes",
+      []
+     ],
+     [
+      "cleaning supplies",
+      []
+     ]
+    ],
+    "final": [
+     "furniture",
+     "clothing",
+     "boxes",
+     "cleaning supplies"
+    ],
+    "program": "gen(concept=tidying-up-a-guest-room) =\ngen(furniture | concept=tidying-up-a-guest-room)\ngen(clothing | concept=tidying-up-a-guest-room)\ngen(boxes | concept=tidying-up-a-guest-room)\ngen(cleaning-supplies | concept=tidying-up-a-guest-room)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "tidying up a guest room",
+    "components": [
+     [
+      "furniture",
+      []
+     ],
+     [
+      "clothing",
+      []
+     ],
+     [
+      "cleaning supplies",
+      []
+     ],
+     [
+      "organised space",
+      [
+       "furniture",
+       "clothing",
+       "cleaning supplies"
+      ]
+     ]
+    ],
+    "final": [
+     "furniture",
+     "clothing",
+     "cleaning supplies",
+     "organised space"
+    ],
+    "program": "gen(concept=tidying-up-a-guest-room) =\ngen(furniture | concept=tidying-up-a-guest-room)\ngen(clothing | concept=tidying-up-a-guest-room)\ngen(cleaning-supplies | concept=tidying-up-a-guest-room)\ngen(organised-space | concept=tidying-up-a-guest-room, furniture, clothing, cleaning-supplies)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "tidying up a guest room",
+    "components": [
+     [
+      "furniture",
+      []
+     ],
+     [
+      "clothing",
+      []
+     ],
+     [
+      "boxes",
+      []
+     ],
+     [
+      "floor",
+      []
+     ]
+    ],
+    "final": [
+     "furniture",
+     "clothing",
+     "boxes",
+     "floor"
+    ],
+    "program": "gen(concept=tidying-up-a-guest-room) =\ngen(furniture | concept=tidying-up-a-guest-room)\ngen(clothing | concept=tidying-up-a-guest-room)\ngen(boxes | concept=tidying-up-a-guest-room)\ngen(floor | concept=tidying-up-a-guest-room)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "tidying up a guest room",
+    "components": [
+     [
+      "furniture",
+      []
+     ],
+     [
+      "clothing",
+      []
+     ],
+     [
+      "organize",
+      [
+       "furniture",
+       "clothing"
+      ]
+     ],
+     [
+      "clean",
+      [
+       "furniture",
+       "clothing"
+      ]
+     ]
+    ],
+    "final": [
+     "furniture",
+     "clothing",
+     "organize",
+     "clean"
+    ],
+    "program": "gen(concept=tidying-up-a-guest-room) =\ngen(furniture | concept=tidying-up-a-guest-room)\ngen(clothing | concept=tidying-up-a-guest-room)\ngen(organize | concept=tidying-up-a-guest-room, furniture, clothing)\ngen(clean | concept=tidying-up-a-guest-room, furniture, clothing)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "tidying up a guest room",
+    "components": [
+     [
+      "furniture",
+      []
+     ],
+     [
+      "clothing",
+      []
+     ],
+     [
+      "boxes",
+      []
+     ],
+     [
+      "cleaned surface",
+      [
+       "furniture",
+       "clothing",
+       "boxes"
+      ]
+     ]
+    ],
+    "final": [
+     "furniture",
+     "clothing",
+     "boxes",
+     "cleaned surface"
+    ],
+    "program": "gen(concept=tidying-up-a-guest-room) =\ngen(furniture | concept=tidying-up-a-guest-room)\ngen(clothing | concept=tidying-up-a-guest-room)\ngen(boxes | concept=tidying-up-a-guest-room)\ngen(cleaned-surface | concept=tidying-up-a-guest-room, furniture, clothing, boxes)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "treasure map": [
+   {
+    "concept": "treasure map",
+    "components": [
+     [
+      "island",
+      []
+     ],
+     [
+      "x mark",
+      [
+       "island"
+      ]
+     ],
+     [
+      "compass",
+      []
+     ],
+     [
+      "hidden compass",
+      [
+       "x mark"
+      ]
+     ]
+    ],
+    "final": [
+     "island",
+     "x mark",
+     "compass",
+     "hidden compass"
+    ],
+    "program": "gen(concept=treasure-map) =\ngen(island | concept=treasure-map)\ngen(x-mark | concept=treasure-map, island)\ngen(compass | concept=treasure-map)\ngen(hidden-compass | concept=treasure-map, x-mark)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "treasure map",
+    "components": [
+     [
+      "island",
+      []
+     ],
+     [
+      "x mark",
+      [
+       "island"
+      ]
+     ],
+     [
+      "compass",
+      []
+     ],
+     [
+      "cryptic clue",
+      [
+       "x mark"
+      ]
+     ]
+    ],
+    "final": [
+     "island",
+     "x mark",
+     "compass",
+     "cryptic clue"
+    ],
+    "program": "gen(concept=treasure-map) =\ngen(island | concept=treasure-map)\ngen(x-mark | concept=treasure-map, island)\ngen(compass | concept=treasure-map)\ngen(cryptic-clue | concept=treasure-map, x-mark)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "treasure map",
+    "components": [
+     [
+      "landmark",
+      []
+     ],
+     [
+      "x mark",
+      [
+       "landmark"
+      ]
+     ],
+     [
+      "directions",
+      [
+       "landmark"
+      ]
+     ],
+     [
+      "cave orchestral",
+      [
+       "landmark",
+       "directions"
+      ]
+     ]
+    ],
+    "final": [
+     "landmark",
+     "x mark",
+     "directions",
+     "cave orchestral"
+    ],
+    "program": "gen(concept=treasure-map) =\ngen(landmark | concept=treasure-map)\ngen(x-mark | concept=treasure-map, landmark)\ngen(directions | concept=treasure-map, landmark)\ngen(cave-orchestral | concept=treasure-map, landmark, directions)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "treasure map",
+    "components": [
+     [
+      "map",
+      []
+     ],
+     [
+      "x mark",
+      [
+       "map"
+      ]
+     ],
+     [
+      "compass",
+      []
+     ],
+     [
+      "legend",
+      [
+       "map"
+      ]
+     ]
+    ],
+    "final": [
+     "map",
+     "x mark",
+     "compass",
+     "legend"
+    ],
+    "program": "gen(concept=treasure-map) =\ngen(map | concept=treasure-map)\ngen(x-mark | concept=treasure-map, map)\ngen(compass | concept=treasure-map)\ngen(legend | concept=treasure-map, map)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "treasure map",
+    "components": [
+     [
+      "landmarks",
+      []
+     ],
+     [
+      "path",
+      [
+       "landmarks"
+      ]
+     ],
+     [
+      "x mark",
+      [
+       "path"
+      ]
+     ],
+     [
+      "legend",
+      []
+     ]
+    ],
+    "final": [
+     "landmarks",
+     "path",
+     "x mark",
+     "legend"
+    ],
+    "program": "gen(concept=treasure-map) =\ngen(landmarks | concept=treasure-map)\ngen(path | concept=treasure-map, landmarks)\ngen(x-mark | concept=treasure-map, path)\ngen(legend | concept=treasure-map)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "volcano": [
+   {
+    "concept": "volcano",
+    "components": [
+     [
+      "vent",
+      []
+     ],
+     [
+      "lava flow",
+      [
+       "vent"
+      ]
+     ],
+     [
+      "smoke plume",
+      [
+       "vent"
+      ]
+     ],
+     [
+      "crater",
+      [
+       "vent"
+      ]
+     ]
+    ],
+    "final": [
+     "vent",
+     "lava flow",
+     "smoke plume",
+     "crater"
+    ],
+    "program": "gen(concept=volcano) =\ngen(vent | concept=volcano)\ngen(lava-flow | concept=volcano, vent)\ngen(smoke-plume | concept=volcano, vent)\ngen(crater | concept=volcano, vent)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "volcano",
+    "components": [
+     [
+      "crater",
+      []
+     ],
+     [
+      "smoke",
+      []
+     ],
+     [
+      "lava flow",
+      [
+       "crater"
+      ]
+     ],
+     [
+      "ash cloud",
+      [
+       "smoke"
+      ]
+     ]
+    ],
+    "final": [
+     "crater",
+     "smoke",
+     "lava flow",
+     "ash cloud"
+    ],
+    "program": "gen(concept=volcano) =  \ngen(crater | concept=volcano)  \ngen(smoke | concept=volcano)  \ngen(lava-flow | concept=volcano, crater)  \ngen(ash-cloud | concept=volcano, smoke)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "volcano",
+    "components": [
+     [
+      "peak",
+      []
+     ],
+     [
+      "smoke",
+      []
+     ],
+     [
+      "lava flow",
+      [
+       "peak"
+      ]
+     ],
+     [
+      "crater",
+      [
+       "peak"
+      ]
+     ]
+    ],
+    "final": [
+     "peak",
+     "smoke",
+     "lava flow",
+     "crater"
+    ],
+    "program": "gen(concept=volcano) =\ngen(peak | concept=volcano)\ngen(smoke | concept=volcano)\ngen(lava-flow | concept=volcano, peak)\ngen(crater | concept=volcano, peak)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "volcano",
+    "components": [
+     [
+      "crater",
+      []
+     ],
+     [
+      "smoke",
+      []
+     ],
+     [
+      "ash cloud",
+      [
+       "smoke"
+      ]
+     ],
+     [
+      "lava flow",
+      []
+     ]
+    ],
+    "final": [
+     "crater",
+     "smoke",
+     "ash cloud",
+     "lava flow"
+    ],
+    "program": "gen(concept=volcano) =  \ngen(crater | concept=volcano)  \ngen(smoke | concept=volcano)  \ngen(ash-cloud | concept=volcano, smoke)  \ngen(lava-flow | concept=volcano)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "volcano",
+    "components": [
+     [
+      "mountain",
+      []
+     ],
+     [
+      "ash cloud",
+      []
+     ],
+     [
+      "lava flow",
+      [
+       "mountain"
+      ]
+     ],
+     [
+      "crater",
+      [
+       "mountain"
+      ]
+     ]
+    ],
+    "final": [
+     "mountain",
+     "ash cloud",
+     "lava flow",
+     "crater"
+    ],
+    "program": "gen(concept=volcano) =\ngen(mountain | concept=volcano)\ngen(ash-cloud | concept=volcano)\ngen(lava-flow | concept=volcano, mountain)\ngen(crater | concept=volcano, mountain)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ],
+  "water and nutrient cycle": [
+   {
+    "concept": "water and nutrient cycle",
+    "components": [
+     [
+      "rainfall",
+      []
+     ],
+     [
+      "soil",
+      []
+     ],
+     [
+      "plant",
+      [
+       "soil"
+      ]
+     ],
+     [
+      "river",
+      [
+       "rainfall",
+       "plant"
+      ]
+     ]
+    ],
+    "final": [
+     "rainfall",
+     "soil",
+     "plant",
+     "river"
+    ],
+    "program": "gen(concept=water-and-nutrient-cycle) =  \ngen(rainfall | concept=water-and-nutrient-cycle)  \ngen(soil | concept=water-and-nutrient-cycle)  \ngen(plant | concept=water-and-nutrient-cycle, soil)  \ngen(river | concept=water-and-nutrient-cycle, rainfall, plant)",
+    "source": "qwen3-vl-8b/size3/k0/try0"
+   },
+   {
+    "concept": "water and nutrient cycle",
+    "components": [
+     [
+      "rainfall",
+      []
+     ],
+     [
+      "soil",
+      []
+     ],
+     [
+      "plant",
+      [
+       "soil"
+      ]
+     ],
+     [
+      "river",
+      [
+       "rainfall",
+       "plant"
+      ]
+     ]
+    ],
+    "final": [
+     "rainfall",
+     "soil",
+     "plant",
+     "river"
+    ],
+    "program": "gen(concept=water-and-nutrient-cycle) =\ngen(rainfall | concept=water-and-nutrient-cycle)\ngen(soil | concept=water-and-nutrient-cycle)\ngen(plant | concept=water-and-nutrient-cycle, soil)\ngen(river | concept=water-and-nutrient-cycle, rainfall, plant)",
+    "source": "qwen3-vl-8b/size3/k1/try0"
+   },
+   {
+    "concept": "water and nutrient cycle",
+    "components": [
+     [
+      "rainfall",
+      []
+     ],
+     [
+      "soil",
+      []
+     ],
+     [
+      "plant",
+      [
+       "soil"
+      ]
+     ],
+     [
+      "river",
+      [
+       "rainfall",
+       "plant"
+      ]
+     ]
+    ],
+    "final": [
+     "rainfall",
+     "soil",
+     "plant",
+     "river"
+    ],
+    "program": "gen(concept=water-and-nutrient-cycle) =\ngen(rainfall | concept=water-and-nutrient-cycle)\ngen(soil | concept=water-and-nutrient-cycle)\ngen(plant | concept=water-and-nutrient-cycle, soil)\ngen(river | concept=water-and-nutrient-cycle, rainfall, plant)",
+    "source": "qwen3-vl-8b/size3/k2/try0"
+   },
+   {
+    "concept": "water and nutrient cycle",
+    "components": [
+     [
+      "rainfall",
+      []
+     ],
+     [
+      "soil",
+      []
+     ],
+     [
+      "plant",
+      [
+       "soil"
+      ]
+     ],
+     [
+      "animals",
+      [
+       "plant"
+      ]
+     ]
+    ],
+    "final": [
+     "rainfall",
+     "soil",
+     "plant",
+     "animals"
+    ],
+    "program": "gen(concept=water-and-nutrient-cycle) =\ngen(rainfall | concept=water-and-nutrient-cycle)\ngen(soil | concept=water-and-nutrient-cycle)\ngen(plant | concept=water-and-nutrient-cycle, soil)\ngen(animals | concept=water-and-nutrient-cycle, plant)",
+    "source": "qwen3-vl-8b/size3/k3/try0"
+   },
+   {
+    "concept": "water and nutrient cycle",
+    "components": [
+     [
+      "rainfall",
+      []
+     ],
+     [
+      "vegetation",
+      []
+     ],
+     [
+      "soil",
+      []
+     ],
+     [
+      "rivers",
+      []
+     ]
+    ],
+    "final": [
+     "rainfall",
+     "vegetation",
+     "soil",
+     "rivers"
+    ],
+    "program": "gen(concept=water-and-nutrient-cycle) =\ngen(rainfall | concept=water-and-nutrient-cycle)\ngen(vegetation | concept=water-and-nutrient-cycle)\ngen(soil | concept=water-and-nutrient-cycle)\ngen(rivers | concept=water-and-nutrient-cycle)",
+    "source": "qwen3-vl-8b/size3/k4/try0"
+   }
+  ]
+ }
+}

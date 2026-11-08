@@ -1,0 +1,10 @@
+{
+  "name": "smoke",
+  "schemas": "schemas/qwen3.8-27b_c3.json",
+  "jobs": [
+    {"dataset": "vad", "methods": ["direct", "cot", "ccot", "dsg_schema", "dsg_seq", "dsg_hier", "dsg_full", "dsg_release", "dsg_shuffle", "dsg_wrong", "dsg_generic"], "runs": [0], "limit": 6},
+    {"dataset": "maze", "methods": ["direct", "dsg_full"], "runs": [0], "limit": 3},
+    {"dataset": "maze_nolegend", "methods": ["direct", "dsg_full"], "runs": [0], "limit": 3},
+    {"dataset": "ai2d", "methods": ["direct", "ccot", "dsg_full"], "runs": [0], "limit": 3}
+  ]
+}
