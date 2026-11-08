@@ -1,0 +1,80 @@
+== VAB by question type (all, counting, binary, open): base VLM / DSG
+qwen3-vl-4b [62.0, 63.3, 63.3, 60.4] [66.8, 67.4, 64.1, 68.9]
+qwen3-vl-8b [65.9, 65.6, 69.0, 63.3] [68.1, 66.3, 69.4, 67.6]
+internvl3.5-8b [59.8, 58.9, 65.7, 55.0] [64.3, 63.3, 65.1, 63.9]
+qwen3.8-27b [69.6, 70.0, 62.9, 75.4] [76.1, 75.9, 72.5, 79.3]
+mean [64.4, 64.4, 65.2, 63.5] [68.8, 68.2, 67.8, 69.9]
+
+== DSG per schema sample, exact McNemar p against the base VLM
+vad qwen3-vl-4b base 62.0 samples [67.6, 67.0, 65.7] p [np.float64(0.0073), np.float64(0.0187), np.float64(0.0798)]
+vad qwen3-vl-8b base 65.9 samples [67.8, 68.9, 67.6] p [np.float64(0.3952), np.float64(0.1448), np.float64(0.4437)]
+vad internvl3.5-8b base 59.8 samples [62.8, 64.3, 65.7] p [np.float64(0.1671), np.float64(0.0384), np.float64(0.0045)]
+vad qwen3.8-27b base 69.6 samples [76.7, 75.6, 76.1] p [np.float64(0.0002), np.float64(0.0022), np.float64(0.0008)]
+maze qwen3-vl-4b base 38.3 samples [48.2, 46.8, 53.3] p [np.float64(0.0002), np.float64(0.0008), np.float64(0.0)]
+maze qwen3-vl-8b base 36.3 samples [53.0, 49.7, 53.5] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+maze internvl3.5-8b base 23.0 samples [44.3, 43.3, 45.8] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+maze qwen3.8-27b base 44.7 samples [75.8, 74.8, 75.7] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+maze_nolegend qwen3-vl-4b base 28.7 samples [40.2, 40.5, 42.7] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+maze_nolegend qwen3-vl-8b base 17.5 samples [36.7, 36.5, 36.8] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+maze_nolegend internvl3.5-8b base 22.5 samples [33.8, 35.8, 33.8] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+maze_nolegend qwen3.8-27b base 24.8 samples [52.5, 49.5, 52.2] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+ai2d qwen3-vl-4b base 68.2 samples [73.6, 75.5, 74.6] p [np.float64(0.0039), np.float64(0.0001), np.float64(0.0005)]
+ai2d qwen3-vl-8b base 74.3 samples [76.3, 77.2, 76.3] p [np.float64(0.2351), np.float64(0.0846), np.float64(0.278)]
+ai2d internvl3.5-8b base 74.1 samples [73.4, 73.0, 73.7] p [np.float64(0.7688), np.float64(0.6101), np.float64(0.9204)]
+ai2d qwen3.8-27b base 78.8 samples [81.7, 81.5, 80.6] p [np.float64(0.1011), np.float64(0.1329), np.float64(0.3143)]
+\n== Maze-Nav accuracy by question type (right turns, total turns, exit position)
+qwen3-vl-4b direct [29.5, 19.0, 66.5, 22.5, 13.0, 50.5]
+qwen3-vl-4b cot [16.5, 24.5, 78.5, 6.0, 9.5, 37.0]
+qwen3-vl-4b dsg_full [52.3, 43.8, 52.2, 47.0, 40.3, 36.0]
+qwen3-vl-4b dsg_q [54.3, 56.3, 52.3, 51.5, 58.7, 37.5]
+qwen3-vl-8b direct [19.5, 16.5, 73.0, 6.5, 10.5, 35.5]
+qwen3-vl-8b cot [15.5, 13.0, 84.5, 10.0, 10.5, 42.0]
+qwen3-vl-8b dsg_full [43.5, 52.5, 60.2, 31.3, 36.3, 42.3]
+qwen3-vl-8b dsg_q [50.0, 58.3, 59.3, 35.7, 53.2, 45.7]
+internvl3.5-8b direct [14.0, 17.0, 38.0, 11.5, 15.0, 41.0]
+internvl3.5-8b cot [22.5, 25.0, 83.0, 9.5, 12.0, 41.0]
+internvl3.5-8b dsg_full [40.7, 47.7, 45.2, 27.0, 38.7, 37.8]
+internvl3.5-8b dsg_q [42.0, 50.7, 45.5, 35.8, 63.3, 36.8]
+qwen3.8-27b direct [47.5, 48.5, 38.0, 22.5, 17.5, 34.5]
+qwen3.8-27b cot [66.0, 81.5, 89.5, 10.5, 40.0, 65.5]
+qwen3.8-27b dsg_full [72.7, 83.2, 70.5, 53.7, 47.2, 53.3]
+qwen3.8-27b dsg_q [75.2, 92.7, 70.7, 56.5, 64.5, 55.5]
+
+== Maze-Nav turn counting: true mean count [0.97]
+== VAB yes/no questions per run: 120
+== shared groundings identical on the two maze sets for DSG: True
+
+== AI2D per category: questions, base VLM / DSG per model, mean gain
+foodChainsWebs 60 ['78 / 83', '83 / 87', '90 / 80', '90 / 89'] -0.8
+lifeCycles 60 ['70 / 78', '78 / 84', '73 / 77', '88 / 87'] 3.9
+moonPhaseEquinox 60 ['55 / 69', '58 / 66', '62 / 66', '65 / 74'] 8.6
+photosynthesisRespiration 60 ['75 / 83', '75 / 83', '78 / 81', '82 / 86'] 5.6
+rockCycle 60 ['58 / 61', '72 / 63', '58 / 58', '60 / 64'] -0.6
+partsOfTheEarth 52 ['71 / 74', '69 / 77', '77 / 67', '77 / 87'] 2.7
+waterCNPCycle 44 ['55 / 54', '73 / 59', '66 / 64', '77 / 71'] -5.7
+rockStrata 41 ['66 / 77', '71 / 70', '68 / 72', '78 / 82'] 4.7
+solarSystem 36 ['81 / 82', '83 / 90', '86 / 84', '89 / 89'] 1.6
+eclipses 31 ['81 / 83', '87 / 89', '87 / 87', '87 / 86'] 0.8
+faultsEarthquakes 28 ['71 / 76', '75 / 71', '68 / 71', '79 / 76'] 0.6
+volcano 16 ['56 / 88', '75 / 85', '81 / 81', '81 / 96'] 14.1
+atomStructure 8 ['75 / 79', '75 / 100', '100 / 100', '88 / 79'] 5.2
+
+== CoT on the two maze sets: share of outputs cut at the token limit / share without a matching choice
+qwen3-vl-4b maze 0.507 0.477
+qwen3-vl-4b maze_nolegend 0.637 0.61
+qwen3-vl-8b maze 0.537 0.498
+qwen3-vl-8b maze_nolegend 0.543 0.515
+internvl3.5-8b maze 0.068 0.068
+internvl3.5-8b maze_nolegend 0.06 0.057
+qwen3.8-27b maze 0.165 0.12
+qwen3.8-27b maze_nolegend 0.467 0.38
+
+== share of outputs without a matching choice: maximum over models and test sets
+blind 0.028
+direct 0.032
+ccot 0.036
+dsg_schema 0.022
+dsg_full 0.054
+dsg_x 0.058
+dsg_q 0.09
+cot 0.61

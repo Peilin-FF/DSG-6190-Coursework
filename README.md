@@ -43,6 +43,7 @@ was run in an early phase and is not part of the report.
 | `scripts/grounding_stats.py` | shared groundings per resolved schema and accuracy per concept, from the run files |
 | `scripts/answer_stats.py` | turn counts on Maze-Nav and yes/no answers on VAB |
 | `scripts/report_numbers.py` | every number quoted in the report text, with the rounding of the tables |
+| `scripts/supp_tables.py` | tables and numbers of the supplementary material: comparison with the paper, schema samples, AI2D categories, Maze-Nav question types |
 | `scripts/make_tables.py`, `scripts/figures.py`, `scripts/cases.py` | LaTeX tables, figures and case selection |
 | `scripts/package_submission.sh` | builds the code zip (no data, models, runs or external links) |
 | `configs/` | model registry and the experiment suites (`suite_main`, `suite_hparam*`, `suite_improve*`) |
@@ -77,6 +78,7 @@ python scripts/grounding_stats.py --runs $DSG_RUNS --out results
 python scripts/answer_stats.py --results results --data $DSG_DATA
 python scripts/report_numbers.py --results results --runs $DSG_RUNS --data $DSG_DATA > results/report_numbers.txt
 python scripts/make_tables.py --results results --out report/tables
+python scripts/supp_tables.py --results results --out report/tables > results/supp_numbers.txt
 python scripts/figures.py --results results --out report/figures --data $DSG_DATA
 ```
 
