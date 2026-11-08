@@ -4,7 +4,7 @@
 
 Writes the row files
   supp_paper.tex       VAB accuracy by question type for the base VLM and DSG, next to the values of Hsu et al.
-  supp_samples.tex     DSG accuracy for each schema sample, with the exact McNemar test against the base VLM
+  supp_samples.tex     DSG accuracy for each schema sample next to the base VLM
   supp_maze_qtype.tex  Maze-Nav accuracy for each question type
   supp_turns.tex       predicted turn counts on Maze-Nav (mean, balanced accuracy, Spearman correlation)
   supp_yesno.tex       share of "yes" answers and accuracy on questions whose answer is "no" (VAB)
@@ -20,7 +20,6 @@ import os
 
 import numpy as np
 import pandas as pd
-from scipy.stats import binomtest
 
 MODELS = [("qwen3-vl-4b", "Qwen3-VL-4B"), ("qwen3-vl-8b", "Qwen3-VL-8B"), ("internvl3.5-8b", "InternVL3.5-8B"),
           ("qwen3.8-27b", "Qwen3.8-27B")]
@@ -55,19 +54,6 @@ def per_run(df, model, dataset, variant, qtype=None, category=None):
 def acc(df, *args, **kw):
     s = per_run(df, *args, **kw)
     return float(s.mean()) if len(s) else np.nan
-
-
-def mcnemar_p(df, model, dataset, run):
-    x = df[(df.model == model) & (df.dataset == dataset)]
-    a = x[(x.variant == "direct") & (x.run == 0)].set_index("id")["correct"]
-    b = x[(x.variant == "dsg_full") & (x.run == run)].set_index("id")["correct"]
-    j = a.to_frame("a").join(b.to_frame("b"), how="inner")
-    n01, n10 = int(((~j.a) & j.b).sum()), int((j.a & ~j.b).sum())
-    return binomtest(min(n01, n10), n01 + n10, 0.5).pvalue if n01 + n10 else 1.0
-
-
-def stars(p):
-    return "$^{***}$" if p < 0.001 else "$^{**}$" if p < 0.01 else "$^{*}$" if p < 0.05 else ""
 
 
 def f1(v):
@@ -110,20 +96,16 @@ def paper_table(df, path):
 
 def samples_table(df, path):
     lines = []
-    print("\n== DSG per schema sample, exact McNemar p against the base VLM")
+    print("\\n== DSG per schema sample")
     for ds, title in SETS:
         lines.append(f"\\multicolumn{{6}}{{l}}{{\\emph{{{title}}}}} \\\\")
         for m, name in MODELS:
             base = acc(df, m, ds, "direct")
             per = per_run(df, m, ds, "dsg_full")
-            cells, ps = [], []
-            for r in (0, 1, 2):
-                p = mcnemar_p(df, m, ds, r)
-                ps.append(round(p, 4))
-                cells.append(f1(per.get(r, np.nan)) + stars(p))
+            cells = [f1(per.get(r, np.nan)) for r in (0, 1, 2)]
             std = f"\\std{{{per.std(ddof=1):.1f}}}" if len(per) > 1 else ""
             lines.append(" & ".join([name, f1(base)] + cells + [f1(per.mean()) + std]) + " \\\\")
-            print(ds, m, "base", round(base, 1), "samples", [round(v, 1) for v in per], "p", ps)
+            print(ds, m, "base", round(base, 1), "samples", [round(v, 1) for v in per], "std", round(float(per.std(ddof=1)), 1))
         if ds != SETS[-1][0]:
             lines.append("\\midrule")
     write(path, lines)

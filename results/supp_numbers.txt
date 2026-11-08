@@ -4,24 +4,23 @@ qwen3-vl-8b [65.9, 65.6, 69.0, 63.3] [68.1, 66.3, 69.4, 67.6]
 internvl3.5-8b [59.8, 58.9, 65.7, 55.0] [64.3, 63.3, 65.1, 63.9]
 qwen3.8-27b [69.6, 70.0, 62.9, 75.4] [76.1, 75.9, 72.5, 79.3]
 mean [64.4, 64.4, 65.2, 63.5] [68.8, 68.2, 67.8, 69.9]
-
-== DSG per schema sample, exact McNemar p against the base VLM
-vad qwen3-vl-4b base 62.0 samples [67.6, 67.0, 65.7] p [np.float64(0.0073), np.float64(0.0187), np.float64(0.0798)]
-vad qwen3-vl-8b base 65.9 samples [67.8, 68.9, 67.6] p [np.float64(0.3952), np.float64(0.1448), np.float64(0.4437)]
-vad internvl3.5-8b base 59.8 samples [62.8, 64.3, 65.7] p [np.float64(0.1671), np.float64(0.0384), np.float64(0.0045)]
-vad qwen3.8-27b base 69.6 samples [76.7, 75.6, 76.1] p [np.float64(0.0002), np.float64(0.0022), np.float64(0.0008)]
-maze qwen3-vl-4b base 38.3 samples [48.2, 46.8, 53.3] p [np.float64(0.0002), np.float64(0.0008), np.float64(0.0)]
-maze qwen3-vl-8b base 36.3 samples [53.0, 49.7, 53.5] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
-maze internvl3.5-8b base 23.0 samples [44.3, 43.3, 45.8] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
-maze qwen3.8-27b base 44.7 samples [75.8, 74.8, 75.7] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
-maze_nolegend qwen3-vl-4b base 28.7 samples [40.2, 40.5, 42.7] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
-maze_nolegend qwen3-vl-8b base 17.5 samples [36.7, 36.5, 36.8] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
-maze_nolegend internvl3.5-8b base 22.5 samples [33.8, 35.8, 33.8] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
-maze_nolegend qwen3.8-27b base 24.8 samples [52.5, 49.5, 52.2] p [np.float64(0.0), np.float64(0.0), np.float64(0.0)]
-ai2d qwen3-vl-4b base 68.2 samples [73.6, 75.5, 74.6] p [np.float64(0.0039), np.float64(0.0001), np.float64(0.0005)]
-ai2d qwen3-vl-8b base 74.3 samples [76.3, 77.2, 76.3] p [np.float64(0.2351), np.float64(0.0846), np.float64(0.278)]
-ai2d internvl3.5-8b base 74.1 samples [73.4, 73.0, 73.7] p [np.float64(0.7688), np.float64(0.6101), np.float64(0.9204)]
-ai2d qwen3.8-27b base 78.8 samples [81.7, 81.5, 80.6] p [np.float64(0.1011), np.float64(0.1329), np.float64(0.3143)]
+\n== DSG per schema sample
+vad qwen3-vl-4b base 62.0 samples [67.6, 67.0, 65.7] std 1.0
+vad qwen3-vl-8b base 65.9 samples [67.8, 68.9, 67.6] std 0.7
+vad internvl3.5-8b base 59.8 samples [62.8, 64.3, 65.7] std 1.5
+vad qwen3.8-27b base 69.6 samples [76.7, 75.6, 76.1] std 0.6
+maze qwen3-vl-4b base 38.3 samples [48.2, 46.8, 53.3] std 3.4
+maze qwen3-vl-8b base 36.3 samples [53.0, 49.7, 53.5] std 2.1
+maze internvl3.5-8b base 23.0 samples [44.3, 43.3, 45.8] std 1.3
+maze qwen3.8-27b base 44.7 samples [75.8, 74.8, 75.7] std 0.5
+maze_nolegend qwen3-vl-4b base 28.7 samples [40.2, 40.5, 42.7] std 1.4
+maze_nolegend qwen3-vl-8b base 17.5 samples [36.7, 36.5, 36.8] std 0.2
+maze_nolegend internvl3.5-8b base 22.5 samples [33.8, 35.8, 33.8] std 1.2
+maze_nolegend qwen3.8-27b base 24.8 samples [52.5, 49.5, 52.2] std 1.6
+ai2d qwen3-vl-4b base 68.2 samples [73.6, 75.5, 74.6] std 1.0
+ai2d qwen3-vl-8b base 74.3 samples [76.3, 77.2, 76.3] std 0.5
+ai2d internvl3.5-8b base 74.1 samples [73.4, 73.0, 73.7] std 0.4
+ai2d qwen3.8-27b base 78.8 samples [81.7, 81.5, 80.6] std 0.6
 \n== Maze-Nav accuracy by question type (right turns, total turns, exit position)
 qwen3-vl-4b direct [29.5, 19.0, 66.5, 22.5, 13.0, 50.5]
 qwen3-vl-4b cot [16.5, 24.5, 78.5, 6.0, 9.5, 37.0]
