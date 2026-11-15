@@ -109,11 +109,11 @@ def teaser():
             ax.text(bx + 0.43 + 0.07, y + 0.05, r"$\mathbf{v}_\theta$", ha="left", va="bottom", fontsize=7.2, color=BLUE)
             plus(ax, px, y)
             arrow(ax, (px + 0.065, y), (sx - 0.28, y), color=GREEN)
-            ax.text((px + sx - 0.28) / 2 + 0.03, y + 0.05, r"$\mathbf{v}^{\kappa}$", ha="center", va="bottom", fontsize=7.2, color=GREEN)
+            ax.text((px + sx - 0.28) / 2 + 0.05, y + 0.03, r"$\mathbf{v}^{\kappa}$", ha="center", va="bottom", fontsize=7.2, color=GREEN)
             poly_arrow(ax, [(bx, y + 0.19), (bx, 1.45), (px - 0.29, 1.45)], color=INK, lw=0.8)
             ax.text(bx + 0.05, 1.22, r"$\hat{\mathbf{x}}_0,\ \mathbf{h}$", ha="left", va="center", fontsize=6.9, color=INK)
             arrow(ax, (px, 1.30), (px, y + 0.065), color=GREEN)
-            ax.text(px + 0.05, 1.13, r"$\kappa\hat{\mathbf{r}}$", ha="left", va="center", fontsize=7.0, color=GREEN)
+            ax.text(px + 0.05, 1.19, r"$\kappa\hat{\mathbf{r}}$", ha="left", va="center", fontsize=7.0, color=GREEN)
     save(fig, "fig_intro_placements")
 
 
