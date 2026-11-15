@@ -177,10 +177,14 @@ def method():
     axl, axr, ya = x0 + 0.48, x0 + wb - 0.24, 0.78
     pos = lambda s: axl + (s - 1) / 49 * (axr - axl)
     band = (pos(17), pos(49))
-    ax.add_patch(Rectangle((band[0], ya + 0.025), band[1] - band[0], 0.07, fc=COL["refiner"][0], ec=COL["refiner"][1], lw=0.6, zorder=2.5))
-    ax.text((band[0] + band[1]) / 2, ya + 0.13, r"correction interval $\sigma\in[0.15,0.92]$", ha="center", va="bottom",
-            fontsize=6.4, color=PURPLE)
     tw = 0.38
+    # background box over the shown steps that lie inside the correction interval (20, 30, 40),
+    # aligned with the edges of their thumbnails; the label gives the exact steps 17 to 49
+    bl, br = pos(20) - tw / 2 - 0.06, pos(40) + tw / 2 + 0.06
+    ax.add_patch(FancyBboxPatch((bl, 0.46), br - bl, 1.14, boxstyle="round,pad=0,rounding_size=0.05",
+                                fc=COL["refiner"][0], ec="none", alpha=0.8, zorder=0.5))
+    ax.text((bl + br) / 2, 1.66, r"correction interval $\sigma\in[0.15,0.92]$, steps 17$-$49", ha="center", va="bottom",
+            fontsize=6.2, color=PURPLE)
     th = tw * 480 / 832
     cxs = [pos(s) for s in steps]   # each thumbnail sits above its own step
     for s, c in zip(steps, cxs):
@@ -199,7 +203,7 @@ def method():
     ax.text(axl - 0.20, ya - 0.07, "step", ha="right", va="top", fontsize=6.0, color=GREY)
     ax.text(axl - 0.20, ya - 0.20, r"$\sigma$", ha="right", va="top", fontsize=6.4, color=GREY)
     ax.text((cxs[0] + cxs[1]) / 2, 1.12, "layout forms", ha="center", va="center", fontsize=6.4, color=INK, style="italic")
-    ax.text((band[0] + band[1]) / 2, 1.12, "detail is refined", ha="center", va="center", fontsize=6.4, color=PURPLE, style="italic")
+    ax.text((bl + br) / 2, 1.12, "detail is refined", ha="center", va="center", fontsize=6.4, color=PURPLE, style="italic")
     ax.text(x0 + wb / 2, 0.17, r"$\kappa=0.2$ before guidance with scale 5: residual weight $5\kappa=1$",
             ha="center", va="center", fontsize=6.2, color=GREY)
     save(fig, "fig_method_step")
