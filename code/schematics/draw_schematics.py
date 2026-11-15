@@ -65,7 +65,7 @@ def panel(ax, x, y, w, h, title):
 
 
 def save(fig, name):
-    fig.savefig(os.path.join(OUT, name + ".pdf"))
+    fig.savefig(os.path.join(OUT, name + ".pdf"), dpi=600)   # dpi sets the resolution of the embedded thumbnails
     fig.savefig(os.path.join(OUT, name + ".png"), dpi=300)
     plt.close(fig)
     print("wrote", name)
