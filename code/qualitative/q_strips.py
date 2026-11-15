@@ -47,7 +47,7 @@ print('[q_strips] font family used:', FONT)
 
 LAB_PT, TIME_PT, TITLE_PT = 7.5, 7.0, 7.0
 BLUE, BLUE_TEXT = ps.PALETTE['blue'], ps.PALETTE['blue_text']
-NAMES = {'Ours': 'CorrFlow', 'Ground truth': 'Ground\ntruth', 'Wan2.1': 'Wan2.1-1.3B', 'Wan2.2': 'Wan2.2-5B'}
+NAMES = {'Ours': 'CorrFlow', 'Ground truth': 'Ground\ntruth', 'Wan2.1': 'Wan2.1-1.3B', 'Wan2.2': 'Wan2.2-5B', 'VLiPP': 'VLIPP'}
 TIMES = ['0 s', '1.25 s', '2.5 s', '3.75 s', '5 s']
 IDX = json.load(open(f'{Q}/frame_index.json'))
 

@@ -38,6 +38,21 @@ sys.path.insert(0, HERE)
 import vm_common as C  # noqa: E402
 import plot_style as ps  # noqa: E402
 
+_ps_save = ps.save
+
+
+def _save_with_report_names(fig, path, *a, **k):
+    """Print the method name as in the report (VLIPP); the data keys stay unchanged."""
+    import matplotlib.text as mtext
+    for t in fig.findobj(mtext.Text):
+        s = t.get_text()
+        if "VLiPP" in s:
+            t.set_text(s.replace("VLiPP", "VLIPP"))
+    return _ps_save(fig, path, *a, **k)
+
+
+ps.save = _save_with_report_names
+
 RES = os.path.join(C.VM, "results")
 FIG = os.path.join(C.VM, "figures")
 TIMES_CLONE = "TeX Gyre Termes"
