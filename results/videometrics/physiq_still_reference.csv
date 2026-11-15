@@ -1,0 +1,11 @@
+case_id,reference,spatial_iou,spatiotemporal_iou,weighted_spatial_iou,mse,motion_share,gt_empty_frame_share
+physics-iq-veried-p0019,still_switch_frame,0.0,0.6375,0.0,0.0010381145402789116,0.0,0.6375
+physics-iq-veried-p0027,still_switch_frame,0.0,0.8375,0.0,0.0012915481347590685,0.0,0.8375
+physics-iq-veried-p0040,still_switch_frame,0.0,0.6,0.0,0.0054134223610162735,0.0,0.6
+physics-iq-veried-p0046,still_switch_frame,0.0,0.05,0.0,0.00972036737948656,0.0,0.05
+physics-iq-veried-p0084,still_switch_frame,0.0,0.0125,0.0,0.012993717566132545,0.0,0.0125
+physics-iq-veried-p0110,still_switch_frame,0.0,0.85,0.0,0.0008575390675105155,0.0,0.85
+physics-iq-veried-p0115,still_switch_frame,0.0,0.675,0.0,0.002219698391854763,0.0,0.675
+physics-iq-veried-p0133,still_switch_frame,0.0,0.025,0.0,0.004237354267388582,0.0,0.025
+physics-iq-veried-p0140,still_switch_frame,0.0,0.3625,0.0,0.0008116791723296046,0.0,0.3625
+physics-iq-veried-p0155,still_switch_frame,0.0,0.5375,0.0,0.0030564225744456053,0.0,0.5375

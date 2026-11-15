@@ -1,0 +1,14 @@
+% table_preamble.tex -- packages and macros the Part C tables need (load before hyperref).
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}     % no options: cvpr.sty already loads xcolor[dvipsnames]; [table] here gives an option clash
+\usepackage{colortbl}   % \rowcolor (what xcolor's [table] option would load)
+\definecolor{oursrowblue}{RGB}{239,246,251}   % #EFF6FB, the house colour for the CorrFlow row
+% \shrinktofit{<max width>}{<tabular>}: scales only when the tabular is wider than <max width>.
+\newsavebox{\shrinkbox}
+\newcommand{\shrinktofit}[2]{%
+  \sbox{\shrinkbox}{#2}%
+  \ifdim\wd\shrinkbox>#1\relax\resizebox{#1}{!}{\usebox{\shrinkbox}}%
+  \else\usebox{\shrinkbox}\fi}
+\newcommand{\pmsd}[2]{#1{\scriptsize$\pm$#2}}   % mean with sample SD
