@@ -236,7 +236,7 @@ def pair_figure(name, steps, frame_ids, width, ppi_list=((600, 'png'), (300, 'pd
     lo, hi = 0.15, 0.92   # active noise interval of the refiner in the paper's text-to-video setting
     active = [i for i, s in enumerate(steps) if lo <= sig[s] <= hi]
     in_iv = [s['step'] for s in man['steps'] if lo <= s['sigma'] <= hi]   # all 50 steps, not only the shown ones
-    blabel = (f'active noise interval in the paper’s setting: σ ∈ [{lo:g}, {hi:g}] '
+    blabel = (f'correction interval in the paper’s setting: σ ∈ [{lo:g}, {hi:g}] '
               f'(steps {in_iv[0]}–{in_iv[-1]})')
     bl_w = text_width_in([blabel], TIME_PT)
     written = []
