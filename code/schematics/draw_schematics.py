@@ -177,28 +177,29 @@ def method():
     axl, axr, ya = x0 + 0.48, x0 + wb - 0.24, 0.78
     pos = lambda s: axl + (s - 1) / 49 * (axr - axl)
     band = (pos(17), pos(49))
-    ax.add_patch(Rectangle((band[0], 0.70), band[1] - band[0], 1.12, fc=COL["refiner"][0], ec="none", alpha=0.75, zorder=0.5))
-    ax.text((band[0] + band[1]) / 2, 1.78, r"correction interval $\sigma\in[0.15,0.92]$", ha="center", va="top",
-            fontsize=6.6, color=PURPLE)
+    ax.add_patch(Rectangle((band[0], ya + 0.025), band[1] - band[0], 0.07, fc=COL["refiner"][0], ec=COL["refiner"][1], lw=0.6, zorder=2.5))
+    ax.text((band[0] + band[1]) / 2, ya + 0.13, r"correction interval $\sigma\in[0.15,0.92]$", ha="center", va="bottom",
+            fontsize=6.4, color=PURPLE)
     tw = 0.38
     th = tw * 480 / 832
-    cxs = [axl + k * (axr - axl) / 5 for k in range(6)]
+    cxs = [pos(s) for s in steps]   # each thumbnail sits above its own step
     for s, c in zip(steps, cxs):
         img = read_mid("with_refiner", s)
         if img is None:
             sys.exit(f"no frame for step {s}")
         y0 = 1.25
         ax.imshow(img, extent=(c - tw / 2, c + tw / 2, y0, y0 + th), zorder=4, interpolation="lanczos")
-        ax.add_patch(Rectangle((c - tw / 2, y0), tw, th, fc="none", ec="#8a9099", lw=0.4, zorder=5))
-        ax.plot([c, pos(s)], [y0, ya], color="#b5bbc1", lw=0.5, zorder=1)
+        inside = 17 <= s <= 49
+        ax.add_patch(Rectangle((c - tw / 2, y0), tw, th, fc="none", ec=COL["refiner"][1] if inside else "#8a9099",
+                               lw=1.0 if inside else 0.4, zorder=5))
         ax.plot([pos(s), pos(s)], [ya - 0.03, ya + 0.03], color=INK, lw=0.7, zorder=3)
         ax.text(pos(s), ya - 0.07, f"{s}", ha="center", va="top", fontsize=6.4, color=INK)
         ax.text(pos(s), ya - 0.20, f"{sig[s]:.2f}", ha="center", va="top", fontsize=5.9, color=GREY)
     ax.plot([axl, axr], [ya, ya], color=INK, lw=0.8, zorder=3)
     ax.text(axl - 0.20, ya - 0.07, "step", ha="right", va="top", fontsize=6.0, color=GREY)
     ax.text(axl - 0.20, ya - 0.20, r"$\sigma$", ha="right", va="top", fontsize=6.4, color=GREY)
-    ax.text((cxs[0] + cxs[1]) / 2, 1.08, "layout forms", ha="center", va="center", fontsize=6.4, color=INK, style="italic")
-    ax.text((cxs[3] + cxs[4]) / 2, 1.08, "detail is refined", ha="center", va="center", fontsize=6.4, color=PURPLE, style="italic")
+    ax.text((cxs[0] + cxs[1]) / 2, 1.12, "layout forms", ha="center", va="center", fontsize=6.4, color=INK, style="italic")
+    ax.text((band[0] + band[1]) / 2, 1.12, "detail is refined", ha="center", va="center", fontsize=6.4, color=PURPLE, style="italic")
     ax.text(x0 + wb / 2, 0.17, r"$\kappa=0.2$ before guidance with scale 5: residual weight $5\kappa=1$",
             ha="center", va="center", fontsize=6.2, color=GREY)
     save(fig, "fig_method_step")
